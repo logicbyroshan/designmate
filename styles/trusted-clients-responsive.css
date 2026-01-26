@@ -92,10 +92,6 @@
     .client-name {
         font-size: 1.15rem;
     }
-
-    .cta-content h2 {
-        font-size: 2rem;
-    }
 }
 
 /* ============================================
@@ -226,26 +222,6 @@
         width: 36px;
         height: 36px;
         font-size: 0.85rem;
-    }
-
-    /* CTA Section */
-    .cta-section {
-        padding: 50px 0;
-    }
-
-    .cta-content h2 {
-        font-size: 1.8rem;
-    }
-
-    .cta-content p {
-        font-size: 1rem;
-    }
-
-    .cta-buttons .btn {
-        padding: 12px 24px;
-        font-size: 0.95rem;
-        width: 100%;
-        justify-content: center;
     }
 
     /* Modal */
@@ -404,14 +380,6 @@
 
     .card-image {
         height: 160px;
-    }
-
-    .client-name {
-        font-size: 1rem;
-    }
-
-    .filter-options {
-        gap: 8px;
     }
 
     .filter-btn {

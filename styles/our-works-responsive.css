@@ -24,14 +24,6 @@
     .hero-content h1 {
         font-size: 3.5rem;
     }
-
-    .hero-stats {
-        gap: 40px;
-    }
-
-    .hero-stats .stat-number {
-        font-size: 2.5rem;
-    }
 }
 
 /* ============================================
@@ -75,15 +67,6 @@
     .process-connector {
         width: 50px;
     }
-
-    .works-cta .cta-content {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .cta-actions {
-        justify-content: center;
-    }
 }
 
 /* ============================================
@@ -105,30 +88,6 @@
 
     .hero-content > p {
         font-size: 1rem;
-    }
-
-    .hero-stats {
-        gap: 30px;
-    }
-
-    .hero-stats .stat-number {
-        font-size: 2rem;
-    }
-
-    .hero-stats .stat-label {
-        font-size: 0.8rem;
-    }
-
-    .hero-wave svg {
-        height: 50px;
-    }
-
-    .section-header h2 {
-        font-size: 2.2rem;
-    }
-
-    .categories-showcase {
-        padding: 60px 0;
     }
 
     .categories-grid {
@@ -243,14 +202,6 @@
         bottom: -5px;
         transform: rotate(45deg);
     }
-
-    .works-cta {
-        padding: 60px 0;
-    }
-
-    .cta-text h2 {
-        font-size: 2rem;
-    }
 }
 
 /* ============================================
@@ -272,20 +223,6 @@
 
     .hero-content > p {
         font-size: 0.95rem;
-    }
-
-    .hero-stats {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 20px;
-    }
-
-    .hero-stats .stat-item {
-        flex: 0 0 45%;
-    }
-
-    .hero-stats .stat-number {
-        font-size: 1.8rem;
     }
 
     .hero-actions {
@@ -452,34 +389,6 @@
         height: 30px;
     }
 
-    .works-cta {
-        padding: 50px 0;
-    }
-
-    .cta-text h2 {
-        font-size: 1.7rem;
-    }
-
-    .cta-text p {
-        font-size: 1rem;
-    }
-
-    .cta-actions {
-        flex-direction: column;
-        width: 100%;
-        max-width: 280px;
-    }
-
-    .cta-actions .btn {
-        width: 100%;
-        justify-content: center;
-    }
-
-    .btn-lg {
-        padding: 15px 30px !important;
-        font-size: 0.95rem !important;
-    }
-
     .lightbox-nav {
         width: 45px;
         height: 45px;
@@ -522,18 +431,6 @@
 
     .hero-content > p {
         font-size: 0.9rem;
-    }
-
-    .hero-stats .stat-item {
-        flex: 0 0 48%;
-    }
-
-    .hero-stats .stat-number {
-        font-size: 1.5rem;
-    }
-
-    .hero-stats .stat-label {
-        font-size: 0.7rem;
     }
 
     .section-badge {
@@ -685,23 +582,6 @@
     .step-content p {
         font-size: 0.85rem;
     }
-
-    .works-cta {
-        padding: 40px 0;
-    }
-
-    .cta-text h2 {
-        font-size: 1.5rem;
-    }
-
-    .cta-text p {
-        font-size: 0.9rem;
-    }
-
-    .btn-lg {
-        padding: 12px 25px !important;
-        font-size: 0.9rem !important;
-    }
 }
 
 /* ============================================
@@ -710,10 +590,6 @@
 @media (max-width: 399px) {
     .hero-content h1 {
         font-size: 1.5rem;
-    }
-
-    .hero-stats .stat-number {
-        font-size: 1.3rem;
     }
 
     .section-header h2 {
@@ -748,10 +624,6 @@
         grid-template-columns: 1fr 1fr;
         gap: 6px;
     }
-
-    .cta-text h2 {
-        font-size: 1.3rem;
-    }
 }
 
 /* ============================================
@@ -761,14 +633,6 @@
     .works-hero {
         min-height: auto;
         padding: 70px 0 40px;
-    }
-
-    .hero-stats {
-        flex-wrap: nowrap;
-    }
-
-    .hero-stats .stat-item {
-        flex: 1;
     }
 
     .hero-actions {
@@ -854,10 +718,6 @@
     .category-card:hover .category-bg img,
     .portfolio-item:hover .portfolio-image img {
         transform: none;
-    }
-
-    .hero-stats .stat-number {
-        animation: none;
     }
 
     .explore-btn,

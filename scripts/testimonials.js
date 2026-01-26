@@ -3,64 +3,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     
     // ============================================
-    // ANIMATED COUNTERS
-    // ============================================
-    const counters = document.querySelectorAll('.stat-value[data-count]');
-    
-    const animateCounter = (counter) => {
-        const target = parseInt(counter.dataset.count);
-        const duration = 2000;
-        const steps = 60;
-        let current = 0;
-        let step = 0;
-        
-        const easeOutQuad = (t) => t * (2 - t);
-        
-        const updateCounter = () => {
-            step++;
-            const progress = easeOutQuad(step / steps);
-            current = Math.floor(target * progress);
-            
-            if (step < steps) {
-                counter.textContent = current.toLocaleString();
-                requestAnimationFrame(updateCounter);
-            } else {
-                counter.textContent = target.toLocaleString();
-            }
-        };
-        
-        updateCounter();
-    };
-
-    const counterObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                animateCounter(entry.target);
-                counterObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.5 });
-
-    counters.forEach(counter => counterObserver.observe(counter));
-
-    // ============================================
-    // RATING BAR ANIMATION
-    // ============================================
-    const barFills = document.querySelectorAll('.bar-fill');
-    
-    const barObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const width = entry.target.dataset.width;
-                entry.target.style.width = `${width}%`;
-                barObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.5 });
-
-    barFills.forEach(bar => barObserver.observe(bar));
-
-    // ============================================
     // CIRCULAR PROGRESS ANIMATION
     // ============================================
     const circularProgressElements = document.querySelectorAll('.circular-progress');
@@ -395,7 +337,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }, observerOptions);
 
     const animateElements = document.querySelectorAll(
-        '.testimonial-card, .video-card, .category-card, .featured-card'
+        '.testimonial-card, .video-card, .category-card'
     );
     
     animateElements.forEach((el, index) => {

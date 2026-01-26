@@ -2,42 +2,6 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     // ============================================
-    // ANIMATED COUNTER
-    // ============================================
-    const counters = document.querySelectorAll('.stat-number[data-count]');
-    
-    const animateCounter = (counter) => {
-        const target = parseInt(counter.dataset.count);
-        const duration = 2000;
-        const step = target / (duration / 16);
-        let current = 0;
-        
-        const updateCounter = () => {
-            current += step;
-            if (current < target) {
-                counter.textContent = Math.floor(current).toLocaleString();
-                requestAnimationFrame(updateCounter);
-            } else {
-                counter.textContent = target.toLocaleString();
-            }
-        };
-        
-        updateCounter();
-    };
-
-    // Intersection Observer for counters
-    const counterObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                animateCounter(entry.target);
-                counterObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.5 });
-
-    counters.forEach(counter => counterObserver.observe(counter));
-
-    // ============================================
     // PORTFOLIO FILTER
     // ============================================
     const filterTabs = document.querySelectorAll('.filter-tab');

@@ -15,25 +15,12 @@
     .category-grid {
         max-width: 1320px;
     }
-    
-    .featured-card {
-        max-width: 1000px;
-        padding: 60px;
-    }
 }
 
 /* ===== DESKTOP (1200px - 1399px) ===== */
 @media (max-width: 1399px) {
     .hero-content h1 {
         font-size: 3.5rem;
-    }
-    
-    .rating-stats {
-        gap: 40px;
-    }
-    
-    .rating-stat .stat-value {
-        font-size: 2rem;
     }
     
     .category-grid {
@@ -59,20 +46,8 @@
         font-size: 1.1rem;
     }
     
-    .rating-stats {
-        gap: 30px;
-    }
-    
     .section-header h2 {
         font-size: 2.4rem;
-    }
-    
-    .featured-card {
-        padding: 40px;
-    }
-    
-    .featured-text {
-        font-size: 1.2rem;
     }
     
     .video-grid {
@@ -93,14 +68,6 @@
     
     .testimonial-card.tall {
         grid-row: span 1;
-    }
-    
-    .rating-breakdown-grid {
-        gap: 40px;
-    }
-    
-    .rating-number {
-        font-size: 4rem;
     }
     
     .category-grid {
@@ -137,43 +104,12 @@
         font-size: 1.5rem;
     }
     
-    .rating-stats {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 25px;
-    }
-    
-    .rating-stat .stat-value {
-        font-size: 1.8rem;
-    }
-    
-    .featured-testimonial {
-        padding: 60px 20px;
-    }
-    
-    .featured-card {
-        padding: 35px;
-    }
-    
-    .featured-text {
-        font-size: 1.1rem;
-    }
-    
-    .featured-badge {
-        position: relative;
-        top: 0;
-        right: 0;
-        margin-bottom: 20px;
-        display: inline-flex;
-    }
-    
     .video-testimonials,
     .testimonials-grid-section,
     .category-ratings {
         padding: 80px 20px;
     }
     
-    .rating-breakdown-section,
     .write-review-section {
         padding: 60px 20px;
     }
@@ -214,20 +150,6 @@
         padding: 25px;
     }
     
-    .rating-breakdown-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-        max-width: 500px;
-    }
-    
-    .overall-rating {
-        padding: 40px 30px;
-    }
-    
-    .rating-number {
-        font-size: 4rem;
-    }
-    
     .category-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 20px;
@@ -258,14 +180,6 @@
     .review-cta-image {
         height: 200px;
         order: -1;
-    }
-    
-    .testimonials-cta-section {
-        padding: 80px 20px;
-    }
-    
-    .cta-text h2 {
-        font-size: 2rem;
     }
 }
 
@@ -301,60 +215,8 @@
         font-size: 0.85rem;
     }
     
-    .rating-stats {
-        gap: 20px;
-    }
-    
-    .rating-stat {
-        min-width: 80px;
-    }
-    
-    .rating-stat .stat-value {
-        font-size: 1.5rem;
-    }
-    
-    .rating-stat .stat-suffix {
-        font-size: 1rem;
-    }
-    
-    .rating-stat .stat-label {
-        font-size: 0.75rem;
-    }
-    
     .hero-wave svg {
         height: 80px;
-    }
-    
-    .featured-testimonial {
-        padding: 40px 15px;
-        margin-top: -60px;
-    }
-    
-    .featured-card {
-        padding: 30px 25px;
-        border-radius: 20px;
-    }
-    
-    .featured-quote-icon {
-        font-size: 3rem;
-        top: 20px;
-        left: 25px;
-    }
-    
-    .featured-text {
-        font-size: 1rem;
-        padding-left: 15px;
-    }
-    
-    .featured-author {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 15px;
-    }
-    
-    .author-avatar {
-        width: 60px;
-        height: 60px;
     }
     
     .video-testimonials,
@@ -363,7 +225,6 @@
         padding: 60px 15px;
     }
     
-    .rating-breakdown-section,
     .write-review-section {
         padding: 50px 15px;
     }
@@ -470,36 +331,6 @@
     .load-more-btn {
         padding: 12px 30px;
         font-size: 0.95rem;
-    }
-    
-    .overall-rating {
-        padding: 35px 25px;
-    }
-    
-    .rating-number {
-        font-size: 3.5rem;
-    }
-    
-    .overall-rating .rating-stars i {
-        font-size: 1.2rem;
-    }
-    
-    .breakdown-item {
-        gap: 10px;
-    }
-    
-    .breakdown-label {
-        width: 50px;
-        font-size: 0.8rem;
-    }
-    
-    .breakdown-bar {
-        height: 10px;
-    }
-    
-    .breakdown-percent {
-        width: 40px;
-        font-size: 0.8rem;
     }
     
     .category-grid {
@@ -614,33 +445,6 @@
         font-size: 1rem;
     }
     
-    .testimonials-cta-section {
-        padding: 60px 15px;
-    }
-    
-    .cta-text h2 {
-        font-size: 1.6rem;
-    }
-    
-    .cta-text p {
-        font-size: 0.95rem;
-    }
-    
-    .cta-buttons {
-        flex-direction: column;
-        align-items: center;
-        gap: 12px;
-    }
-    
-    .btn-cta-primary,
-    .btn-cta-secondary {
-        padding: 15px 30px;
-        font-size: 0.95rem;
-        width: 100%;
-        max-width: 280px;
-        justify-content: center;
-    }
-    
     /* Modal Responsive */
     .review-modal-content {
         padding: 30px 25px;
@@ -681,52 +485,17 @@
         gap: 15px;
     }
     
-    .rating-stat {
-        min-width: 70px;
-    }
-    
-    .rating-stat .stat-value {
-        font-size: 1.3rem;
-    }
-    
-    .rating-stat .stat-suffix {
-        font-size: 0.9rem;
-    }
-    
-    .rating-stat .stat-label {
-        font-size: 0.7rem;
-    }
-    
     .hero-wave svg {
         height: 60px;
-    }
-    
-    .featured-card {
-        padding: 25px 20px;
-    }
-    
-    .featured-text {
-        font-size: 0.95rem;
-        line-height: 1.7;
-    }
-    
-    .author-info h4 {
-        font-size: 1rem;
-    }
-    
-    .author-info span {
-        font-size: 0.85rem;
     }
     
     .video-testimonials,
     .testimonials-grid-section,
     .category-ratings,
-    .testimonial-slider-section,
-    .testimonials-cta-section {
+    .testimonial-slider-section {
         padding: 50px 15px;
     }
     
-    .rating-breakdown-section,
     .write-review-section {
         padding: 40px 15px;
     }
@@ -810,10 +579,6 @@
     .review-cta-content h3 {
         font-size: 1.4rem;
     }
-    
-    .cta-text h2 {
-        font-size: 1.4rem;
-    }
 }
 
 /* ===== SMALL MOBILE (Below 400px) ===== */
@@ -834,14 +599,6 @@
         font-size: 1.2rem;
     }
     
-    .featured-card {
-        padding: 20px 18px;
-    }
-    
-    .featured-text {
-        font-size: 0.9rem;
-    }
-    
     .section-header h2 {
         font-size: 1.3rem;
     }
@@ -857,14 +614,6 @@
     
     .card-content p {
         font-size: 0.85rem;
-    }
-    
-    .overall-rating {
-        padding: 25px 18px;
-    }
-    
-    .rating-number {
-        font-size: 2.5rem;
     }
     
     .category-card {
@@ -896,10 +645,6 @@
     .slide-content p {
         font-size: 0.95rem;
     }
-    
-    .cta-text h2 {
-        font-size: 1.25rem;
-    }
 }
 
 /* ===== LANDSCAPE MOBILE ===== */
@@ -917,10 +662,6 @@
     .hero-subtitle {
         font-size: 0.9rem;
         margin-bottom: 20px;
-    }
-    
-    .rating-stats {
-        gap: 30px;
     }
 }
 
@@ -962,10 +703,6 @@
         animation: none;
     }
     
-    .testimonials-cta-section::before {
-        animation: none;
-    }
-    
     .slide {
         animation: none;
     }
@@ -983,8 +720,7 @@
 @media (prefers-contrast: high) {
     .hero-badge,
     .section-badge,
-    .card-rating,
-    .featured-badge {
+    .card-rating {
         border: 2px solid currentColor;
     }
     
@@ -1021,15 +757,13 @@
         -webkit-text-fill-color: #3498db;
     }
     
-    .testimonial-slider-section,
-    .testimonials-cta-section {
+    .testimonial-slider-section {
         background: #f5f5f5 !important;
         color: #000 !important;
     }
     
     .video-card,
-    .testimonial-card,
-    .featured-card {
+    .testimonial-card {
         box-shadow: none;
         border: 1px solid #ccc;
     }

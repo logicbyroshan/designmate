@@ -35,10 +35,6 @@
         font-size: 2rem;
     }
     
-    .timeline {
-        max-width: 900px;
-    }
-    
     .designs-content {
         gap: 60px;
     }
@@ -90,10 +86,6 @@
         grid-column: span 2;
     }
     
-    .timeline-item {
-        padding: 20px 40px;
-    }
-    
     .promises-grid {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -142,10 +134,6 @@
     .trust-reasons {
         grid-template-columns: repeat(2, 1fr);
     }
-    
-    .comparison-table {
-        max-width: 100%;
-    }
 }
 
 /* ===== TABLET (768px - 991px) ===== */
@@ -192,12 +180,10 @@
     .key-features,
     .promises-section,
     .designs-section,
-    .comparison-section,
     .faq-section {
         padding: 80px 20px;
     }
     
-    .journey-section,
     .trust-section {
         padding: 80px 20px;
     }
@@ -228,32 +214,6 @@
     
     .feature-number {
         font-size: 3rem;
-    }
-    
-    /* Timeline becomes vertical centered */
-    .timeline-line {
-        left: 30px;
-    }
-    
-    .timeline-item {
-        width: 100%;
-        padding: 20px 20px 20px 80px;
-    }
-    
-    .timeline-item.left,
-    .timeline-item.right {
-        left: 0;
-        text-align: left;
-    }
-    
-    .timeline-item.left .timeline-icon,
-    .timeline-item.right .timeline-icon {
-        left: 5px;
-        right: auto;
-    }
-    
-    .timeline-content {
-        padding: 25px;
     }
     
     .promises-grid {
@@ -304,27 +264,6 @@
         font-size: 1.5rem;
     }
     
-    .comparison-header,
-    .comparison-row {
-        grid-template-columns: 1.5fr 1fr 1fr;
-        padding: 15px 20px;
-    }
-    
-    .comparison-header > div {
-        font-size: 0.95rem;
-    }
-    
-    .comparison-row .comparison-feature {
-        gap: 10px;
-        font-size: 0.9rem;
-    }
-    
-    .comparison-row .comparison-feature i {
-        width: 35px;
-        height: 35px;
-        font-size: 0.9rem;
-    }
-    
     .faq-question {
         padding: 20px 25px;
     }
@@ -336,22 +275,6 @@
     .faq-answer p {
         padding: 0 25px 20px;
         font-size: 0.9rem;
-    }
-    
-    .why-cta-section {
-        padding: 80px 20px;
-    }
-    
-    .cta-text h2 {
-        font-size: 2rem;
-    }
-    
-    .cta-text p {
-        font-size: 1rem;
-    }
-    
-    .cta-guarantee {
-        gap: 20px;
     }
 }
 
@@ -415,12 +338,10 @@
     .key-features,
     .promises-section,
     .designs-section,
-    .comparison-section,
     .faq-section {
         padding: 60px 15px;
     }
     
-    .journey-section,
     .trust-section {
         padding: 60px 15px;
     }
@@ -481,42 +402,6 @@
     .feature-tags span {
         padding: 5px 10px;
         font-size: 0.75rem;
-    }
-    
-    .timeline-line {
-        left: 20px;
-    }
-    
-    .timeline-item {
-        padding: 15px 15px 15px 60px;
-    }
-    
-    .timeline-item.left .timeline-icon,
-    .timeline-item.right .timeline-icon {
-        width: 40px;
-        height: 40px;
-        left: 0;
-    }
-    
-    .timeline-icon i {
-        font-size: 1rem;
-    }
-    
-    .timeline-content {
-        padding: 20px;
-    }
-    
-    .timeline-year {
-        padding: 6px 15px;
-        font-size: 0.85rem;
-    }
-    
-    .timeline-content h3 {
-        font-size: 1.1rem;
-    }
-    
-    .timeline-content p {
-        font-size: 0.85rem;
     }
     
     .promises-grid {
@@ -623,47 +508,6 @@
         padding: 12px;
     }
     
-    .comparison-header {
-        padding: 15px;
-    }
-    
-    .comparison-header > div {
-        font-size: 0.8rem;
-    }
-    
-    .comparison-us img {
-        width: 30px;
-        height: 30px;
-    }
-    
-    .comparison-row {
-        padding: 15px;
-    }
-    
-    .comparison-row .comparison-feature {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
-        font-size: 0.85rem;
-    }
-    
-    .comparison-row .comparison-feature i {
-        width: 30px;
-        height: 30px;
-        font-size: 0.8rem;
-    }
-    
-    .comparison-row .comparison-us i,
-    .comparison-row .comparison-others i {
-        font-size: 1.2rem;
-    }
-    
-    .check-value,
-    .other-value {
-        padding: 4px 10px;
-        font-size: 0.75rem;
-    }
-    
     .faq-question {
         padding: 18px 20px;
     }
@@ -675,43 +519,6 @@
     
     .faq-answer p {
         padding: 0 20px 18px;
-    }
-    
-    .why-cta-section {
-        padding: 60px 15px;
-    }
-    
-    .cta-text h2 {
-        font-size: 1.6rem;
-    }
-    
-    .cta-text p {
-        font-size: 0.95rem;
-        margin-bottom: 25px;
-    }
-    
-    .cta-buttons {
-        flex-direction: column;
-        align-items: center;
-        gap: 12px;
-    }
-    
-    .btn-cta-primary,
-    .btn-cta-secondary {
-        padding: 15px 30px;
-        font-size: 0.95rem;
-        width: 100%;
-        max-width: 280px;
-        justify-content: center;
-    }
-    
-    .cta-guarantee {
-        flex-direction: column;
-        gap: 10px;
-    }
-    
-    .guarantee-item {
-        font-size: 0.85rem;
     }
 }
 
@@ -770,11 +577,8 @@
     .key-features,
     .promises-section,
     .designs-section,
-    .comparison-section,
     .faq-section,
-    .journey-section,
-    .trust-section,
-    .why-cta-section {
+    .trust-section {
         padding: 50px 15px;
     }
     
@@ -801,43 +605,6 @@
     
     .feature-card h3 {
         font-size: 1.1rem;
-    }
-    
-    .timeline-line {
-        left: 15px;
-        width: 3px;
-    }
-    
-    .timeline-item {
-        padding: 12px 12px 12px 50px;
-    }
-    
-    .timeline-item.left .timeline-icon,
-    .timeline-item.right .timeline-icon {
-        width: 35px;
-        height: 35px;
-        border-width: 3px;
-    }
-    
-    .timeline-icon i {
-        font-size: 0.9rem;
-    }
-    
-    .timeline-content {
-        padding: 18px;
-    }
-    
-    .timeline-year {
-        padding: 5px 12px;
-        font-size: 0.8rem;
-    }
-    
-    .timeline-content h3 {
-        font-size: 1rem;
-    }
-    
-    .timeline-content p {
-        font-size: 0.8rem;
     }
     
     .promise-card {
@@ -916,40 +683,6 @@
         gap: 25px;
     }
     
-    .comparison-header,
-    .comparison-row {
-        grid-template-columns: 1.2fr 1fr 1fr;
-        padding: 12px;
-    }
-    
-    .comparison-header > div {
-        font-size: 0.7rem;
-    }
-    
-    .comparison-us img {
-        width: 25px;
-        height: 25px;
-    }
-    
-    .comparison-row .comparison-feature {
-        font-size: 0.75rem;
-    }
-    
-    .comparison-row .comparison-feature i {
-        display: none;
-    }
-    
-    .comparison-row .comparison-us i,
-    .comparison-row .comparison-others i {
-        font-size: 1rem;
-    }
-    
-    .check-value,
-    .other-value {
-        padding: 3px 8px;
-        font-size: 0.7rem;
-    }
-    
     .faq-question {
         padding: 15px;
     }
@@ -965,16 +698,6 @@
     
     .cta-text h2 {
         font-size: 1.4rem;
-    }
-    
-    .cta-text p {
-        font-size: 0.9rem;
-    }
-    
-    .btn-cta-primary,
-    .btn-cta-secondary {
-        padding: 14px 25px;
-        font-size: 0.9rem;
     }
 }
 
@@ -1052,24 +775,6 @@
         width: 85px;
         height: 120px;
     }
-    
-    .comparison-header > div {
-        font-size: 0.65rem;
-    }
-    
-    .comparison-row .comparison-feature {
-        font-size: 0.7rem;
-    }
-    
-    .check-value,
-    .other-value {
-        padding: 2px 6px;
-        font-size: 0.65rem;
-    }
-    
-    .cta-text h2 {
-        font-size: 1.25rem;
-    }
 }
 
 /* ===== LANDSCAPE MOBILE ===== */
@@ -1108,7 +813,6 @@
     .feature-card:hover,
     .promise-card:hover,
     .trust-card:hover,
-    .timeline-content:hover,
     .hero-stat:hover {
         transform: none;
     }
@@ -1118,9 +822,7 @@
         z-index: auto;
     }
     
-    .btn-explore:hover,
-    .btn-cta-primary:hover,
-    .btn-cta-secondary:hover {
+    .btn-explore:hover {
         transform: none;
     }
     
@@ -1152,10 +854,6 @@
         animation: none;
     }
     
-    .why-cta-section::before {
-        animation: none;
-    }
-    
     .promise-card::before {
         transition: none;
     }
@@ -1165,7 +863,6 @@
 @media (prefers-contrast: high) {
     .hero-badge,
     .section-badge,
-    .timeline-year,
     .feature-highlight,
     .check-value {
         border: 2px solid currentColor;
@@ -1202,14 +899,11 @@
         -webkit-text-fill-color: #3498db;
     }
     
-    .journey-section,
-    .trust-section,
-    .why-cta-section {
+    .trust-section {
         background: #f5f5f5 !important;
         color: #000 !important;
     }
     
-    .timeline-content,
     .trust-card {
         background: #fff !important;
         color: #000 !important;

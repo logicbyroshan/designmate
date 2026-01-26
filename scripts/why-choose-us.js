@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Add animation classes to elements
     const animateElements = document.querySelectorAll(
-        '.feature-card, .promise-card, .trust-card, .timeline-item, .faq-item, .comparison-row'
+        '.feature-card, .promise-card, .trust-card, .faq-item'
     );
     
     animateElements.forEach((el, index) => {
@@ -115,38 +115,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     `;
     document.head.appendChild(animateStyle);
-
-    // ============================================
-    // TIMELINE ANIMATION
-    // ============================================
-    const timelineLine = document.querySelector('.timeline-line');
-    
-    if (timelineLine) {
-        const timelineObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    timelineLine.style.animation = 'growLine 2s ease forwards';
-                    timelineObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.2 });
-        
-        timelineObserver.observe(timelineLine);
-        
-        // Add keyframes for timeline
-        const timelineStyle = document.createElement('style');
-        timelineStyle.textContent = `
-            .timeline-line {
-                transform-origin: top;
-                transform: scaleY(0);
-            }
-            @keyframes growLine {
-                from { transform: scaleY(0); }
-                to { transform: scaleY(1); }
-            }
-        `;
-        document.head.appendChild(timelineStyle);
-    }
 
     // ============================================
     // PARALLAX EFFECT FOR HERO
@@ -175,21 +143,6 @@ document.addEventListener('DOMContentLoaded', function() {
             if (target) {
                 target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
-        });
-    });
-
-    // ============================================
-    // COMPARISON TABLE HOVER EFFECT
-    // ============================================
-    const comparisonRows = document.querySelectorAll('.comparison-row');
-    
-    comparisonRows.forEach(row => {
-        row.addEventListener('mouseenter', function() {
-            this.style.transform = 'scale(1.02)';
-        });
-        
-        row.addEventListener('mouseleave', function() {
-            this.style.transform = 'scale(1)';
         });
     });
 
