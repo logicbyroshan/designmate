@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Our Trusted Clients - Schools, Colleges, and Organizations that trust Adarsh ID Cards">
+    <meta name="theme-color" content="#3498db">
+    <title>Our Trusted Clients - Adarsh ID Cards</title>
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="apple-touch-icon" href="../favicon.ico">
+    <script src="https://kit.fontawesome.com/b01194457c.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/responsive.css">
+    <link rel="stylesheet" href="../styles/trusted-clients.css">
+    <link rel="stylesheet" href="../styles/trusted-clients-responsive.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-content">
+                <div class="logo">
+                    <a href="index.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit;">
+                        <img src="../adarsh.png" alt="Adarsh Logo" class="logo-img">
+                        <span>Adarsh ID Cards</span>
+                    </a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="trusted-clients.html" class="active">Trusted Clients</a></li>
+                    <li><a href="why-choose-us.html">Why Choose Us</a></li>
+                    <li><a href="our-works.html">Our Works</a></li>
+                    <li><a href="testimonials.html">Testimonials</a></li>
+                    <li><a href="index.html#contact" class="btn-cta">Contact Us</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="header-content">
+                <span class="header-tagline">Our Partners in Excellence</span>
+                <h1>Our Top <span class="highlight">Trusted Clients</span></h1>
+                <p>Schools, Colleges, and Organizations that have chosen us for their identity solutions</p>
+            </div>
+        </div>
+        <div class="header-wave">
+            <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+                <path d="M0,60 C360,120 1080,0 1440,60 L1440,120 L0,120 Z" fill="#f8f9fa"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Filter & Search Section -->
+    <section class="filter-section">
+        <div class="container">
+            <div class="filter-wrapper">
+                <!-- Search Bar -->
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Search clients by name or location...">
+                    <button class="clear-search" id="clearSearch" style="display: none;">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+
+                <!-- Filter Options -->
+                <div class="filter-options">
+                    <!-- Location Filter -->
+                    <div class="filter-dropdown">
+                        <button class="filter-btn" id="locationBtn">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>All Locations</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="dropdown-menu" id="locationDropdown">
+                            <div class="dropdown-item active" data-location="all">All Locations</div>
+                            <div class="dropdown-item" data-location="bhopal">Bhopal</div>
+                            <div class="dropdown-item" data-location="indore">Indore</div>
+                            <div class="dropdown-item" data-location="delhi">Delhi</div>
+                            <div class="dropdown-item" data-location="mumbai">Mumbai</div>
+                            <div class="dropdown-item" data-location="bangalore">Bangalore</div>
+                            <div class="dropdown-item" data-location="hyderabad">Hyderabad</div>
+                        </div>
+                    </div>
+
+                    <!-- Sort Filter -->
+                    <div class="filter-dropdown">
+                        <button class="filter-btn" id="sortBtn">
+                            <i class="fas fa-sort"></i>
+                            <span>Recent First</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="dropdown-menu" id="sortDropdown">
+                            <div class="dropdown-item active" data-sort="recent">Recent First</div>
+                            <div class="dropdown-item" data-sort="oldest">Oldest First</div>
+                            <div class="dropdown-item" data-sort="name-asc">Name (A-Z)</div>
+                            <div class="dropdown-item" data-sort="name-desc">Name (Z-A)</div>
+                            <div class="dropdown-item" data-sort="trust-years">Trust Duration</div>
+                        </div>
+                    </div>
+
+                    <!-- Category Filter -->
+                    <div class="filter-dropdown">
+                        <button class="filter-btn" id="categoryBtn">
+                            <i class="fas fa-filter"></i>
+                            <span>All Categories</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="dropdown-menu" id="categoryDropdown">
+                            <div class="dropdown-item active" data-category="all">All Categories</div>
+                            <div class="dropdown-item" data-category="school">Schools</div>
+                            <div class="dropdown-item" data-category="college">Colleges</div>
+                            <div class="dropdown-item" data-category="corporate">Corporate</div>
+                            <div class="dropdown-item" data-category="hospital">Hospitals</div>
+                            <div class="dropdown-item" data-category="shop">Shops & Retail</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Active Filters Display -->
+            <div class="active-filters" id="activeFilters" style="display: none;">
+                <span class="filter-label">Active Filters:</span>
+                <div class="filter-tags" id="filterTags"></div>
+                <button class="clear-all-btn" id="clearAllFilters">Clear All</button>
+            </div>
+
+            <!-- Results Count -->
+            <div class="results-info">
+                <span id="resultsCount">Showing 12 clients</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clients Grid Section -->
+    <section class="clients-section">
+        <div class="container">
+            <div class="clients-grid" id="clientsGrid">
+                <!-- Client Card 1 -->
+                <div class="client-card" data-category="school" data-location="bhopal" data-year="2006" data-name="St. Mary's Convent School">
+                    <div class="card-badge">
+                        <i class="fas fa-star"></i>
+                        <span>Trusted Since 18 Years</span>
+                    </div>
+                    <div class="card-image">
+                        <img src="../Schools/school1.png" alt="St. Mary's Convent School" class="client-photo">
+                        <div class="card-logo">
+                            <img src="../Schools/school1.png" alt="School Logo">
+                        </div>
+                        <div class="card-overlay">
+                            <button class="view-btn">
+                                <i class="fas fa-eye"></i>
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="client-category">
+                            <i class="fas fa-school"></i>
+                            <span>School</span>
+                        </div>
+                        <h3 class="client-name">St. Mary's Convent School</h3>
+                        <div class="client-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Bhopal, Madhya Pradesh</span>
+                        </div>
+                        <p class="client-description">Ordered premium student ID cards with holographic security features and smart chip integration for 2000+ students.</p>
+                        <div class="card-footer">
+                            <div class="order-info">
+                                <i class="fas fa-id-card"></i>
+                                <span>2000+ Cards</span>
+                            </div>
+                            <div class="trust-badge">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Verified Client</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Client Card 2 -->
+                <div class="client-card" data-category="college" data-location="indore" data-year="2010" data-name="IIT Indore">
+                    <div class="card-badge">
+                        <i class="fas fa-star"></i>
+                        <span>Trusted Since 14 Years</span>
+                    </div>
+                    <div class="card-image">
+                        <img src="../Schools/school2.png" alt="IIT Indore" class="client-photo">
+                        <div class="card-logo">
+                            <img src="../Schools/school2.png" alt="College Logo">
+                        </div>
+                        <div class="card-overlay">
+                            <button class="view-btn">
+                                <i class="fas fa-eye"></i>
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="client-category">
+                            <i class="fas fa-university"></i>
+                            <span>College</span>
+                        </div>
+                        <h3 class="client-name">IIT Indore</h3>
+                        <div class="client-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Indore, Madhya Pradesh</span>
+                        </div>
+                        <p class="client-description">Complete campus ID solution including student, faculty, and staff cards with RFID access control integration.</p>
+                        <div class="card-footer">
+                            <div class="order-info">
+                                <i class="fas fa-id-card"></i>
+                                <span>5000+ Cards</span>
+                            </div>
+                            <div class="trust-badge">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Verified Client</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Client Card 3 -->
+                <div class="client-card" data-category="corporate" data-location="mumbai" data-year="2015" data-name="TechCorp Solutions">
+                    <div class="card-badge">
+                        <i class="fas fa-star"></i>
+                        <span>Trusted Since 9 Years</span>
+                    </div>
+                    <div class="card-image">
+                        <img src="../Schools/school3.png" alt="TechCorp Solutions" class="client-photo">
+                        <div class="card-logo">
+                            <img src="../Schools/school3.png" alt="Corporate Logo">
+                        </div>
+                        <div class="card-overlay">
+                            <button class="view-btn">
+                                <i class="fas fa-eye"></i>
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="client-category">
+                            <i class="fas fa-building"></i>
+                            <span>Corporate</span>
+                        </div>
+                        <h3 class="client-name">TechCorp Solutions</h3>
+                        <div class="client-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Mumbai, Maharashtra</span>
+                        </div>
+                        <p class="client-description">Employee badges with NFC technology, visitor management cards, and executive premium cards for the entire organization.</p>
+                        <div class="card-footer">
+                            <div class="order-info">
+                                <i class="fas fa-id-card"></i>
+                                <span>3500+ Cards</span>
+                            </div>
+                            <div class="trust-badge">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Verified Client</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Client Card 4 -->
+                <div class="client-card" data-category="hospital" data-location="delhi" data-year="2012" data-name="Apollo Hospital">
+                    <div class="card-badge">
+                        <i class="fas fa-star"></i>
+                        <span>Trusted Since 12 Years</span>
+                    </div>
+                    <div class="card-image">
+                        <img src="../Schools/school4.png" alt="Apollo Hospital" class="client-photo">
+                        <div class="card-logo">
+                            <img src="../Schools/school4.png" alt="Hospital Logo">
+                        </div>
+                        <div class="card-overlay">
+                            <button class="view-btn">
+                                <i class="fas fa-eye"></i>
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="client-category">
+                            <i class="fas fa-hospital"></i>
+                            <span>Hospital</span>
+                        </div>
+                        <h3 class="client-name">Apollo Hospital</h3>
+                        <div class="client-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Delhi, India</span>
+                        </div>
+                        <p class="client-description">Medical staff ID cards with department color coding, patient wristbands, and visitor passes with QR verification.</p>
+                        <div class="card-footer">
+                            <div class="order-info">
+                                <i class="fas fa-id-card"></i>
+                                <span>4000+ Cards</span>
+                            </div>
+                            <div class="trust-badge">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Verified Client</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Client Card 5 -->
+                <div class="client-card" data-category="school" data-location="bangalore" data-year="2008" data-name="Delhi Public School">
+                    <div class="card-badge">
+                        <i class="fas fa-star"></i>
+                        <span>Trusted Since 16 Years</span>
+                    </div>
+                    <div class="card-image">
+                        <img src="../Schools/school5.png" alt="Delhi Public School" class="client-photo">
+                        <div class="card-logo">
+                            <img src="../Schools/school5.png" alt="School Logo">
+                        </div>
+                        <div class="card-overlay">
+                            <button class="view-btn">
+                                <i class="fas fa-eye"></i>
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="client-category">
+                            <i class="fas fa-school"></i>
+                            <span>School</span>
+                        </div>
+                        <h3 class="client-name">Delhi Public School</h3>
+                        <div class="client-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Bangalore, Karnataka</span>
+                        </div>
+                        <p class="client-description">Annual ID card renewal for students and staff with GPS-enabled smart cards for school bus tracking system.</p>
+                        <div class="card-footer">
+                            <div class="order-info">
+                                <i class="fas fa-id-card"></i>
+                                <span>3000+ Cards</span>
+                            </div>
+                            <div class="trust-badge">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Verified Client</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Client Card 6 -->
+                <div class="client-card" data-category="shop" data-location="hyderabad" data-year="2018" data-name="Metro Mart Retail">
+                    <div class="card-badge">
+                        <i class="fas fa-star"></i>
+                        <span>Trusted Since 6 Years</span>
+                    </div>
+                    <div class="card-image">
+                        <img src="../Schools/school6.png" alt="Metro Mart Retail" class="client-photo">
+                        <div class="card-logo">
+                            <img src="../Schools/school6.png" alt="Shop Logo">
+                        </div>
+                        <div class="card-overlay">
+                            <button class="view-btn">
+                                <i class="fas fa-eye"></i>
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="client-category">
+                            <i class="fas fa-store"></i>
+                            <span>Retail</span>
+                        </div>
+                        <h3 class="client-name">Metro Mart Retail</h3>
+                        <div class="client-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Hyderabad, Telangana</span>
+                        </div>
+                        <p class="client-description">Employee ID cards, loyalty membership cards, and gift cards with custom branding for all store locations.</p>
+                        <div class="card-footer">
+                            <div class="order-info">
+                                <i class="fas fa-id-card"></i>
+                                <span>1500+ Cards</span>
+                            </div>
+                            <div class="trust-badge">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Verified Client</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Client Card 7 -->
+                <div class="client-card" data-category="college" data-location="bhopal" data-year="2005" data-name="MANIT Bhopal">
+                    <div class="card-badge premium">
+                        <i class="fas fa-crown"></i>
+                        <span>Trusted Since 19 Years</span>
+                    </div>
+                    <div class="card-image">
+                        <img src="../Schools/school7.png" alt="MANIT Bhopal" class="client-photo">
+                        <div class="card-logo">
+                            <img src="../Schools/school7.png" alt="College Logo">
+                        </div>
+                        <div class="card-overlay">
+                            <button class="view-btn">
+                                <i class="fas fa-eye"></i>
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="client-category">
+                            <i class="fas fa-university"></i>
+                            <span>College</span>
+                        </div>
+                        <h3 class="client-name">MANIT Bhopal</h3>
+                        <div class="client-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Bhopal, Madhya Pradesh</span>
+                        </div>
+                        <p class="client-description">Our longest-standing partner! Complete ID management system with library cards, hostel access, and exam hall passes.</p>
+                        <div class="card-footer">
+                            <div class="order-info">
+                                <i class="fas fa-id-card"></i>
+                                <span>6000+ Cards</span>
+                            </div>
+                            <div class="trust-badge">
+                                <i class="fas fa-medal"></i>
+                                <span>Premium Client</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Client Card 8 -->
+                <div class="client-card" data-category="school" data-location="indore" data-year="2011" data-name="Choithram School">
+                    <div class="card-badge">
+                        <i class="fas fa-star"></i>
+                        <span>Trusted Since 13 Years</span>
+                    </div>
+                    <div class="card-image">
+                        <img src="../Schools/school8.png" alt="Choithram School" class="client-photo">
+                        <div class="card-logo">
+                            <img src="../Schools/school8.png" alt="School Logo">
+                        </div>
+                        <div class="card-overlay">
+                            <button class="view-btn">
+                                <i class="fas fa-eye"></i>
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="client-category">
+                            <i class="fas fa-school"></i>
+                            <span>School</span>
+                        </div>
+                        <h3 class="client-name">Choithram School</h3>
+                        <div class="client-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Indore, Madhya Pradesh</span>
+                        </div>
+                        <p class="client-description">Premium dual-sided ID cards with student photo, parent contact info, blood group, and emergency contacts.</p>
+                        <div class="card-footer">
+                            <div class="order-info">
+                                <i class="fas fa-id-card"></i>
+                                <span>2500+ Cards</span>
+                            </div>
+                            <div class="trust-badge">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Verified Client</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Client Card 9 -->
+                <div class="client-card" data-category="corporate" data-location="delhi" data-year="2016" data-name="InfoSys Delhi">
+                    <div class="card-badge">
+                        <i class="fas fa-star"></i>
+                        <span>Trusted Since 8 Years</span>
+                    </div>
+                    <div class="card-image">
+                        <img src="../Schools/school9.png" alt="InfoSys Delhi" class="client-photo">
+                        <div class="card-logo">
+                            <img src="../Schools/school9.png" alt="Corporate Logo">
+                        </div>
+                        <div class="card-overlay">
+                            <button class="view-btn">
+                                <i class="fas fa-eye"></i>
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="client-category">
+                            <i class="fas fa-building"></i>
+                            <span>Corporate</span>
+                        </div>
+                        <h3 class="client-name">InfoSys Delhi</h3>
+                        <div class="client-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Delhi NCR, India</span>
+                        </div>
+                        <p class="client-description">Multi-location employee ID cards with biometric integration and secure building access control features.</p>
+                        <div class="card-footer">
+                            <div class="order-info">
+                                <i class="fas fa-id-card"></i>
+                                <span>8000+ Cards</span>
+                            </div>
+                            <div class="trust-badge">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Verified Client</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Client Card 10 -->
+                <div class="client-card" data-category="hospital" data-location="mumbai" data-year="2014" data-name="Fortis Healthcare">
+                    <div class="card-badge">
+                        <i class="fas fa-star"></i>
+                        <span>Trusted Since 10 Years</span>
+                    </div>
+                    <div class="card-image">
+                        <img src="../Schools/school10.png" alt="Fortis Healthcare" class="client-photo">
+                        <div class="card-logo">
+                            <img src="../Schools/school10.png" alt="Hospital Logo">
+                        </div>
+                        <div class="card-overlay">
+                            <button class="view-btn">
+                                <i class="fas fa-eye"></i>
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="client-category">
+                            <i class="fas fa-hospital"></i>
+                            <span>Hospital</span>
+                        </div>
+                        <h3 class="client-name">Fortis Healthcare</h3>
+                        <div class="client-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Mumbai, Maharashtra</span>
+                        </div>
+                        <p class="client-description">Comprehensive healthcare ID solution including doctor IDs, nurse badges, and patient health cards with medical records.</p>
+                        <div class="card-footer">
+                            <div class="order-info">
+                                <i class="fas fa-id-card"></i>
+                                <span>5500+ Cards</span>
+                            </div>
+                            <div class="trust-badge">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Verified Client</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Client Card 11 -->
+                <div class="client-card" data-category="school" data-location="hyderabad" data-year="2009" data-name="Oakridge International">
+                    <div class="card-badge">
+                        <i class="fas fa-star"></i>
+                        <span>Trusted Since 15 Years</span>
+                    </div>
+                    <div class="card-image">
+                        <img src="../Schools/school11.png" alt="Oakridge International" class="client-photo">
+                        <div class="card-logo">
+                            <img src="../Schools/school11.png" alt="School Logo">
+                        </div>
+                        <div class="card-overlay">
+                            <button class="view-btn">
+                                <i class="fas fa-eye"></i>
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="client-category">
+                            <i class="fas fa-school"></i>
+                            <span>School</span>
+                        </div>
+                        <h3 class="client-name">Oakridge International</h3>
+                        <div class="client-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Hyderabad, Telangana</span>
+                        </div>
+                        <p class="client-description">International school ID cards with multi-language support, QR attendance system, and parent pickup verification.</p>
+                        <div class="card-footer">
+                            <div class="order-info">
+                                <i class="fas fa-id-card"></i>
+                                <span>1800+ Cards</span>
+                            </div>
+                            <div class="trust-badge">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Verified Client</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Client Card 12 -->
+                <div class="client-card" data-category="shop" data-location="bangalore" data-year="2020" data-name="Fashion Hub">
+                    <div class="card-badge new">
+                        <i class="fas fa-sparkles"></i>
+                        <span>Trusted Since 4 Years</span>
+                    </div>
+                    <div class="card-image">
+                        <img src="../Schools/school12.png" alt="Fashion Hub" class="client-photo">
+                        <div class="card-logo">
+                            <img src="../Schools/school12.png" alt="Shop Logo">
+                        </div>
+                        <div class="card-overlay">
+                            <button class="view-btn">
+                                <i class="fas fa-eye"></i>
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="client-category">
+                            <i class="fas fa-store"></i>
+                            <span>Retail</span>
+                        </div>
+                        <h3 class="client-name">Fashion Hub</h3>
+                        <div class="client-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Bangalore, Karnataka</span>
+                        </div>
+                        <p class="client-description">Stylish employee name badges, VIP customer cards, and discount membership cards with modern design aesthetics.</p>
+                        <div class="card-footer">
+                            <div class="order-info">
+                                <i class="fas fa-id-card"></i>
+                                <span>800+ Cards</span>
+                            </div>
+                            <div class="trust-badge new-client">
+                                <i class="fas fa-leaf"></i>
+                                <span>New Client</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- No Results Message -->
+            <div class="no-results" id="noResults" style="display: none;">
+                <div class="no-results-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <h3>No Clients Found</h3>
+                <p>Try adjusting your search or filter criteria</p>
+                <button class="btn btn-primary" id="resetFilters">Reset All Filters</button>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination-wrapper">
+                <div class="pagination-info">
+                    <span>Showing <strong>1-12</strong> of <strong>48</strong> clients</span>
+                </div>
+                <div class="pagination">
+                    <button class="page-btn prev" disabled>
+                        <i class="fas fa-chevron-left"></i>
+                        <span>Previous</span>
+                    </button>
+                    <div class="page-numbers">
+                        <button class="page-num active">1</button>
+                        <button class="page-num">2</button>
+                        <button class="page-num">3</button>
+                        <span class="page-dots">...</span>
+                        <button class="page-num">4</button>
+                    </div>
+                    <button class="page-btn next">
+                        <span>Next</span>
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                <div class="per-page">
+                    <span>Per page:</span>
+                    <select id="perPage">
+                        <option value="12" selected>12</option>
+                        <option value="24">24</option>
+                        <option value="48">48</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Become Our Trusted Client?</h2>
+                <p>Join hundreds of satisfied organizations who trust us for their identity solutions</p>
+                <div class="cta-buttons">
+                    <a href="index.html#contact" class="btn btn-primary">
+                        <i class="fas fa-envelope"></i>
+                        Contact Us Now
+                    </a>
+                    <a href="tel:+919876543210" class="btn btn-secondary">
+                        <i class="fas fa-phone"></i>
+                        Call Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Adarsh ID Cards</h4>
+                    <p>Creating secure, professional identity solutions for institutions worldwide.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="our-works.html">Portfolio</a></li>
+                        <li><a href="why-choose-us.html">Why Choose Us</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">School ID Cards</a></li>
+                        <li><a href="#">Corporate Badges</a></li>
+                        <li><a href="#">Event Passes</a></li>
+                        <li><a href="#">Custom Designs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Location</h4>
+                    <div class="footer-map-container">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3659.0074213156277!2d75.8733!3d23.1815!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3963150acf81c0cb%3A0x1234567890!2sBairghar%2C%20Bhopal%2C%20Madhya%20Pradesh!5e0!3m2!1sen!2sin!4v1234567890" 
+                            width="100%" 
+                            height="200" 
+                            style="border:0; border-radius: 8px;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                    <p style="margin-top: 1rem; font-size: 0.9rem;">Bairghar, Bhopal, Madhya Pradesh, India</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Adarsh ID Cards. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Client Detail Modal -->
+    <div class="modal-overlay" id="clientModal">
+        <div class="modal-content">
+            <button class="modal-close" id="closeModal">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img src="" alt="Client" id="modalImage">
+                </div>
+                <div class="modal-info">
+                    <div class="modal-badge" id="modalBadge"></div>
+                    <h2 id="modalName"></h2>
+                    <div class="modal-location" id="modalLocation"></div>
+                    <div class="modal-category" id="modalCategory"></div>
+                    <p class="modal-description" id="modalDescription"></p>
+                    <div class="modal-stats">
+                        <div class="stat-item">
+                            <i class="fas fa-id-card"></i>
+                            <span id="modalCards"></span>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-calendar"></i>
+                            <span id="modalYear"></span>
+                        </div>
+                    </div>
+                    <a href="index.html#contact" class="btn btn-primary modal-cta">
+                        <i class="fas fa-envelope"></i>
+                        Get Similar Solution
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../scripts/main.js" defer></script>
+    <script src="../scripts/trusted-clients.js" defer></script>
+</body>
+</html>

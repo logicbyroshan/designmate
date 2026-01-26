@@ -163,8 +163,8 @@ body {
 .hero {
     background: #100F57;
     height: 100vh;
-    width: 100vw;
-    margin-left: calc(-50vw + 50%);
+    width: 100%;
+    margin-left: 0;
     color: var(--white);
     position: relative;
     overflow: visible;
@@ -217,22 +217,22 @@ body {
 
 .hero-text .tagline {
     font-size: 1rem;
-    margin-bottom: 1rem;
     font-weight: 600;
     color: #ffffff;
     opacity: 0.9;
     letter-spacing: 1px;
-    background-color: var(--primary-light);
     padding: 6px 15px;
+    border: solid 2px var(--primary-color);
     border-radius: 20px;
 }
 
 .hero-text h1 {
-    font-size: 5rem;
+    font-size: 4rem;
     margin-bottom: 1rem;
+    margin-top: 1rem;
     line-height: 1.1;
-    font-weight: 900;
-    letter-spacing: -3px;
+    font-weight: 800;
+    letter-spacing: -1px;
     color: #ffffff;
 }
 
@@ -241,14 +241,14 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    font-weight: 900;
+    font-weight: 800;
 }
 
 .hero-text p {
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
     opacity: 0.95;
-    line-height: 1.7;
+    line-height: 1.2;
     font-weight: 500;
     color: #ffffff;
     text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
@@ -264,7 +264,7 @@ body {
 
 .hero-card-wrapper {
     position: absolute;
-    bottom: -230px;
+    bottom: -200px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 100;
@@ -332,7 +332,7 @@ body {
     transform: translateX(0);
     max-width: 1200px;
     width: calc(100vw - 40px);
-    max-height: 575px;
+    max-height: 525px;
     aspect-ratio: 16/9;
     border: 3px solid transparent;
     background-image: linear-gradient(var(--white), var(--white)), linear-gradient(135deg, #3498db, #e74c3c);
@@ -1124,164 +1124,7 @@ body {
 }
 
 /* ===== Responsive Design ===== */
-@media (max-width: 768px) {
-    .hero {
-        height: 100vh;
-        width: 100vw;
-        padding: 0;
-        margin-left: calc(-50vw + 50%);
-        padding-top: 0;
-    }
-
-    .hero-inner {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        padding: 20px;
-        height: auto;
-        padding-top: 20px;
-    }
-
-    .hero-text h1 {
-        font-size: 2.2rem;
-        letter-spacing: -0.5px;
-    }
-
-    .hero-text p {
-        font-size: 0.95rem;
-        line-height: 1.5;
-    }
-
-    .hero-buttons {
-        display: flex;
-        gap: 1rem;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-
-    .hero-card-wrapper {
-        position: absolute;
-        bottom: -200px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 100%;
-        padding: 0 20px;
-    }
-
-    .slide-card {
-        max-width: calc(100vw - 40px);
-        width: calc(100vw - 40px);
-        max-height: 550px;
-    }
-
-    .card-image {
-        height: 75%;
-    }
-
-    .nav-links {
-        display: none;
-        position: fixed;
-        top: 60px;
-        left: 0;
-        right: 0;
-        background: var(--white);
-        flex-direction: column;
-        gap: 0;
-        width: 100%;
-        box-shadow: var(--shadow);
-        z-index: 999;
-    }
-
-    .nav-links.active {
-        display: flex;
-    }
-
-    .nav-links li {
-        border-bottom: 1px solid #eee;
-        width: 100%;
-    }
-
-    .nav-links a {
-        display: block;
-        padding: 15px 20px;
-    }
-
-    .hamburger {
-        display: flex;
-    }
-
-    .logos-track {
-        gap: 40px;
-        padding: 0 20px;
-    }
-
-    .logo-item {
-        min-width: 140px;
-        height: 80px;
-    }
-
-    .features-grid,
-    .works-gallery,
-    .testimonials-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .hero-buttons {
-        flex-direction: column;
-    }
-
-    .btn {
-        width: 100%;
-    }
-
-    .testimonial-author {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .hero-text h1 {
-        font-size: 2rem;
-    }
-
-    h2 {
-        font-size: 2rem !important;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero {
-        padding: 50px 0;
-    }
-
-    .hero-text h1 {
-        font-size: 1.8rem;
-    }
-
-    .hero-text p {
-        font-size: 0.95rem;
-    }
-
-    .nav-links {
-        gap: 0.8rem;
-    }
-
-    .section-subtitle {
-        font-size: 1rem;
-    }
-
-    .feature-card,
-    .testimonial-card {
-        padding: 1.5rem;
-    }
-
-    h2 {
-        font-size: 1.5rem !important;
-    }
-
-    .logo-item img {
-        height: 80px;
-    }
-}
+/* Note: All responsive styles have been moved to responsive.css */
 
 /* ===== Animations ===== */
 @keyframes slideInUp {
@@ -1314,44 +1157,4 @@ body {
 
 .work-item {
     animation: fadeIn 0.6s ease-out;
-}
-
-/* ===== Responsive Contact Section ===== */
-@media (max-width: 768px) {
-    .contact-wrapper {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-
-    .contact-section h2 {
-        font-size: 2rem;
-    }
-
-    .contact-form-side {
-        padding: 1.5rem;
-    }
-
-    .form-input {
-        padding: 10px 12px;
-        font-size: 16px;
-    }
-
-    .info-box {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    .info-icon {
-        width: 40px;
-        height: 40px;
-        font-size: 1.5rem;
-    }
-
-    .toast {
-        bottom: 20px;
-        right: 20px;
-        left: 20px;
-        max-width: none;
-    }
 }

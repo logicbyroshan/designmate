@@ -1,0 +1,517 @@
+/* ===== Trusted Clients Page - Responsive Styles ===== */
+
+/* ============================================
+   TABLET LARGE (900px - 999px)
+============================================ */
+@media (max-width: 999px) {
+    .page-header {
+        padding: 100px 0 60px;
+    }
+
+    .header-content h1 {
+        font-size: 2.8rem;
+    }
+
+    .header-content p {
+        font-size: 1.1rem;
+    }
+
+    .filter-section {
+        top: 55px;
+    }
+
+    .filter-wrapper {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-box {
+        max-width: 100%;
+    }
+
+    .filter-options {
+        justify-content: flex-start;
+    }
+
+    .clients-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+    }
+
+    .pagination-wrapper {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .modal-body {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-image {
+        min-height: 250px;
+    }
+}
+
+/* ============================================
+   TABLET (768px - 899px)
+============================================ */
+@media (max-width: 1100px) {
+    .clients-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 899px) and (min-width: 768px) {
+    .page-header {
+        padding: 90px 0 50px;
+    }
+
+    .header-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .clients-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .client-card {
+        border-radius: 16px;
+    }
+
+    .card-image {
+        height: 180px;
+    }
+
+    .card-logo {
+        width: 60px;
+        height: 60px;
+        bottom: -25px;
+    }
+
+    .client-name {
+        font-size: 1.15rem;
+    }
+
+    .cta-content h2 {
+        font-size: 2rem;
+    }
+}
+
+/* ============================================
+   MOBILE (Below 768px)
+============================================ */
+@media (max-width: 767px) {
+    .page-header {
+        padding: 80px 0 40px;
+    }
+
+    .header-content h1 {
+        font-size: 2rem;
+    }
+
+    .header-content p {
+        font-size: 1rem;
+    }
+
+    .header-wave svg {
+        height: 40px;
+    }
+
+    .filter-section {
+        padding: 20px 0 15px;
+        top: 50px;
+    }
+
+    .filter-wrapper {
+        gap: 12px;
+    }
+
+    .search-box {
+        padding: 10px 14px;
+    }
+
+    .filter-options {
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: 5px;
+        flex-wrap: nowrap;
+    }
+
+    .filter-btn {
+        padding: 10px 14px;
+        font-size: 0.85rem;
+        white-space: nowrap;
+    }
+
+    .filter-btn span {
+        max-width: 80px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .active-filters {
+        flex-wrap: wrap;
+    }
+
+    .clients-section {
+        padding: 30px 0 60px;
+    }
+
+    .clients-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .client-card {
+        border-radius: 16px;
+    }
+
+    .card-badge {
+        padding: 6px 12px;
+        font-size: 0.7rem;
+    }
+
+    .card-image {
+        height: 200px;
+    }
+
+    .card-logo {
+        width: 55px;
+        height: 55px;
+        bottom: -22px;
+        right: 15px;
+    }
+
+    .card-content {
+        padding: 20px 15px 15px;
+    }
+
+    .client-name {
+        font-size: 1.2rem;
+    }
+
+    .client-description {
+        font-size: 0.85rem;
+        -webkit-line-clamp: 2;
+    }
+
+    .card-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    /* Pagination */
+    .pagination-wrapper {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .pagination {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .page-btn {
+        padding: 8px 15px;
+        font-size: 0.85rem;
+    }
+
+    .page-btn span {
+        display: none;
+    }
+
+    .page-num {
+        width: 36px;
+        height: 36px;
+        font-size: 0.85rem;
+    }
+
+    /* CTA Section */
+    .cta-section {
+        padding: 50px 0;
+    }
+
+    .cta-content h2 {
+        font-size: 1.8rem;
+    }
+
+    .cta-content p {
+        font-size: 1rem;
+    }
+
+    .cta-buttons .btn {
+        padding: 12px 24px;
+        font-size: 0.95rem;
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Modal */
+    .modal-content {
+        border-radius: 16px;
+        margin: 10px;
+    }
+
+    .modal-body {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-image {
+        min-height: 200px;
+    }
+
+    .modal-info {
+        padding: 20px;
+    }
+
+    .modal-info h2 {
+        font-size: 1.5rem;
+    }
+
+    .modal-stats {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+/* ============================================
+   SMALL MOBILE (Below 480px)
+============================================ */
+@media (max-width: 479px) {
+    .page-header {
+        padding: 70px 0 30px;
+    }
+
+    .header-tagline {
+        font-size: 0.8rem;
+        padding: 6px 16px;
+    }
+
+    .header-content h1 {
+        font-size: 1.7rem;
+    }
+
+    .header-content p {
+        font-size: 0.9rem;
+    }
+
+    .filter-section {
+        padding: 15px 0 12px;
+    }
+
+    .search-box {
+        padding: 8px 12px;
+    }
+
+    .search-box input {
+        font-size: 0.9rem;
+    }
+
+    .filter-btn {
+        padding: 8px 12px;
+        font-size: 0.8rem;
+    }
+
+    .results-info {
+        font-size: 0.8rem;
+    }
+
+    .clients-grid {
+        gap: 15px;
+    }
+
+    .card-badge {
+        padding: 5px 10px;
+        font-size: 0.65rem;
+        top: 10px;
+        left: 10px;
+    }
+
+    .card-image {
+        height: 180px;
+    }
+
+    .card-logo {
+        width: 50px;
+        height: 50px;
+        bottom: -20px;
+        padding: 6px;
+    }
+
+    .card-content {
+        padding: 18px 12px 12px;
+    }
+
+    .client-category {
+        font-size: 0.7rem;
+        padding: 4px 10px;
+    }
+
+    .client-name {
+        font-size: 1.1rem;
+    }
+
+    .client-location {
+        font-size: 0.8rem;
+    }
+
+    .client-description {
+        font-size: 0.82rem;
+    }
+
+    .order-info,
+    .trust-badge {
+        font-size: 0.75rem;
+    }
+
+    .pagination-info {
+        font-size: 0.8rem;
+    }
+
+    .page-num {
+        width: 32px;
+        height: 32px;
+        font-size: 0.8rem;
+    }
+
+    .per-page {
+        font-size: 0.8rem;
+    }
+
+    .per-page select {
+        padding: 6px 10px;
+        font-size: 0.8rem;
+    }
+
+    .cta-content h2 {
+        font-size: 1.5rem;
+    }
+
+    .cta-content p {
+        font-size: 0.9rem;
+    }
+}
+
+/* ============================================
+   EXTRA SMALL MOBILE (Below 360px)
+============================================ */
+@media (max-width: 359px) {
+    .header-content h1 {
+        font-size: 1.5rem;
+    }
+
+    .card-image {
+        height: 160px;
+    }
+
+    .client-name {
+        font-size: 1rem;
+    }
+
+    .filter-options {
+        gap: 8px;
+    }
+
+    .filter-btn {
+        padding: 6px 10px;
+        font-size: 0.75rem;
+    }
+
+    .filter-btn i:first-child {
+        display: none;
+    }
+}
+
+/* ============================================
+   LANDSCAPE MOBILE
+============================================ */
+@media (max-width: 767px) and (orientation: landscape) {
+    .page-header {
+        padding: 70px 0 30px;
+    }
+
+    .header-content h1 {
+        font-size: 1.8rem;
+    }
+
+    .clients-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .card-image {
+        height: 150px;
+    }
+
+    .modal-image {
+        min-height: 150px;
+    }
+}
+
+/* ============================================
+   HIGH RESOLUTION DESKTOP (1400px+)
+============================================ */
+@media (min-width: 1400px) {
+    .clients-grid {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .header-content h1 {
+        font-size: 4rem;
+    }
+}
+
+/* ============================================
+   TOUCH DEVICE OPTIMIZATIONS
+============================================ */
+@media (hover: none) and (pointer: coarse) {
+    .client-card:hover {
+        transform: none;
+    }
+
+    .client-card:active {
+        transform: scale(0.98);
+    }
+
+    .card-overlay {
+        display: none;
+    }
+
+    .filter-btn:hover {
+        border-color: #e9ecef;
+        color: #495057;
+    }
+
+    .filter-btn:active {
+        border-color: var(--accent-color);
+        color: var(--accent-color);
+    }
+}
+
+/* ============================================
+   REDUCED MOTION
+============================================ */
+@media (prefers-reduced-motion: reduce) {
+    .client-card,
+    .view-btn,
+    .filter-btn,
+    .modal-content,
+    .modal-overlay {
+        transition: none;
+    }
+
+    .client-card:hover {
+        transform: none;
+    }
+
+    .client-photo {
+        transition: none;
+    }
+
+    .client-card:hover .client-photo {
+        transform: none;
+    }
+}
