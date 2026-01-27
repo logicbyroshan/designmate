@@ -37,39 +37,230 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Category card explore buttons
+    // Category card explore buttons - Open Product Gallery Modal
     const exploreButtons = document.querySelectorAll('.explore-btn');
+    const productGalleryModal = document.getElementById('productGalleryModal');
+    const productGalleryTitle = document.getElementById('productGalleryTitle');
+    const productGalleryGrid = document.getElementById('productGalleryGrid');
+    const productGalleryClose = document.getElementById('productGalleryClose');
+    
+    // Category name mapping for display
+    const categoryNames = {
+        'id-cards': 'ID Cards',
+        'lanyards': 'Lanyards',
+        'certificates': 'Certificates',
+        'marksheets': 'Marksheets',
+        'fee-cards': 'Fee Cards',
+        'invitations': 'Invitations',
+        'visiting-cards': 'Visiting Cards',
+        'brochures': 'Brochures',
+        'others': 'Other Products'
+    };
+    
     exploreButtons.forEach(btn => {
         btn.addEventListener('click', function(e) {
             e.stopPropagation();
             const filter = this.dataset.filter;
             
-            // Scroll to portfolio section
-            document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' });
+            // Set modal title
+            productGalleryTitle.textContent = categoryNames[filter] || filter;
             
-            // Activate filter after scroll
-            setTimeout(() => {
-                const targetTab = document.querySelector(`.filter-tab[data-filter="${filter}"]`);
-                if (targetTab) {
-                    targetTab.click();
+            // Clear previous content
+            productGalleryGrid.innerHTML = '';
+            
+            // Get all portfolio items for this category
+            const items = document.querySelectorAll(`.portfolio-item[data-category="${filter}"]`);
+            
+            items.forEach(item => {
+                const img = item.querySelector('img');
+                const video = item.querySelector('video');
+                const title = item.querySelector('h4')?.textContent || '';
+                const desc = item.querySelector('.overlay-content p')?.textContent || '';
+                
+                const galleryItem = document.createElement('div');
+                galleryItem.className = 'gallery-item' + (video ? ' video-item' : '');
+                
+                if (video) {
+                    const videoClone = video.cloneNode(true);
+                    videoClone.muted = true;
+                    videoClone.loop = true;
+                    galleryItem.appendChild(videoClone);
+                    
+                    // Play on hover
+                    galleryItem.addEventListener('mouseenter', () => videoClone.play());
+                    galleryItem.addEventListener('mouseleave', () => {
+                        videoClone.pause();
+                        videoClone.currentTime = 0;
+                    });
+                    
+                    // Open video modal on click
+                    galleryItem.addEventListener('click', () => {
+                        const videoModal = document.getElementById('videoModal');
+                        const modalVideo = document.getElementById('modalVideo');
+                        if (videoModal && modalVideo) {
+                            modalVideo.src = videoClone.src;
+                            videoModal.classList.add('active');
+                            document.body.style.overflow = 'hidden';
+                            modalVideo.play().catch(() => {});
+                        }
+                    });
+                } else if (img) {
+                    const imgClone = document.createElement('img');
+                    imgClone.src = img.src;
+                    imgClone.alt = img.alt;
+                    galleryItem.appendChild(imgClone);
+                    
+                    // Open lightbox on click
+                    galleryItem.addEventListener('click', () => {
+                        const lightbox = document.getElementById('lightbox');
+                        const lightboxImage = document.getElementById('lightboxImage');
+                        if (lightbox && lightboxImage) {
+                            lightboxImage.src = img.src;
+                            lightbox.classList.add('active');
+                            document.body.style.overflow = 'hidden';
+                        }
+                    });
                 }
-            }, 500);
+                
+                // Add info section
+                const infoDiv = document.createElement('div');
+                infoDiv.className = 'gallery-item-info';
+                infoDiv.innerHTML = `<h4>${title}</h4><p>${desc}</p>`;
+                galleryItem.appendChild(infoDiv);
+                
+                productGalleryGrid.appendChild(galleryItem);
+            });
+            
+            // Open modal and lock body scroll
+            productGalleryModal.classList.add('active');
+            document.body.classList.add('modal-open');
+            document.body.dataset.scrollY = window.scrollY;
         });
     });
+    
+    // Close product gallery modal
+    const closeProductGallery = () => {
+        productGalleryModal.classList.remove('active');
+        document.body.classList.remove('modal-open');
+        window.scrollTo(0, parseInt(document.body.dataset.scrollY || '0'));
+    };
+    
+    if (productGalleryClose) {
+        productGalleryClose.addEventListener('click', closeProductGallery);
+    }
+    
+    // Close on clicking outside
+    if (productGalleryModal) {
+        productGalleryModal.addEventListener('click', (e) => {
+            if (e.target === productGalleryModal) {
+                closeProductGallery();
+            }
+        });
+    }
+    
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && productGalleryModal.classList.contains('active')) {
+            closeProductGallery();
+        }
+    });
 
-    // Mini category clicks
+    // Mini category clicks - Open Product Gallery Modal
     const miniCategories = document.querySelectorAll('.mini-category');
+    
+    // Add mini category names to the mapping
+    const miniCategoryNames = {
+        'stickers': 'Stickers',
+        'badges': 'Badges',
+        'letterheads': 'Letterheads',
+        'envelopes': 'Envelopes',
+        'calendars': 'Calendars',
+        'posters': 'Posters',
+        'banners': 'Banners'
+    };
+    
     miniCategories.forEach(cat => {
         cat.addEventListener('click', function() {
             const filter = this.dataset.category;
-            document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' });
             
-            setTimeout(() => {
-                const targetTab = document.querySelector(`.filter-tab[data-filter="${filter}"]`);
-                if (targetTab) {
-                    targetTab.click();
-                }
-            }, 500);
+            // Set modal title
+            productGalleryTitle.textContent = miniCategoryNames[filter] || filter;
+            
+            // Clear previous content
+            productGalleryGrid.innerHTML = '';
+            
+            // Get all portfolio items for this category
+            const items = document.querySelectorAll(`.portfolio-item[data-category="${filter}"]`);
+            
+            if (items.length === 0) {
+                // Show "coming soon" message if no items
+                productGalleryGrid.innerHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px;">
+                        <i class="fas fa-clock" style="font-size: 3rem; color: #100F57; margin-bottom: 20px; display: block;"></i>
+                        <h4 style="font-size: 1.3rem; color: #1a1a2e; margin-bottom: 10px;">Coming Soon!</h4>
+                        <p style="color: #666;">We're adding more ${miniCategoryNames[filter] || filter} designs. Check back soon!</p>
+                    </div>
+                `;
+            } else {
+                items.forEach(item => {
+                    const img = item.querySelector('img');
+                    const video = item.querySelector('video');
+                    const title = item.querySelector('h4')?.textContent || '';
+                    const desc = item.querySelector('.overlay-content p')?.textContent || '';
+                    
+                    const galleryItem = document.createElement('div');
+                    galleryItem.className = 'gallery-item' + (video ? ' video-item' : '');
+                    
+                    if (video) {
+                        const videoClone = video.cloneNode(true);
+                        videoClone.muted = true;
+                        videoClone.loop = true;
+                        galleryItem.appendChild(videoClone);
+                        
+                        galleryItem.addEventListener('mouseenter', () => videoClone.play());
+                        galleryItem.addEventListener('mouseleave', () => {
+                            videoClone.pause();
+                            videoClone.currentTime = 0;
+                        });
+                        
+                        galleryItem.addEventListener('click', () => {
+                            const videoModal = document.getElementById('videoModal');
+                            const modalVideo = document.getElementById('modalVideo');
+                            if (videoModal && modalVideo) {
+                                modalVideo.src = videoClone.src;
+                                videoModal.classList.add('active');
+                                modalVideo.play().catch(() => {});
+                            }
+                        });
+                    } else if (img) {
+                        const imgClone = document.createElement('img');
+                        imgClone.src = img.src;
+                        imgClone.alt = img.alt;
+                        galleryItem.appendChild(imgClone);
+                        
+                        galleryItem.addEventListener('click', () => {
+                            const lightbox = document.getElementById('lightbox');
+                            const lightboxImage = document.getElementById('lightboxImage');
+                            if (lightbox && lightboxImage) {
+                                lightboxImage.src = img.src;
+                                lightbox.classList.add('active');
+                            }
+                        });
+                    }
+                    
+                    const infoDiv = document.createElement('div');
+                    infoDiv.className = 'gallery-item-info';
+                    infoDiv.innerHTML = `<h4>${title}</h4><p>${desc}</p>`;
+                    galleryItem.appendChild(infoDiv);
+                    
+                    productGalleryGrid.appendChild(galleryItem);
+                });
+            }
+            
+            // Open modal and lock body scroll
+            productGalleryModal.classList.add('active');
+            document.body.classList.add('modal-open');
+            document.body.dataset.scrollY = window.scrollY;
         });
     });
 
@@ -218,20 +409,168 @@ document.addEventListener('DOMContentLoaded', function() {
     document.head.appendChild(style);
 
     // ============================================
-    // REELS SCROLL
+    // REELS MANUAL SCROLL
     // ============================================
     const reelsScroll = document.getElementById('reelsScroll');
-    const scrollLeft = document.getElementById('scrollLeft');
-    const scrollRight = document.getElementById('scrollRight');
-
-    if (scrollLeft && scrollRight && reelsScroll) {
-        scrollLeft.addEventListener('click', () => {
-            reelsScroll.scrollBy({ left: -300, behavior: 'smooth' });
+    const reelsWrapper = document.querySelector('.reels-wrapper');
+    
+    if (reelsScroll) {
+        let currentX = 0;
+        let currentY = 0;
+        
+        // Clone reel cards for infinite loop
+        const originalReelCards = reelsScroll.querySelectorAll('.reel-card');
+        originalReelCards.forEach(card => {
+            const clone = card.cloneNode(true);
+            reelsScroll.appendChild(clone);
         });
 
-        scrollRight.addEventListener('click', () => {
-            reelsScroll.scrollBy({ left: 300, behavior: 'smooth' });
-        });
+        // Re-attach video events to cloned cards
+        const attachVideoEvents = () => {
+            const allReelCards = reelsScroll.querySelectorAll('.reel-card');
+            allReelCards.forEach(card => {
+                const video = card.querySelector('video');
+                const playBtn = card.querySelector('.play-reel-btn');
+                const playOverlay = card.querySelector('.reel-play-overlay');
+                
+                if (video && playBtn) {
+                    // Hover play preview (muted)
+                    card.addEventListener('mouseenter', () => {
+                        if (video.paused || video.muted) {
+                            video.muted = true;
+                            video.play().catch(() => {});
+                        }
+                    });
+                    
+                    card.addEventListener('mouseleave', () => {
+                        // Only pause if not in full play mode
+                        if (video.muted) {
+                            video.pause();
+                            video.currentTime = 0;
+                        }
+                    });
+                    
+                    // Click play button to play with sound inline
+                    playBtn.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        
+                        // Pause all other videos first
+                        allReelCards.forEach(otherCard => {
+                            const otherVideo = otherCard.querySelector('video');
+                            const otherOverlay = otherCard.querySelector('.reel-play-overlay');
+                            const otherBtn = otherCard.querySelector('.play-reel-btn i');
+                            if (otherVideo && otherVideo !== video) {
+                                otherVideo.pause();
+                                otherVideo.muted = true;
+                                otherVideo.currentTime = 0;
+                                if (otherOverlay) otherOverlay.classList.remove('playing');
+                                if (otherBtn) otherBtn.className = 'fas fa-play';
+                            }
+                        });
+                        
+                        // Toggle play/pause for this video
+                        if (video.paused || video.muted) {
+                            video.muted = false;
+                            video.play().catch(() => {});
+                            playOverlay.classList.add('playing');
+                            playBtn.querySelector('i').className = 'fas fa-pause';
+                        } else {
+                            video.pause();
+                            video.muted = true;
+                            playOverlay.classList.remove('playing');
+                            playBtn.querySelector('i').className = 'fas fa-play';
+                        }
+                    });
+                    
+                    // Reset when video ends
+                    video.addEventListener('ended', () => {
+                        video.muted = true;
+                        video.currentTime = 0;
+                        playOverlay.classList.remove('playing');
+                        playBtn.querySelector('i').className = 'fas fa-play';
+                    });
+                }
+            });
+        };
+
+        // Mouse wheel horizontal scroll on desktop
+        reelsWrapper.addEventListener('wheel', (e) => {
+            if (window.innerWidth > 767) {
+                e.preventDefault();
+                
+                // Calculate new position based on scroll direction
+                const scrollAmount = e.deltaY * 0.5;
+                const totalWidth = reelsScroll.scrollWidth / 2;
+                currentX -= scrollAmount;
+                
+                // Loop the scroll
+                if (currentX <= -totalWidth) {
+                    currentX = 0;
+                } else if (currentX > 0) {
+                    currentX = -totalWidth;
+                }
+                
+                reelsScroll.style.transform = `translateX(${currentX}px)`;
+            }
+        }, { passive: false });
+
+        // Touch scroll on mobile (vertical swipe for reels)
+        let touchStartX = 0;
+        let touchStartY = 0;
+        let isScrollingReels = false;
+        
+        reelsWrapper.addEventListener('touchstart', (e) => {
+            touchStartX = e.touches[0].clientX;
+            touchStartY = e.touches[0].clientY;
+            isScrollingReels = false;
+        }, { passive: true });
+        
+        reelsWrapper.addEventListener('touchmove', (e) => {
+            const touchCurrentX = e.touches[0].clientX;
+            const touchCurrentY = e.touches[0].clientY;
+            const diffX = touchStartX - touchCurrentX;
+            const diffY = touchStartY - touchCurrentY;
+            
+            // Determine if horizontal or vertical swipe
+            if (Math.abs(diffX) > Math.abs(diffY)) {
+                // Horizontal swipe on desktop
+                if (window.innerWidth > 767) {
+                    e.preventDefault();
+                    const totalWidth = reelsScroll.scrollWidth / 2;
+                    currentX -= diffX * 0.5;
+                    
+                    if (currentX <= -totalWidth) {
+                        currentX = 0;
+                    } else if (currentX > 0) {
+                        currentX = -totalWidth;
+                    }
+                    
+                    reelsScroll.style.transform = `translateX(${currentX}px)`;
+                }
+            } else {
+                // Vertical swipe for mobile - scroll reels not page
+                if (window.innerWidth <= 767) {
+                    e.preventDefault();
+                    isScrollingReels = true;
+                    const totalHeight = reelsScroll.scrollHeight / 2;
+                    currentY -= diffY * 0.8;
+                    
+                    if (currentY <= -totalHeight) {
+                        currentY = 0;
+                    } else if (currentY > 0) {
+                        currentY = -totalHeight;
+                    }
+                    
+                    reelsScroll.style.transform = `translateY(${currentY}px)`;
+                }
+            }
+            
+            touchStartX = touchCurrentX;
+            touchStartY = touchCurrentY;
+        }, { passive: false });
+
+        // Initialize video events for cloned cards
+        attachVideoEvents();
     }
 
     // ============================================

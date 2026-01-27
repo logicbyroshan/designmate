@@ -10,11 +10,33 @@
     <link rel="apple-touch-icon" href="../favicon.ico">
     <script src="https://kit.fontawesome.com/b01194457c.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/page-common.css">
     <link rel="stylesheet" href="../styles/responsive.css">
+    <link rel="stylesheet" href="../styles/page-common-responsive.css">
     <link rel="stylesheet" href="../styles/our-works.css">
     <link rel="stylesheet" href="../styles/our-works-responsive.css">
 </head>
 <body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-content">
+                <a href="tel:+919876543210" class="top-bar-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>+91 98765 43210</span>
+                </a>
+                <a href="tel:+919876543211" class="top-bar-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>+91 98765 43211</span>
+                </a>
+                <a href="mailto:info@adarshidcards.com" class="top-bar-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>info@adarshidcards.com</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
     <!-- Navbar -->
     <nav class="navbar">
         <div class="container">
@@ -43,38 +65,16 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="works-hero">
-        <div class="hero-bg-animation">
-            <div class="floating-card card-1"></div>
-            <div class="floating-card card-2"></div>
-            <div class="floating-card card-3"></div>
-            <div class="floating-card card-4"></div>
-            <div class="floating-card card-5"></div>
-        </div>
+    <section class="page-hero">
         <div class="container">
             <div class="hero-content">
-                <span class="hero-badge">
-                    <i class="fas fa-sparkles"></i>
-                    Our Creative Portfolio
-                </span>
-                <h1>Crafting <span class="gradient-text">Identity</span> Solutions</h1>
-                <p>From ID Cards to Certificates, Lanyards to Invitations - Explore our complete range of premium printing solutions crafted with precision and creativity</p>
-                <div class="hero-actions">
-                    <a href="#portfolio" class="btn btn-primary">
-                        <i class="fas fa-images"></i>
-                        View Gallery
-                    </a>
-                    <a href="#reels" class="btn btn-secondary">
-                        <i class="fas fa-play"></i>
-                        Watch Reels
-                    </a>
+                <div class="hero-badge">
+                    <i class="fas fa-palette"></i>
+                    <span>Our Creative Portfolio</span>
                 </div>
+                <h1>Crafting <span class="gradient-text">Identity</span> Solutions</h1>
+                <p class="hero-subtitle">From ID Cards to Certificates, Lanyards to Invitations - Explore our complete range of premium printing solutions crafted with precision and creativity</p>
             </div>
-        </div>
-        <div class="hero-wave">
-            <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
-                <path d="M0,40 C320,100 640,0 960,60 C1280,120 1440,40 1440,40 L1440,120 L0,120 Z" fill="#f8f9fa"/>
-            </svg>
         </div>
     </section>
 
@@ -277,7 +277,7 @@
     <!-- Video Reels Section -->
     <section class="reels-section" id="reels">
         <div class="container">
-            <div class="section-header light">
+            <div class="section-header">
                 <span class="section-badge">Behind The Scenes</span>
                 <h2>Watch Our <span class="highlight">Reels</span></h2>
                 <p>See our creative process and product showcases in action</p>
@@ -404,12 +404,6 @@
                         </div>
                     </div>
                 </div>
-                <button class="scroll-btn scroll-left" id="scrollLeft">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <button class="scroll-btn scroll-right" id="scrollRight">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
             </div>
         </div>
     </section>
@@ -466,7 +460,7 @@
             <!-- Portfolio Grid -->
             <div class="portfolio-grid" id="portfolioGrid">
                 <!-- ID Cards -->
-                <div class="portfolio-item" data-category="id-cards">
+                <div class="portfolio-item square" data-category="id-cards">
                     <div class="portfolio-image">
                         <img src="../Products/id1.jpg" alt="School ID Card Design">
                         <div class="portfolio-overlay">
@@ -487,7 +481,7 @@
                     </div>
                 </div>
 
-                <div class="portfolio-item" data-category="id-cards">
+                <div class="portfolio-item portrait" data-category="id-cards">
                     <div class="portfolio-image">
                         <img src="../Products/id2.jpg" alt="Corporate ID Card">
                         <div class="portfolio-overlay">
@@ -532,7 +526,7 @@
                     </div>
                 </div>
 
-                <div class="portfolio-item" data-category="id-cards">
+                <div class="portfolio-item landscape" data-category="id-cards">
                     <div class="portfolio-image">
                         <img src="../Products/id4.jpg" alt="Hospital ID Card">
                         <div class="portfolio-overlay">
@@ -1060,6 +1054,21 @@
             </div>
         </div>
     </footer>
+
+    <!-- Product Gallery Modal -->
+    <div class="product-gallery-modal" id="productGalleryModal">
+        <div class="product-gallery-content">
+            <div class="product-gallery-header">
+                <h3 id="productGalleryTitle">ID Cards</h3>
+                <button class="product-gallery-close" id="productGalleryClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="product-gallery-grid" id="productGalleryGrid">
+                <!-- Gallery items will be populated dynamically -->
+            </div>
+        </div>
+    </div>
 
     <!-- Lightbox Modal -->
     <div class="lightbox" id="lightbox">

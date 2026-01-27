@@ -1,90 +1,11 @@
 /* ===== Trusted Clients Page Specific Styles ===== */
 
-/* ============================================
-   PAGE HEADER
-============================================ */
-.page-header {
-    background: linear-gradient(135deg, #100F57 0%, #1a1980 50%, #0a92dd 100%);
-    padding: 120px 0 80px;
-    position: relative;
-    overflow: hidden;
-    color: var(--white);
-}
-
-.page-header::before {
-    content: '';
-    position: absolute;
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(10, 146, 221, 0.4) 0%, transparent 70%);
-    border-radius: 50%;
-    top: -200px;
-    right: -100px;
-    z-index: 0;
-}
-
-.page-header::after {
-    content: '';
-    position: absolute;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, rgba(10, 146, 221, 0.3) 0%, transparent 70%);
-    border-radius: 50%;
-    bottom: -100px;
-    left: -100px;
-    z-index: 0;
-}
-
-.header-content {
-    position: relative;
-    z-index: 1;
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.header-tagline {
-    display: inline-block;
-    background: rgba(255, 255, 255, 0.15);
-    padding: 8px 20px;
-    border-radius: 50px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    margin-bottom: 1.5rem;
-    backdrop-filter: blur(10px);
-}
-
-.header-content h1 {
-    font-size: 3.5rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    line-height: 1.2;
-}
-
-.header-content h1 .highlight {
-    color: #0a92dd;
-    text-shadow: 0 0 30px rgba(10, 146, 221, 0.5);
-}
-
-.header-content p {
-    font-size: 1.2rem;
-    opacity: 0.9;
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.header-wave {
-    position: absolute;
-    bottom: 0;
-    left: 0;
+/* Body scroll lock when modal is open */
+body.modal-open {
+    overflow: hidden !important;
+    position: fixed;
     width: 100%;
-    overflow: hidden;
-    line-height: 0;
-}
-
-.header-wave svg {
-    width: 100%;
-    height: 60px;
+    height: 100%;
 }
 
 /* ============================================
@@ -310,9 +231,24 @@
 
 /* Results Info */
 .results-info {
-    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding: 12px 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.results-info span {
     font-size: 0.9rem;
-    color: #6c757d;
+    color: #495057;
+    font-weight: 500;
+}
+
+.results-info span strong {
+    color: #0a92dd;
 }
 
 /* ============================================
@@ -382,14 +318,18 @@
 /* Card Image */
 .card-image {
     position: relative;
-    height: 200px;
+    height: 180px;
     overflow: hidden;
+    background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .client-photo {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
     transition: transform 0.5s ease;
 }
 
@@ -399,15 +339,16 @@
 
 .card-logo {
     position: absolute;
-    bottom: -30px;
-    right: 20px;
-    width: 70px;
-    height: 70px;
+    top: 105px;
+    right: 15px;
+    width: 55px;
+    height: 55px;
     background: var(--white);
-    border-radius: 15px;
-    padding: 8px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
-    z-index: 5;
+    border-radius: 10px;
+    padding: 6px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    z-index: 100;
+    border: 2px solid rgba(255, 255, 255, 0.8);
 }
 
 .card-logo img {
@@ -707,7 +648,8 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -726,17 +668,20 @@
 .modal-content {
     background: var(--white);
     border-radius: 20px;
-    max-width: 800px;
-    width: 100%;
+    width: 90%;
+    max-width: 1200px;
+    height: 90vh;
     max-height: 90vh;
-    overflow-y: auto;
+    overflow: hidden;
     position: relative;
-    transform: scale(0.9) translateY(20px);
+    transform: scale(0.9);
     transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
 }
 
 .modal-overlay.active .modal-content {
-    transform: scale(1) translateY(0);
+    transform: scale(1);
 }
 
 .modal-close {
@@ -763,21 +708,29 @@
 .modal-body {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    flex: 1;
+    overflow: hidden;
 }
 
 .modal-image {
     height: 100%;
-    min-height: 400px;
+    background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
 }
 
 .modal-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    max-height: 100%;
 }
 
 .modal-info {
-    padding: 30px;
+    padding: 40px;
+    overflow-y: auto;
 }
 
 .modal-badge {

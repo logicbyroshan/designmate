@@ -10,11 +10,33 @@
     <link rel="apple-touch-icon" href="../favicon.ico">
     <script src="https://kit.fontawesome.com/b01194457c.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/page-common.css">
     <link rel="stylesheet" href="../styles/responsive.css">
+    <link rel="stylesheet" href="../styles/page-common-responsive.css">
     <link rel="stylesheet" href="../styles/testimonials.css">
     <link rel="stylesheet" href="../styles/testimonials-responsive.css">
 </head>
 <body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-content">
+                <a href="tel:+919876543210" class="top-bar-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>+91 98765 43210</span>
+                </a>
+                <a href="tel:+919876543211" class="top-bar-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>+91 98765 43211</span>
+                </a>
+                <a href="mailto:info@adarshidcards.com" class="top-bar-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>info@adarshidcards.com</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
     <!-- Navbar -->
     <nav class="navbar">
         <div class="container">
@@ -43,14 +65,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="testimonials-hero">
-        <div class="hero-particles">
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-        </div>
+    <section class="page-hero">
         <div class="container">
             <div class="hero-content">
                 <div class="hero-badge">
@@ -60,11 +75,6 @@
                 <h1>What Our <span class="gradient-text">Clients Say</span></h1>
                 <p class="hero-subtitle">Real stories from real schools. Discover why 1000+ institutions trust us for their ID card needs.</p>
             </div>
-        </div>
-        <div class="hero-wave">
-            <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
-                <path d="M0,60 C360,120 720,0 1080,60 C1260,90 1380,80 1440,60 L1440,120 L0,120 Z" fill="#f8fafc"/>
-            </svg>
         </div>
     </section>
 
@@ -127,22 +137,6 @@
                     <div class="video-info">
                         <h4>City International Academy</h4>
                         <p>Bulk order experience & quality review</p>
-                    </div>
-                </div>
-                
-                <div class="video-card">
-                    <div class="video-thumbnail">
-                        <img src="../Products/Product4.jpg" alt="Video Testimonial">
-                        <div class="play-overlay">
-                            <div class="play-btn">
-                                <i class="fas fa-play"></i>
-                            </div>
-                        </div>
-                        <div class="video-duration">3:00</div>
-                    </div>
-                    <div class="video-info">
-                        <h4>Holy Cross Convent</h4>
-                        <p>Express delivery saved our admission day</p>
                     </div>
                 </div>
             </div>
@@ -449,7 +443,7 @@
                     <h4>Quality</h4>
                     <div class="category-rating">
                         <div class="circular-progress" data-progress="98">
-                            <svg>
+                            <svg viewBox="0 0 100 100">
                                 <circle cx="50" cy="50" r="45"></circle>
                                 <circle cx="50" cy="50" r="45" class="progress-ring"></circle>
                             </svg>
@@ -466,7 +460,7 @@
                     <h4>Delivery</h4>
                     <div class="category-rating">
                         <div class="circular-progress" data-progress="96">
-                            <svg>
+                            <svg viewBox="0 0 100 100">
                                 <circle cx="50" cy="50" r="45"></circle>
                                 <circle cx="50" cy="50" r="45" class="progress-ring"></circle>
                             </svg>
@@ -483,7 +477,7 @@
                     <h4>Design</h4>
                     <div class="category-rating">
                         <div class="circular-progress" data-progress="97">
-                            <svg>
+                            <svg viewBox="0 0 100 100">
                                 <circle cx="50" cy="50" r="45"></circle>
                                 <circle cx="50" cy="50" r="45" class="progress-ring"></circle>
                             </svg>
@@ -500,7 +494,7 @@
                     <h4>Support</h4>
                     <div class="category-rating">
                         <div class="circular-progress" data-progress="99">
-                            <svg>
+                            <svg viewBox="0 0 100 100">
                                 <circle cx="50" cy="50" r="45"></circle>
                                 <circle cx="50" cy="50" r="45" class="progress-ring"></circle>
                             </svg>
@@ -517,7 +511,7 @@
                     <h4>Value</h4>
                     <div class="category-rating">
                         <div class="circular-progress" data-progress="95">
-                            <svg>
+                            <svg viewBox="0 0 100 100">
                                 <circle cx="50" cy="50" r="45"></circle>
                                 <circle cx="50" cy="50" r="45" class="progress-ring"></circle>
                             </svg>
@@ -525,76 +519,6 @@
                         </div>
                     </div>
                     <p>Best price-quality ratio</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonial Slider -->
-    <section class="testimonial-slider-section">
-        <div class="container">
-            <div class="section-header light">
-                <span class="section-badge">Quick Reviews</span>
-                <h2>Voices of <span class="highlight">Satisfaction</span></h2>
-            </div>
-            
-            <div class="slider-container">
-                <div class="testimonial-slider" id="testimonialSlider">
-                    <div class="slide">
-                        <div class="slide-content">
-                            <i class="fas fa-quote-left"></i>
-                            <p>"Best ID card provider we've worked with. Period."</p>
-                            <div class="slide-author">
-                                <strong>- Greenwood High School</strong>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slide">
-                        <div class="slide-content">
-                            <i class="fas fa-quote-left"></i>
-                            <p>"20 years of consistent quality. That's rare to find!"</p>
-                            <div class="slide-author">
-                                <strong>- Bishop Cotton School</strong>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slide">
-                        <div class="slide-content">
-                            <i class="fas fa-quote-left"></i>
-                            <p>"Their express delivery saved our admission season!"</p>
-                            <div class="slide-author">
-                                <strong>- Mount Carmel School</strong>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slide">
-                        <div class="slide-content">
-                            <i class="fas fa-quote-left"></i>
-                            <p>"Customer service that actually cares. Refreshing!"</p>
-                            <div class="slide-author">
-                                <strong>- La Martiniere College</strong>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slide">
-                        <div class="slide-content">
-                            <i class="fas fa-quote-left"></i>
-                            <p>"Our students love the modern designs every year."</p>
-                            <div class="slide-author">
-                                <strong>- Army Public School</strong>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="slider-controls">
-                    <button class="slider-btn prev" id="sliderPrev">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
-                    <div class="slider-dots" id="sliderDots"></div>
-                    <button class="slider-btn next" id="sliderNext">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
                 </div>
             </div>
         </div>

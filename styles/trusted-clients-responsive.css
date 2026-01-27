@@ -4,18 +4,6 @@
    TABLET LARGE (900px - 999px)
 ============================================ */
 @media (max-width: 999px) {
-    .page-header {
-        padding: 100px 0 60px;
-    }
-
-    .header-content h1 {
-        font-size: 2.8rem;
-    }
-
-    .header-content p {
-        font-size: 1.1rem;
-    }
-
     .filter-section {
         top: 55px;
     }
@@ -62,14 +50,6 @@
 }
 
 @media (max-width: 899px) and (min-width: 768px) {
-    .page-header {
-        padding: 90px 0 50px;
-    }
-
-    .header-content h1 {
-        font-size: 2.5rem;
-    }
-
     .clients-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 20px;
@@ -86,7 +66,8 @@
     .card-logo {
         width: 60px;
         height: 60px;
-        bottom: -25px;
+        top: 105px;
+        z-index: 100;
     }
 
     .client-name {
@@ -98,22 +79,6 @@
    MOBILE (Below 768px)
 ============================================ */
 @media (max-width: 767px) {
-    .page-header {
-        padding: 80px 0 40px;
-    }
-
-    .header-content h1 {
-        font-size: 2rem;
-    }
-
-    .header-content p {
-        font-size: 1rem;
-    }
-
-    .header-wave svg {
-        height: 40px;
-    }
-
     .filter-section {
         padding: 20px 0 15px;
         top: 50px;
@@ -175,8 +140,9 @@
     .card-logo {
         width: 55px;
         height: 55px;
-        bottom: -22px;
+        top: 125px;
         right: 15px;
+        z-index: 100;
     }
 
     .card-content {
@@ -226,20 +192,27 @@
 
     /* Modal */
     .modal-content {
-        border-radius: 16px;
-        margin: 10px;
+        width: 100%;
+        height: 100vh;
+        max-height: 100vh;
+        border-radius: 0;
+        margin: 0;
     }
 
     .modal-body {
         grid-template-columns: 1fr;
+        overflow-y: auto;
     }
 
     .modal-image {
-        min-height: 200px;
+        height: 250px;
+        min-height: 250px;
+        flex-shrink: 0;
     }
 
     .modal-info {
-        padding: 20px;
+        padding: 25px 20px;
+        overflow: visible;
     }
 
     .modal-info h2 {

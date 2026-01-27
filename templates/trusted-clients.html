@@ -10,11 +10,33 @@
     <link rel="apple-touch-icon" href="../favicon.ico">
     <script src="https://kit.fontawesome.com/b01194457c.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/page-common.css">
     <link rel="stylesheet" href="../styles/responsive.css">
+    <link rel="stylesheet" href="../styles/page-common-responsive.css">
     <link rel="stylesheet" href="../styles/trusted-clients.css">
     <link rel="stylesheet" href="../styles/trusted-clients-responsive.css">
 </head>
 <body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-content">
+                <a href="tel:+919876543210" class="top-bar-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>+91 98765 43210</span>
+                </a>
+                <a href="tel:+919876543211" class="top-bar-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>+91 98765 43211</span>
+                </a>
+                <a href="mailto:info@adarshidcards.com" class="top-bar-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>info@adarshidcards.com</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
     <!-- Navbar -->
     <nav class="navbar">
         <div class="container">
@@ -42,19 +64,17 @@
         </div>
     </nav>
 
-    <!-- Page Header -->
-    <section class="page-header">
+    <!-- Hero Section -->
+    <section class="page-hero">
         <div class="container">
-            <div class="header-content">
-                <span class="header-tagline">Our Partners in Excellence</span>
-                <h1>Our Top <span class="highlight">Trusted Clients</span></h1>
-                <p>Schools, Colleges, and Organizations that have chosen us for their identity solutions</p>
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-handshake"></i>
+                    <span>Our Partners in Excellence</span>
+                </div>
+                <h1>Our Top <span class="gradient-text">Trusted Clients</span></h1>
+                <p class="hero-subtitle">Schools, Colleges, and Organizations that have chosen us for their identity solutions</p>
             </div>
-        </div>
-        <div class="header-wave">
-            <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
-                <path d="M0,60 C360,120 1080,0 1440,60 L1440,120 L0,120 Z" fill="#f8f9fa"/>
-            </svg>
         </div>
     </section>
 
@@ -135,7 +155,7 @@
 
             <!-- Results Count -->
             <div class="results-info">
-                <span id="resultsCount">Showing 12 clients</span>
+                <span id="resultsCount">Showing <strong>12</strong> of <strong>12</strong> clients</span>
             </div>
         </div>
     </section>

@@ -1,266 +1,5 @@
 /* ===== Why Choose Us Page Specific Styles ===== */
 
-/* ===== HERO SECTION ===== */
-.why-hero {
-    min-height: 100vh;
-    background: linear-gradient(135deg, #100F57 0%, #1a1980 50%, #0a92dd 100%);
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 120px 20px 80px;
-    overflow: hidden;
-}
-
-.hero-bg-shapes {
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
-    pointer-events: none;
-}
-
-.hero-bg-shapes .shape {
-    position: absolute;
-    border-radius: 50%;
-    opacity: 0.1;
-}
-
-.shape-1 {
-    width: 600px;
-    height: 600px;
-    background: linear-gradient(135deg, #3498db, #8e44ad);
-    top: -200px;
-    right: -200px;
-    animation: floatShape 20s ease-in-out infinite;
-}
-
-.shape-2 {
-    width: 400px;
-    height: 400px;
-    background: linear-gradient(135deg, #e74c3c, #f39c12);
-    bottom: -100px;
-    left: -100px;
-    animation: floatShape 15s ease-in-out infinite reverse;
-}
-
-.shape-3 {
-    width: 300px;
-    height: 300px;
-    background: linear-gradient(135deg, #2ecc71, #3498db);
-    top: 50%;
-    left: 10%;
-    animation: floatShape 18s ease-in-out infinite 2s;
-}
-
-.shape-4 {
-    width: 200px;
-    height: 200px;
-    background: linear-gradient(135deg, #9b59b6, #e74c3c);
-    bottom: 20%;
-    right: 10%;
-    animation: floatShape 12s ease-in-out infinite 1s;
-}
-
-@keyframes floatShape {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    33% { transform: translate(30px, -30px) scale(1.05); }
-    66% { transform: translate(-20px, 20px) scale(0.95); }
-}
-
-.why-hero .container {
-    position: relative;
-    z-index: 2;
-    max-width: 1200px;
-    width: 100%;
-}
-
-.hero-content {
-    text-align: center;
-    color: #fff;
-}
-
-.hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    padding: 12px 24px;
-    border-radius: 50px;
-    margin-bottom: 30px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.hero-badge i {
-    color: #f1c40f;
-    font-size: 1.2rem;
-}
-
-.hero-badge span {
-    font-size: 0.95rem;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-}
-
-.hero-content h1 {
-    font-size: 4rem;
-    font-weight: 800;
-    margin-bottom: 20px;
-    line-height: 1.2;
-}
-
-.gradient-text {
-    background: linear-gradient(135deg, #0a92dd, #667eea, #764ba2);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.hero-subtitle {
-    font-size: 1.25rem;
-    color: rgba(255, 255, 255, 0.8);
-    max-width: 700px;
-    margin: 0 auto 50px;
-    line-height: 1.7;
-}
-
-.hero-stats-row {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 30px;
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.hero-stat {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
-    padding: 30px 20px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: all 0.3s ease;
-}
-
-.hero-stat:hover {
-    background: rgba(255, 255, 255, 0.1);
-    transform: translateY(-5px);
-    border-color: rgba(10, 146, 221, 0.5);
-}
-
-.stat-icon {
-    width: 60px;
-    height: 60px;
-    background: linear-gradient(135deg, #0a92dd, #667eea);
-    border-radius: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 15px;
-}
-
-.stat-icon i {
-    font-size: 1.5rem;
-    color: #fff;
-}
-
-.stat-info {
-    text-align: center;
-}
-
-.stat-number {
-    font-size: 2.5rem;
-    font-weight: 800;
-    color: #fff;
-}
-
-.stat-suffix {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #0a92dd;
-}
-
-.stat-label {
-    display: block;
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.7);
-    margin-top: 5px;
-}
-
-.hero-scroll-indicator {
-    position: absolute;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
-    color: rgba(255, 255, 255, 0.6);
-    animation: bounce 2s infinite;
-}
-
-.hero-scroll-indicator span {
-    display: block;
-    font-size: 0.85rem;
-    margin-bottom: 10px;
-}
-
-.hero-scroll-indicator i {
-    font-size: 1.2rem;
-}
-
-@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-    40% { transform: translateX(-50%) translateY(-10px); }
-    60% { transform: translateX(-50%) translateY(-5px); }
-}
-
-/* ===== SECTION COMMON STYLES ===== */
-.section-header {
-    text-align: center;
-    margin-bottom: 60px;
-}
-
-.section-header.light {
-    color: #fff;
-}
-
-.section-badge {
-    display: inline-block;
-    background: linear-gradient(135deg, #0a92dd, #667eea);
-    color: #fff;
-    padding: 8px 20px;
-    border-radius: 50px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 20px;
-}
-
-.section-header h2 {
-    font-size: 2.8rem;
-    font-weight: 800;
-    color: #1a365d;
-    margin-bottom: 15px;
-}
-
-.section-header.light h2 {
-    color: #fff;
-}
-
-.section-header h2 .highlight {
-    color: #0a92dd;
-}
-
-.section-header p {
-    font-size: 1.1rem;
-    color: #64748b;
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.section-header.light p {
-    color: rgba(255, 255, 255, 0.8);
-}
-
 /* ===== KEY FEATURES SECTION ===== */
 .key-features {
     padding: 100px 20px;
@@ -271,8 +10,6 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
 }
 
 .feature-card {
@@ -390,8 +127,6 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
 }
 
 .promise-card {
@@ -499,8 +234,6 @@
     grid-template-columns: 1fr 1fr;
     gap: 80px;
     align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
 }
 
 .designs-text .section-badge {
@@ -673,30 +406,30 @@
 /* ===== TRUST SECTION ===== */
 .trust-section {
     padding: 100px 20px;
-    background: linear-gradient(135deg, #1a365d 0%, #2d5a87 100%);
+    background: #f8fafc;
 }
 
 .trust-reasons {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto 60px;
+    margin-bottom: 60px;
 }
 
 .trust-card {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
+    background: #fff;
     border-radius: 20px;
     padding: 35px 25px;
     text-align: center;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid #e2e8f0;
     transition: all 0.3s ease;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
 }
 
 .trust-card:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: #fff;
     transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
 }
 
 .trust-icon {
@@ -716,14 +449,14 @@
 }
 
 .trust-card h3 {
-    color: #fff;
+    color: #1e293b;
     font-size: 1.15rem;
     font-weight: 700;
     margin-bottom: 12px;
 }
 
 .trust-card p {
-    color: rgba(255, 255, 255, 0.7);
+    color: #64748b;
     font-size: 0.9rem;
     line-height: 1.6;
 }
@@ -733,7 +466,7 @@
 }
 
 .trust-logos > p {
-    color: rgba(255, 255, 255, 0.6);
+    color: #64748b;
     font-size: 0.95rem;
     margin-bottom: 25px;
 }
@@ -759,25 +492,26 @@
     flex-shrink: 0;
     width: 100px;
     height: 100px;
-    background: rgba(255, 255, 255, 0.1);
+    background: #fff;
     border-radius: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 15px;
     transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
 .school-logo:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: #fff;
     transform: scale(1.1);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
 .school-logo img {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
-    filter: brightness(0) invert(1);
     opacity: 0.8;
 }
 
@@ -788,8 +522,7 @@
 }
 
 .faq-container {
-    max-width: 800px;
-    margin: 0 auto;
+    width: 100%;
 }
 
 .faq-item {

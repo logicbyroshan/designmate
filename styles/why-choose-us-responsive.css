@@ -2,14 +2,6 @@
 
 /* ===== LARGE DESKTOP (1400px+) ===== */
 @media (min-width: 1400px) {
-    .why-hero .container {
-        max-width: 1320px;
-    }
-    
-    .hero-content h1 {
-        font-size: 4.5rem;
-    }
-    
     .features-grid,
     .promises-grid {
         max-width: 1320px;
@@ -23,18 +15,6 @@
 
 /* ===== DESKTOP (1200px - 1399px) ===== */
 @media (max-width: 1399px) {
-    .hero-content h1 {
-        font-size: 3.5rem;
-    }
-    
-    .hero-stats-row {
-        gap: 20px;
-    }
-    
-    .stat-number {
-        font-size: 2rem;
-    }
-    
     .designs-content {
         gap: 60px;
     }
@@ -57,23 +37,6 @@
 
 /* ===== TABLET LARGE (992px - 1199px) ===== */
 @media (max-width: 1199px) {
-    .why-hero {
-        padding: 100px 20px 60px;
-    }
-    
-    .hero-content h1 {
-        font-size: 3rem;
-    }
-    
-    .hero-subtitle {
-        font-size: 1.1rem;
-    }
-    
-    .hero-stats-row {
-        grid-template-columns: repeat(2, 1fr);
-        max-width: 600px;
-    }
-    
     .section-header h2 {
         font-size: 2.4rem;
     }
@@ -138,45 +101,6 @@
 
 /* ===== TABLET (768px - 991px) ===== */
 @media (max-width: 991px) {
-    .why-hero {
-        min-height: auto;
-        padding: 100px 20px 80px;
-    }
-    
-    .hero-content h1 {
-        font-size: 2.5rem;
-    }
-    
-    .hero-subtitle {
-        font-size: 1rem;
-        margin-bottom: 40px;
-    }
-    
-    .hero-stats-row {
-        gap: 15px;
-    }
-    
-    .hero-stat {
-        padding: 25px 15px;
-    }
-    
-    .stat-icon {
-        width: 50px;
-        height: 50px;
-    }
-    
-    .stat-icon i {
-        font-size: 1.2rem;
-    }
-    
-    .stat-number {
-        font-size: 1.8rem;
-    }
-    
-    .stat-label {
-        font-size: 0.8rem;
-    }
-    
     .key-features,
     .promises-section,
     .designs-section,
@@ -280,61 +204,6 @@
 
 /* ===== MOBILE LARGE (576px - 767px) ===== */
 @media (max-width: 767px) {
-    .why-hero {
-        padding: 90px 15px 60px;
-    }
-    
-    .hero-badge {
-        padding: 10px 18px;
-        font-size: 0.85rem;
-    }
-    
-    .hero-content h1 {
-        font-size: 2rem;
-    }
-    
-    .hero-subtitle {
-        font-size: 0.95rem;
-        margin-bottom: 30px;
-    }
-    
-    .hero-stats-row {
-        grid-template-columns: 1fr 1fr;
-        gap: 12px;
-        max-width: 100%;
-    }
-    
-    .hero-stat {
-        padding: 20px 12px;
-        border-radius: 15px;
-    }
-    
-    .stat-icon {
-        width: 45px;
-        height: 45px;
-        margin-bottom: 10px;
-    }
-    
-    .stat-icon i {
-        font-size: 1rem;
-    }
-    
-    .stat-number {
-        font-size: 1.5rem;
-    }
-    
-    .stat-suffix {
-        font-size: 1rem;
-    }
-    
-    .stat-label {
-        font-size: 0.75rem;
-    }
-    
-    .hero-scroll-indicator {
-        display: none;
-    }
-    
     .key-features,
     .promises-section,
     .designs-section,
@@ -370,38 +239,55 @@
     
     .feature-card {
         padding: 25px 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
     }
     
     .feature-icon {
-        width: 60px;
-        height: 60px;
+        width: 55px;
+        height: 55px;
+        min-width: 55px;
+        border-radius: 14px;
+        margin-bottom: 15px;
     }
     
     .feature-icon i {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
     }
     
     .feature-number {
-        font-size: 2.5rem;
-        top: 15px;
+        font-size: 2rem;
+        top: 12px;
         right: 15px;
     }
     
     .feature-card h3 {
-        font-size: 1.2rem;
+        font-size: 1.15rem;
+        margin-bottom: 10px;
+        line-height: 1.3;
     }
     
     .feature-card p {
         font-size: 0.9rem;
+        margin-bottom: 15px;
+        line-height: 1.5;
     }
     
     .feature-tags {
         gap: 8px;
+        justify-content: center;
     }
     
     .feature-tags span {
-        padding: 5px 10px;
+        padding: 6px 12px;
         font-size: 0.75rem;
+    }
+    
+    .feature-highlight {
+        padding: 8px 18px;
+        font-size: 0.85rem;
     }
     
     .promises-grid {
@@ -437,52 +323,93 @@
     
     .designs-text > p {
         font-size: 1rem;
+        text-align: center;
+    }
+    
+    .design-features {
+        text-align: left;
+        max-width: 100%;
+        margin: 0 auto 25px;
+        padding: 0 10px;
     }
     
     .design-features li {
-        flex-direction: column;
-        text-align: center;
-        gap: 10px;
+        display: flex;
+        flex-direction: row;
+        text-align: left;
+        gap: 15px;
+        align-items: flex-start;
+        margin-bottom: 18px;
     }
     
     .design-features li i {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
+        min-width: 28px;
+        width: 28px;
+        height: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+    
+    .design-features li div {
+        flex: 1;
     }
     
     .design-features li div strong {
         font-size: 1rem;
+        display: block;
+        margin-bottom: 3px;
+    }
+    
+    .design-features li div span {
+        font-size: 0.85rem;
+        display: block;
     }
     
     .btn-explore {
         padding: 12px 28px;
         font-size: 0.95rem;
+        display: flex;
+        width: fit-content;
+        margin: 0 auto;
     }
     
     .designs-showcase {
-        height: 300px;
+        height: 380px;
+        position: relative;
+    }
+    
+    .showcase-card {
+        position: absolute;
     }
     
     .showcase-card.card-1 {
-        width: 140px;
-        height: 200px;
+        width: 170px;
+        height: 240px;
         left: 5%;
+        top: 0;
     }
     
     .showcase-card.card-2 {
-        width: 130px;
-        height: 185px;
+        width: 160px;
+        height: 225px;
         right: 5%;
-        top: 60px;
+        top: 80px;
     }
     
     .showcase-card.card-3 {
-        width: 120px;
-        height: 170px;
+        width: 150px;
+        height: 210px;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 0;
     }
     
     .card-badge {
         padding: 4px 10px;
-        font-size: 0.65rem;
+        font-size: 0.6rem;
     }
     
     .trust-reasons {
@@ -595,16 +522,37 @@
     }
     
     .feature-card {
-        padding: 20px 18px;
+        padding: 22px 18px;
     }
     
     .feature-icon {
-        width: 55px;
-        height: 55px;
+        width: 50px;
+        height: 50px;
+        min-width: 50px;
+        border-radius: 12px;
+    }
+    
+    .feature-icon i {
+        font-size: 1.2rem;
+    }
+    
+    .feature-number {
+        font-size: 1.8rem;
+        top: 10px;
+        right: 12px;
     }
     
     .feature-card h3 {
-        font-size: 1.1rem;
+        font-size: 1.05rem;
+    }
+    
+    .feature-card p {
+        font-size: 0.85rem;
+    }
+    
+    .feature-tags span {
+        padding: 5px 10px;
+        font-size: 0.7rem;
     }
     
     .promise-card {
@@ -632,24 +580,55 @@
         font-size: 1.5rem;
     }
     
+    .design-features {
+        max-width: 100%;
+        padding: 0 5px;
+    }
+    
+    .design-features li {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 15px;
+    }
+    
+    .design-features li i {
+        font-size: 1.1rem;
+        min-width: 24px;
+        width: 24px;
+        height: 24px;
+    }
+    
+    .design-features li div strong {
+        font-size: 0.9rem;
+    }
+    
+    .design-features li div span {
+        font-size: 0.8rem;
+    }
+    
     .designs-showcase {
-        height: 250px;
+        height: 340px;
     }
     
     .showcase-card.card-1 {
-        width: 120px;
-        height: 170px;
+        width: 150px;
+        height: 210px;
     }
     
     .showcase-card.card-2 {
-        width: 110px;
-        height: 155px;
-        top: 50px;
+        width: 140px;
+        height: 195px;
+        top: 70px;
     }
     
     .showcase-card.card-3 {
-        width: 100px;
-        height: 140px;
+        width: 130px;
+        height: 180px;
+    }
+    
+    .card-badge {
+        padding: 3px 8px;
+        font-size: 0.55rem;
     }
     
     .trust-card {
