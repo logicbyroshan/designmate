@@ -55,15 +55,17 @@
 }
 
 .header-content h1 {
-    font-size: 3.5rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    line-height: 1.2;
+    font-size: 4rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
 }
 
-.header-content h1 .highlight {
-    color: #0a92dd;
-    text-shadow: 0 0 30px rgba(10, 146, 221, 0.5);
+.gradient-text {
+    background: linear-gradient(135deg, #0a92dd, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .header-content p {

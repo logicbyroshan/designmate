@@ -1,44 +1,3 @@
-/* ===== Testimonials Page Specific Styles ===== */
-
-/* ===== HERO SECTION ===== */
-.testimonials-hero {
-    min-height: 100vh;
-    background: linear-gradient(135deg, #100F57 0%, #1a1980 50%, #0a92dd 100%);
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 120px 20px 150px;
-    overflow: hidden;
-}
-
-.hero-particles {
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
-}
-
-.particle {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 50%;
-    animation: float 15s infinite;
-}
-
-.particle:nth-child(1) { left: 10%; top: 20%; animation-delay: 0s; width: 15px; height: 15px; }
-.particle:nth-child(2) { left: 80%; top: 30%; animation-delay: 2s; width: 8px; height: 8px; }
-.particle:nth-child(3) { left: 30%; top: 70%; animation-delay: 4s; width: 12px; height: 12px; }
-.particle:nth-child(4) { left: 70%; top: 80%; animation-delay: 6s; width: 20px; height: 20px; }
-.particle:nth-child(5) { left: 50%; top: 10%; animation-delay: 8s; width: 6px; height: 6px; }
-
-@keyframes float {
-    0%, 100% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0.3; }
-    25% { transform: translateY(-50px) translateX(20px) rotate(90deg); opacity: 0.8; }
-    50% { transform: translateY(-20px) translateX(-20px) rotate(180deg); opacity: 0.5; }
-    75% { transform: translateY(-80px) translateX(10px) rotate(270deg); opacity: 0.7; }
-}
 
 .testimonials-hero .container {
     position: relative;
@@ -50,30 +9,6 @@
 .hero-content {
     text-align: center;
     color: #fff;
-}
-
-.hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: linear-gradient(135deg, rgba(10, 146, 221, 0.2), rgba(102, 126, 234, 0.2));
-    backdrop-filter: blur(10px);
-    padding: 12px 24px;
-    border-radius: 50px;
-    margin-bottom: 30px;
-    border: 1px solid rgba(10, 146, 221, 0.3);
-}
-
-.hero-badge i {
-    color: #0a92dd;
-    font-size: 1.2rem;
-}
-
-.hero-badge span {
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: #0a92dd;
-    letter-spacing: 0.5px;
 }
 
 .hero-content h1 {
