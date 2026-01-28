@@ -1,84 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="What Our Clients Say - Read testimonials from 1000+ satisfied schools and institutions">
-    <meta name="theme-color" content="#3498db">
-    <title>Testimonials - Adarsh ID Cards</title>
-    <link rel="icon" type="image/x-icon" href="../static/images/favicon.ico">
-    <link rel="apple-touch-icon" href="../static/images/favicon.ico">
-    <script src="https://kit.fontawesome.com/b01194457c.js" crossorigin="anonymous"></script>
-<<<<<<< HEAD
-    <link rel="stylesheet" href="../styles/style.css">
-    <link rel="stylesheet" href="../styles/responsive.css">
-    <link rel="stylesheet" href="../styles/testimonials.css">
-    <link rel="stylesheet" href="../styles/testimonials-responsive.css">
-    <link rel="stylesheet" href="../styles/trusted-clients.css">
-    <link rel="stylesheet" href="../styles/trusted-clients-responsive.css">
-=======
-    <link rel="stylesheet" href="../static/styles/style.css">
-    <link rel="stylesheet" href="../static/styles/page-common.css">
-    <link rel="stylesheet" href="../static/styles/responsive.css">
-    <link rel="stylesheet" href="../static/styles/page-common-responsive.css">
-    <link rel="stylesheet" href="../static/styles/testimonials.css">
-    <link rel="stylesheet" href="../static/styles/testimonials-responsive.css">
->>>>>>> 08c93529b0e8d680c5ac3662fb27cf09699352fd
-</head>
-<body>
-    <!-- Top Bar -->
-    <div class="top-bar">
-        <div class="container">
-            <div class="top-bar-content">
-                <a href="tel:+919876543210" class="top-bar-item">
-                    <i class="fas fa-phone-alt"></i>
-                    <span>+91 98765 43210</span>
-                </a>
-                <a href="tel:+919876543211" class="top-bar-item">
-                    <i class="fas fa-phone-alt"></i>
-                    <span>+91 98765 43211</span>
-                </a>
-                <a href="mailto:info@adarshidcards.com" class="top-bar-item">
-                    <i class="fas fa-envelope"></i>
-                    <span>info@adarshidcards.com</span>
-                </a>
-            </div>
-        </div>
-    </div>
+{% extends "base.html" %}
+{% load static %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'styles/testimonials.css' %}">
+{% endblock %}
 
-    <!-- Navbar -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="navbar-content">
-                <div class="logo">
-                    <a href="index.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit;">
-                        <img src="../static/images/adarsh.png" alt="Adarsh Logo" class="logo-img">
-                        <span>Adarsh ID Cards</span>
-                    </a>
-                </div>
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="trusted-clients.html">Trusted Clients</a></li>
-                    <li><a href="why-choose-us.html">Why Choose Us</a></li>
-                    <li><a href="our-works.html">Our Works</a></li>
-                    <li><a href="testimonials.html" class="active">Testimonials</a></li>
-                    <li><a href="index.html#contact" class="btn-cta">Contact Us</a></li>
-                </ul>
-                <div class="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
-        </div>
-    </nav>
-
+{% block content %}
     <!-- Hero Section -->
-<<<<<<< HEAD
-    <section class="testimonials-hero page-header">
-=======
     <section class="page-hero">
->>>>>>> 08c93529b0e8d680c5ac3662fb27cf09699352fd
         <div class="container">
             <div class="hero-content">
                 <div class="hero-badge">
@@ -89,14 +17,6 @@
                 <p class="hero-subtitle">Real stories from real schools. Discover why 1000+ institutions trust us for their ID card needs.</p>
             </div>
         </div>
-<<<<<<< HEAD
-        <div class="header-wave">
-            <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
-                <path d="M0,60 C360,120 1080,0 1440,60 L1440,120 L0,120 Z" fill="#f8f9fa"/>
-            </svg>
-        </div>
-=======
->>>>>>> 08c93529b0e8d680c5ac3662fb27cf09699352fd
     </section>
 
     <!-- Video Testimonials -->
@@ -579,61 +499,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>Adarsh ID Cards</h4>
-                    <p>Creating secure, professional identity solutions for institutions worldwide.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="our-works.html">Portfolio</a></li>
-                        <li><a href="why-choose-us.html">Why Choose Us</a></li>
-                        <li><a href="index.html#contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Services</h4>
-                    <ul>
-                        <li><a href="#">School ID Cards</a></li>
-                        <li><a href="#">Corporate Badges</a></li>
-                        <li><a href="#">Event Passes</a></li>
-                        <li><a href="#">Custom Designs</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Location</h4>
-                    <div class="footer-map-container">
-                        <iframe 
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3659.0074213156277!2d75.8733!3d23.1815!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3963150acf81c0cb%3A0x1234567890!2sBairghar%2C%20Bhopal%2C%20Madhya%20Pradesh!5e0!3m2!1sen!2sin!4v1234567890" 
-                            width="100%" 
-                            height="200" 
-                            style="border:0; border-radius: 8px;" 
-                            allowfullscreen="" 
-                            loading="lazy" 
-                            referrerpolicy="no-referrer-when-downgrade">
-                        </iframe>
-                    </div>
-                    <p style="margin-top: 1rem; font-size: 0.9rem;">Bairghar, Bhopal, Madhya Pradesh, India</p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Adarsh ID Cards. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
-            </div>
-        </div>
-    </footer>
-
     <!-- Video Modal -->
     <div class="video-modal" id="videoModal">
         <div class="video-modal-content">
@@ -683,8 +548,7 @@
             </form>
         </div>
     </div>
-
-    <script src="../static/scripts/main.js"></script>
-    <script src="../static/scripts/testimonials.js"></script>
-</body>
-</html>
+    {% block extra_js %}
+        <script src="../static/scripts/testimonials.js"></script>
+    {% endblock %}
+{% endblock %}

@@ -1,156 +1,5 @@
 /* ===== Why Choose Us Page Specific Styles ===== */
 
-<<<<<<< HEAD:styles/why-choose-us.css
-/* ===== HERO SECTION ===== */
-.why-hero .container {
-    position: relative;
-    z-index: 2;
-    max-width: 1200px;
-    width: 100%;
-}
-
-.hero-content {
-    text-align: center;
-    color: #fff;
-}
-
-
-.hero-content h1 {
-    font-size: 4rem;
-    font-weight: 800;
-    margin-bottom: 20px;
-    line-height: 1.2;
-}
-
-.gradient-text {
-    background: linear-gradient(135deg, #0a92dd, #667eea, #764ba2);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.hero-subtitle {
-    font-size: 1.25rem;
-    color: rgba(255, 255, 255, 0.8);
-    max-width: 700px;
-    margin: 0 auto 50px;
-    line-height: 1.7;
-}
-
-.hero-stats-row {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 30px;
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.hero-stat {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
-    padding: 30px 20px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: all 0.3s ease;
-}
-
-.hero-stat:hover {
-    background: rgba(255, 255, 255, 0.1);
-    transform: translateY(-5px);
-    border-color: rgba(10, 146, 221, 0.5);
-}
-
-.stat-icon {
-    width: 60px;
-    height: 60px;
-    background: linear-gradient(135deg, #0a92dd, #667eea);
-    border-radius: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 15px;
-}
-
-.stat-icon i {
-    font-size: 1.5rem;
-    color: #fff;
-}
-
-.stat-info {
-    text-align: center;
-}
-
-.stat-number {
-    font-size: 2.5rem;
-    font-weight: 800;
-    color: #fff;
-}
-
-.stat-suffix {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #0a92dd;
-}
-
-.stat-label {
-    display: block;
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.7);
-    margin-top: 5px;
-}
-
-
-/* ===== SECTION COMMON STYLES ===== */
-.section-header {
-    text-align: center;
-    margin-bottom: 60px;
-}
-
-.section-header.light {
-    color: #fff;
-}
-
-.section-badge {
-    display: inline-block;
-    background: linear-gradient(135deg, #0a92dd, #667eea);
-    color: #fff;
-    padding: 8px 20px;
-    border-radius: 50px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 20px;
-}
-
-.section-header h2 {
-    font-size: 2.8rem;
-    font-weight: 800;
-    color: #1a365d;
-    margin-bottom: 15px;
-}
-
-.section-header.light h2 {
-    color: #fff;
-}
-
-.section-header h2 .highlight {
-    color: #0a92dd;
-}
-
-.section-header p {
-    font-size: 1.1rem;
-    color: #64748b;
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.section-header.light p {
-    color: rgba(255, 255, 255, 0.8);
-}
-
-=======
->>>>>>> 08c93529b0e8d680c5ac3662fb27cf09699352fd:static/styles/why-choose-us.css
 /* ===== KEY FEATURES SECTION ===== */
 .key-features {
     padding: 100px 20px;
@@ -564,12 +413,7 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 30px;
-<<<<<<< HEAD:styles/why-choose-us.css
-    max-width: 1200px;
-    margin: 0 auto 0;
-=======
     margin-bottom: 60px;
->>>>>>> 08c93529b0e8d680c5ac3662fb27cf09699352fd:static/styles/why-choose-us.css
 }
 
 .trust-card {
@@ -617,8 +461,6 @@
     line-height: 1.6;
 }
 
-<<<<<<< HEAD:styles/why-choose-us.css
-=======
 .trust-logos {
     text-align: center;
 }
@@ -672,7 +514,6 @@
     object-fit: contain;
     opacity: 0.8;
 }
->>>>>>> 08c93529b0e8d680c5ac3662fb27cf09699352fd:static/styles/why-choose-us.css
 
 /* ===== FAQ SECTION ===== */
 .faq-section {
@@ -681,12 +522,7 @@
 }
 
 .faq-container {
-<<<<<<< HEAD:styles/why-choose-us.css
-    max-width: 1200px;
-    margin: 0 auto;
-=======
     width: 100%;
->>>>>>> 08c93529b0e8d680c5ac3662fb27cf09699352fd:static/styles/why-choose-us.css
 }
 
 .faq-item {

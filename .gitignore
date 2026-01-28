@@ -1,0 +1,40 @@
+# Byte-compiled / optimized files
+__pycache__/
+*.py[cod]
+
+# Virtual environment
+.venv/
+env/
+venv/
+ENV/
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test and coverage reports
+.tox/
+.coverage
+.cache
+nosetests.xml
+coverage.xml
+htmlcov/
+.pytest_cache/
+
+# Django-specific stuff
+*.log
+*.pot
+local_settings.py
+db.sqlite3  # Default SQLite database
+
+# Media and static files (adjust as needed)
+# It's common to ignore uploaded media files in development
+media/
+
+# Operating System files
+.DS_Store  # macOS
+Thumbs.db  # Windows
+
+# IDE specific files
+.idea/  # PyCharm
+.vscode/ # VSCode
