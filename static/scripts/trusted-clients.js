@@ -152,7 +152,8 @@ document.addEventListener('DOMContentLoaded', function() {
         sortCards(cardsArray.filter(card => card.style.display !== 'none'));
         
         // Update results count
-        resultsCount.textContent = `Showing ${visibleCount} client${visibleCount !== 1 ? 's' : ''}`;
+        const totalCount = clientCards.length;
+        resultsCount.innerHTML = `Showing <strong>${visibleCount}</strong> of <strong>${totalCount}</strong> clients`;
         
         // Show/hide no results message
         noResults.style.display = visibleCount === 0 ? 'block' : 'none';
@@ -354,23 +355,27 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('modalYear').textContent = `Client since ${year}`;
         
         modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
+        document.body.classList.add('modal-open');
+        document.body.dataset.scrollY = window.scrollY;
+    }
+    
+    // Close modal function
+    function closeClientModal() {
+        modal.classList.remove('active');
+        document.body.classList.remove('modal-open');
+        window.scrollTo(0, parseInt(document.body.dataset.scrollY || '0'));
     }
 
     // Close modal
     if (closeModal) {
-        closeModal.addEventListener('click', function() {
-            modal.classList.remove('active');
-            document.body.style.overflow = '';
-        });
+        closeModal.addEventListener('click', closeClientModal);
     }
 
     // Close modal on overlay click
     if (modal) {
         modal.addEventListener('click', function(e) {
             if (e.target === modal) {
-                modal.classList.remove('active');
-                document.body.style.overflow = '';
+                closeClientModal();
             }
         });
     }
@@ -378,8 +383,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Close modal on escape key
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && modal.classList.contains('active')) {
-            modal.classList.remove('active');
-            document.body.style.overflow = '';
+            closeClientModal();
         }
     });
 

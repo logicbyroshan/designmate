@@ -1,3 +1,4 @@
+<<<<<<< HEAD:styles/testimonials.css
 
 .testimonials-hero .container {
     position: relative;
@@ -95,6 +96,9 @@
 .section-header.light p {
     color: rgba(255, 255, 255, 0.8);
 }
+=======
+/* ===== Testimonials Page Specific Styles ===== */
+>>>>>>> 08c93529b0e8d680c5ac3662fb27cf09699352fd:static/styles/testimonials.css
 
 /* ===== VIDEO TESTIMONIALS ===== */
 .video-testimonials {
@@ -107,8 +111,6 @@
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto auto;
     gap: 25px;
-    max-width: 1200px;
-    margin: 0 auto;
 }
 
 .video-card {
@@ -294,18 +296,19 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 25px;
-    max-width: 1200px;
-    margin: 0 auto;
 }
 
 .testimonial-card {
     background: #fff;
     border-radius: 20px;
     padding: 30px;
+    padding-bottom: 25px;
     position: relative;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
     transition: all 0.4s ease;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 .testimonial-card::before {
@@ -339,6 +342,7 @@
     align-items: center;
     gap: 15px;
     margin-bottom: 20px;
+    padding-right: 70px;
 }
 
 .reviewer-avatar {
@@ -397,6 +401,10 @@
     color: #475569;
 }
 
+.card-content {
+    flex: 1;
+}
+
 .testimonial-card.tall .card-content p {
     font-size: 1rem;
     line-height: 1.8;
@@ -407,8 +415,10 @@
     justify-content: space-between;
     align-items: center;
     margin-top: 20px;
-    padding-top: 20px;
+    padding-top: 15px;
     border-top: 1px solid #e2e8f0;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .review-date {
@@ -443,7 +453,7 @@
 
 .card-tag {
     position: absolute;
-    bottom: 20px;
+    top: 20px;
     right: 20px;
     background: rgba(10, 146, 221, 0.1);
     color: #0a92dd;
@@ -451,6 +461,9 @@
     border-radius: 15px;
     font-size: 0.75rem;
     font-weight: 600;
+    height: auto;
+    line-height: 1.3;
+    white-space: nowrap;
 }
 
 .load-more-wrapper {
@@ -497,8 +510,6 @@
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 25px;
-    max-width: 1200px;
-    margin: 0 auto;
 }
 
 .category-card {
@@ -550,12 +561,14 @@
     width: 100px;
     height: 100px;
     margin: 0 auto;
+    display: block;
 }
 
 .circular-progress svg {
     transform: rotate(-90deg);
-    width: 100px;
-    height: 100px;
+    width: 100%;
+    height: 100%;
+    display: block;
 }
 
 .circular-progress circle {
@@ -590,111 +603,6 @@
     color: #64748b;
 }
 
-/* ===== TESTIMONIAL SLIDER ===== */
-.testimonial-slider-section {
-    padding: 100px 20px;
-    background: linear-gradient(135deg, #100F57 0%, #1a1980 100%);
-}
-
-.slider-container {
-    max-width: 800px;
-    margin: 0 auto;
-    position: relative;
-}
-
-.testimonial-slider {
-    overflow: hidden;
-    position: relative;
-}
-
-.slide {
-    display: none;
-    animation: fadeIn 0.5s ease;
-}
-
-.slide.active {
-    display: block;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.slide-content {
-    text-align: center;
-    padding: 40px;
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    border-radius: 25px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.slide-content i {
-    font-size: 3rem;
-    color: rgba(241, 196, 15, 0.5);
-    margin-bottom: 25px;
-}
-
-.slide-content p {
-    font-size: 1.5rem;
-    color: #fff;
-    font-style: italic;
-    line-height: 1.7;
-    margin-bottom: 25px;
-}
-
-.slide-author strong {
-    color: #0a92dd;
-    font-size: 1.1rem;
-}
-
-.slider-controls {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 30px;
-}
-
-.slider-btn {
-    width: 50px;
-    height: 50px;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
-    color: #fff;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.slider-btn:hover {
-    background: rgba(255, 255, 255, 0.2);
-    border-color: rgba(255, 255, 255, 0.4);
-}
-
-.slider-dots {
-    display: flex;
-    gap: 10px;
-}
-
-.slider-dots .dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.3);
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.slider-dots .dot.active {
-    background: #0a92dd;
-    transform: scale(1.2);
-}
-
 /* ===== WRITE REVIEW SECTION ===== */
 .write-review-section {
     padding: 80px 20px;
@@ -702,8 +610,6 @@
 }
 
 .write-review-card {
-    max-width: 1000px;
-    margin: 0 auto;
     background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
     border-radius: 30px;
     padding: 60px;

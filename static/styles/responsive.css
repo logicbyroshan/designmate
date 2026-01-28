@@ -7,6 +7,39 @@
 */
 
 /* ============================================
+   TOP BAR RESPONSIVE
+============================================ */
+@media (max-width: 767px) {
+    .top-bar {
+        padding: 8px 0;
+    }
+
+    .top-bar-content {
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .top-bar-item span {
+        font-size: 0.8rem;
+    }
+
+    .top-bar-item i {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .top-bar-content {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .top-bar-item {
+        font-size: 0.85rem;
+    }
+}
+
+/* ============================================
    PREVENT HORIZONTAL SCROLL
 ============================================ */
 html, body {
@@ -119,8 +152,9 @@ h2 {
     }
 
     .btn-cta {
-        padding: 8px 16px !important;
+        padding: 10px 22px !important;
         font-size: 0.9rem;
+        border-radius: 50px !important;
     }
 
     /* Hero Section */
@@ -143,7 +177,7 @@ h2 {
     }
 
     .btn {
-        padding: 10px 24px;
+        padding: 14px 28px;
         font-size: 0.95rem;
     }
 
@@ -422,7 +456,7 @@ h2 {
     .btn-cta {
         margin: 10px 20px;
         text-align: center;
-        border-radius: var(--border-radius) !important;
+        border-radius: 50px !important;
     }
 
     .hamburger {
@@ -491,7 +525,7 @@ h2 {
     }
 
     .btn {
-        padding: 10px 22px;
+        padding: 12px 24px;
         font-size: 0.9rem;
     }
 
@@ -876,9 +910,9 @@ h2 {
 
     .btn-cta {
         margin: 16px 20px;
-        padding: 14px 20px !important;
+        padding: 14px 24px !important;
         text-align: center;
-        border-radius: var(--border-radius) !important;
+        border-radius: 50px !important;
         font-size: 1rem !important;
     }
 
@@ -931,11 +965,16 @@ h2 {
     }
 
     .hero-text h1 {
-        font-size: 2rem;
+        font-size: 1.4rem;
         margin-bottom: 0.6rem;
         margin-top: 0.8rem;
         line-height: 1.15;
         letter-spacing: -0.5px;
+    }
+
+    /* Hide all line breaks on mobile */
+    br {
+        display: none;
     }
 
     .hero-text h1 br {
@@ -943,7 +982,7 @@ h2 {
     }
 
     .hero-text p {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
         line-height: 1.4;
         margin-bottom: 1.2rem;
     }
@@ -953,18 +992,19 @@ h2 {
     }
 
     .hero-buttons {
-        flex-direction: column;
-        gap: 0.8rem;
+        flex-direction: row;
+        gap: 0.6rem;
         width: 100%;
-        max-width: 280px;
+        max-width: 100%;
         margin: 0 auto;
+        justify-content: center;
     }
 
     .btn {
-        width: 100%;
-        padding: 14px 24px;
-        font-size: 1rem;
-        border-radius: 10px;
+        width: auto;
+        padding: 12px 20px;
+        font-size: 0.85rem;
+        border-radius: 50px;
     }
 
     .hero-card-wrapper {
@@ -1090,6 +1130,7 @@ h2 {
     .feature-card h3 {
         font-size: 1rem;
         margin-bottom: 0.3rem;
+        line-height: 1.2;
     }
 
     .feature-card p {
@@ -1318,12 +1359,26 @@ h2 {
     }
 
     .footer-content {
-        grid-template-columns: 1fr;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
         gap: 1.5rem;
     }
 
-    .footer-section:last-child {
+    /* Company info - full width */
+    .footer-section:first-child {
+        grid-column: 1 / -1;
+    }
+
+    /* Quick Links and Services side by side */
+    .footer-section:nth-child(2),
+    .footer-section:nth-child(3) {
         grid-column: auto;
+        text-align: left;
+    }
+
+    /* Location - full width */
+    .footer-section:last-child {
+        grid-column: 1 / -1;
     }
 
     .footer-section {
@@ -1411,20 +1466,22 @@ h2 {
     }
 
     .hero-text h1 {
-        font-size: 1.7rem;
+        font-size: 1.2rem;
     }
 
     .hero-text p {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
     }
 
     .hero-buttons {
-        max-width: 250px;
+        max-width: 100%;
+        flex-direction: row;
+        gap: 0.5rem;
     }
 
     .btn {
-        padding: 12px 20px;
-        font-size: 0.95rem;
+        padding: 10px 16px;
+        font-size: 0.8rem;
     }
 
     .hero-card-wrapper {
@@ -1471,6 +1528,7 @@ h2 {
 
     .feature-card h3 {
         font-size: 0.95rem;
+        line-height: 1.2;
     }
 
     .feature-card p {
@@ -1595,7 +1653,7 @@ h2 {
 
     .btn {
         width: auto;
-        padding: 10px 24px;
+        padding: 12px 26px;
     }
 
     .hero-card-wrapper {
