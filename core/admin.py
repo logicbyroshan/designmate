@@ -1,192 +1,152 @@
 from django.contrib import admin
+from django.utils.html import format_html
 from .models import (
-    SiteSettings, TopBarItem, TrustedClient, Feature, PortfolioItem,
-    Testimonial, ContactInfo, SocialLink, FooterSection, FooterLink, MapLocation
+    BusinessDetails, Feature, PortfolioItem, 
+    TrustedClient, Testimonial, ContactSubmission
 )
 
+# --- Helper Function for Image Previews ---
+def image_preview(obj_image_field):
+    if obj_image_field:
+        return format_html('<img src="{}" style="width: 50px; height: auto; border-radius: 4px;" />', obj_image_field.url)
+    return "No Image"
 
-# ===== Site Settings =====
-@admin.register(SiteSettings)
-class SiteSettingsAdmin(admin.ModelAdmin):
-    list_display = ['site_name', 'tagline']
+
+@admin.register(BusinessDetails)
+class BusinessDetailsAdmin(admin.ModelAdmin):
+    """
+    Admin configuration for Global Site Info.
+    Restricts creation of multiple instances (Singleton).
+    """
     fieldsets = (
-        ('General', {
-            'fields': ('site_name', 'tagline', 'logo', 'favicon')
+        ('Site Branding', {
+            'fields': ('site_name', 'tagline')
         }),
-        ('SEO', {
+        ('Contact Information', {
+            'fields': ('email', 'phone', 'address', 'map_embed_url')
+        }),
+        ('Social Media', {
+            'fields': ('socials',),
+            'description': 'Format: platform|url (one per line)'
+        }),
+        ('Hero Section', {
+            'fields': ('hero_title', 'hero_description', 'hero_image1', 'hero_image2', 'hero_image3', 'hero_image4')
+        }),
+        ('SEO Meta Tags', {
+            'classes': ('collapse',),
             'fields': ('meta_description', 'meta_keywords')
         }),
     )
 
-
-# ===== Top Bar Items =====
-@admin.register(TopBarItem)
-class TopBarItemAdmin(admin.ModelAdmin):
-    list_display = ['item_type', 'value', 'order', 'is_active']
-    list_filter = ['item_type', 'is_active']
-    list_editable = ['order', 'is_active']
-    fieldsets = (
-        ('Information', {
-            'fields': ('item_type', 'value', 'icon')
-        }),
-        ('Settings', {
-            'fields': ('order', 'is_active')
-        }),
-    )
+    def has_add_permission(self, request):
+        # If an instance already exists, don't allow adding another
+        if self.model.objects.exists():
+            return False
+        return super().has_add_permission(request)
 
 
-# ===== Trusted Clients =====
-@admin.register(TrustedClient)
-class TrustedClientAdmin(admin.ModelAdmin):
-    list_display = ['school_name', 'order', 'is_active', 'created_at']
-    list_filter = ['is_active', 'created_at']
-    list_editable = ['order', 'is_active']
-    search_fields = ['school_name']
-    fieldsets = (
-        ('School Information', {
-            'fields': ('school_name', 'logo', 'logo_url')
-        }),
-        ('Settings', {
-            'fields': ('order', 'is_active')
-        }),
-    )
-
-
-# ===== Features =====
 @admin.register(Feature)
 class FeatureAdmin(admin.ModelAdmin):
-    list_display = ['title', 'order', 'is_active']
-    list_filter = ['is_active']
-    list_editable = ['order', 'is_active']
-    search_fields = ['title']
-    fieldsets = (
-        ('Feature Details', {
-            'fields': ('title', 'description', 'icon')
-        }),
-        ('Settings', {
-            'fields': ('order', 'is_active')
-        }),
-    )
+    list_display = ('order', 'title', 'icon_preview', 'number', 'is_featured', 'is_active')
+    list_display_links = ('title',)
+    list_editable = ('order', 'is_active', 'is_featured')
+    search_fields = ('title', 'description')
+    list_filter = ('is_active', 'is_featured')
+
+    def icon_preview(self, obj):
+        return format_html('<i class="{}" style="font-size: 1.2rem;"></i>', obj.icon)
+    icon_preview.short_description = 'Icon'
 
 
-# ===== Portfolio Items =====
 @admin.register(PortfolioItem)
 class PortfolioItemAdmin(admin.ModelAdmin):
-    list_display = ['title', 'scroll_direction', 'order', 'is_active']
-    list_filter = ['scroll_direction', 'is_active']
-    list_editable = ['order', 'is_active']
-    search_fields = ['title']
-    fieldsets = (
-        ('Item Details', {
-            'fields': ('title', 'subtitle', 'description', 'image')
-        }),
-        ('Display Settings', {
-            'fields': ('scroll_direction', 'order', 'is_active')
-        }),
-    )
+    list_display = ('thumbnail', 'title', 'category', 'orientation', 'is_featured', 'is_active', 'order')
+    list_filter = ('category', 'orientation', 'is_featured', 'is_active')
+    search_fields = ('title', 'description')
+    prepopulated_fields = {'slug': ('title',)} # Auto-generates slug as you type title
+    list_editable = ('order', 'is_active', 'is_featured', 'category')
+    
+    def thumbnail(self, obj):
+        return image_preview(obj.image)
+    thumbnail.short_description = 'Preview'
 
 
-# ===== Testimonials =====
+@admin.register(TrustedClient)
+class TrustedClientAdmin(admin.ModelAdmin):
+    list_display = ('logo_preview', 'name', 'category', 'location_city', 'trusted_since_year', 'status_badge', 'is_active')
+    list_filter = ('category', 'status_badge', 'is_active', 'location_state')
+    search_fields = ('name', 'location_city', 'description')
+    list_editable = ('is_active', 'status_badge')
+
+    def logo_preview(self, obj):
+        return image_preview(obj.logo)
+    logo_preview.short_description = 'Logo'
+
+
 @admin.register(Testimonial)
 class TestimonialAdmin(admin.ModelAdmin):
-    list_display = ['client_name', 'client_title', 'rating', 'order', 'is_active']
-    list_filter = ['rating', 'is_active']
-    list_editable = ['order', 'is_active']
-    search_fields = ['client_name', 'message']
+    list_display = ('reviewer_name', 'type', 'reviewer_school', 'rating_display', 'review_date', 'is_active')
+    list_filter = ('type', 'rating', 'is_active', 'review_date')
+    search_fields = ('reviewer_name', 'reviewer_school', 'text')
+    date_hierarchy = 'review_date'
+    
     fieldsets = (
-        ('Client Information', {
-            'fields': ('client_name', 'client_title', 'client_image')
+        ('Reviewer Info', {
+            'fields': (('reviewer_name', 'reviewer_title'), 'reviewer_school', 'reviewer_avatar')
         }),
-        ('Message', {
-            'fields': ('message', 'rating')
+        ('Review Content', {
+            'fields': ('type', 'rating', 'tag', 'text', 'review_date', 'helpful_count')
         }),
-        ('Settings', {
-            'fields': ('order', 'is_active')
+        ('Video Details (If Video Type)', {
+            'classes': ('collapse',),
+            'fields': ('video_url', 'video_file', 'video_thumbnail', 'video_duration', 'video_views', 'video_posted_ago')
         }),
-    )
-
-
-# ===== Contact Information =====
-@admin.register(ContactInfo)
-class ContactInfoAdmin(admin.ModelAdmin):
-    list_display = ['contact_type', 'title', 'order', 'is_active']
-    list_filter = ['contact_type', 'is_active']
-    list_editable = ['order', 'is_active']
-    search_fields = ['title', 'content']
-    fieldsets = (
-        ('Contact Details', {
-            'fields': ('contact_type', 'title', 'content', 'icon')
-        }),
-        ('Settings', {
-            'fields': ('order', 'is_active')
-        }),
-    )
-
-
-# ===== Social Links =====
-@admin.register(SocialLink)
-class SocialLinkAdmin(admin.ModelAdmin):
-    list_display = ['platform', 'url', 'order', 'is_active']
-    list_filter = ['platform', 'is_active']
-    list_editable = ['order', 'is_active']
-    fieldsets = (
-        ('Social Media', {
-            'fields': ('platform', 'url', 'icon')
-        }),
-        ('Settings', {
-            'fields': ('order', 'is_active')
-        }),
-    )
-
-
-# ===== Footer Sections =====
-@admin.register(FooterSection)
-class FooterSectionAdmin(admin.ModelAdmin):
-    list_display = ['title', 'section_type', 'order', 'is_active']
-    list_filter = ['section_type', 'is_active']
-    list_editable = ['order', 'is_active']
-    search_fields = ['title']
-    fieldsets = (
-        ('Section Details', {
-            'fields': ('title', 'description', 'section_type')
-        }),
-        ('Settings', {
-            'fields': ('order', 'is_active')
-        }),
-    )
-
-
-# ===== Footer Links =====
-@admin.register(FooterLink)
-class FooterLinkAdmin(admin.ModelAdmin):
-    list_display = ['title', 'section', 'url', 'order', 'is_active']
-    list_filter = ['section', 'is_active']
-    list_editable = ['order', 'is_active']
-    search_fields = ['title', 'url']
-    fieldsets = (
-        ('Link Details', {
-            'fields': ('section', 'title', 'url')
-        }),
-        ('Settings', {
-            'fields': ('order', 'is_active')
-        }),
-    )
-
-
-# ===== Map Location =====
-@admin.register(MapLocation)
-class MapLocationAdmin(admin.ModelAdmin):
-    list_display = ['title', 'address', 'is_active']
-    list_filter = ['is_active']
-    fieldsets = (
-        ('Location Details', {
-            'fields': ('title', 'address', 'latitude', 'longitude')
-        }),
-        ('Embed Map', {
-            'fields': ('embed_url',),
-            'description': 'Paste the Google Maps embed URL here'
-        }),
-        ('Settings', {
+        ('Status', {
             'fields': ('is_active',)
         }),
     )
+
+    def rating_display(self, obj):
+        stars = '⭐' * obj.rating
+        return stars
+    rating_display.short_description = 'Rating'
+
+
+@admin.register(ContactSubmission)
+class ContactSubmissionAdmin(admin.ModelAdmin):
+    list_display = ('name', 'subject', 'status_colored', 'email_status', 'created_at')
+    list_filter = ('status', 'email_status', 'created_at')
+    search_fields = ('name', 'email', 'subject', 'message')
+    readonly_fields = ('created_at', 'updated_at', 'email_retry_count', 'email_last_attempt', 'email_sent_at')
+    
+    fieldsets = (
+        ('Lead Information', {
+            'fields': (('name', 'email'), 'phone', 'subject', 'message')
+        }),
+        ('Management', {
+            'fields': ('status', 'created_at')
+        }),
+        ('Email Tracking Logs', {
+            'classes': ('collapse',),
+            'fields': ('email_status', 'email_retry_count', 'email_last_attempt', 'email_sent_at'),
+        }),
+    )
+
+    def status_colored(self, obj):
+        colors = {
+            'new': '#d9534f',      # Red
+            'read': '#f0ad4e',     # Orange
+            'replied': '#5bc0de',  # Blue
+            'closed': '#5cb85c',   # Green
+        }
+        return format_html(
+            '<span style="background-color: {}; color: white; padding: 3px 10px; border-radius: 12px; font-size: 0.8em; font-weight: bold;">{}</span>',
+            colors.get(obj.status, '#ccc'),
+            obj.get_status_display()
+        )
+    status_colored.short_description = 'Status'
+
+# --- Optional: Site Header Customization ---
+admin.site.site_header = "Adarsh ID Cards Administration"
+admin.site.site_title = "Adarsh ID Cards Admin Portal"
+admin.site.index_title = "Welcome to the Site Management Dashboard"

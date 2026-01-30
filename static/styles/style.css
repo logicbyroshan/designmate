@@ -1156,7 +1156,6 @@ body {
     width: 100%;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .footer-map-container iframe {
@@ -1236,7 +1235,7 @@ body {
     margin-left: calc(-50vw + 50%);
     margin-right: calc(-50vw + 50%);
     margin-bottom: -1rem;
-    padding: 1.5rem 40px;
+    padding: 10px 0;
     text-align: center;
     color: var(--text-color);
     font-size: 0.9rem;
@@ -1290,3 +1289,31 @@ body {
 .work-item {
     animation: fadeIn 0.6s ease-out;
 }
+/* Add these to your CSS if they aren't there */
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease-out;
+}
+
+.reveal-active {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+.push-out { transform: translateX(-20px); opacity: 0; transition: 0.3s; }
+.push-in { transform: translateX(0); opacity: 1; transition: 0.3s; }
+
+/* Toast Notifications */
+.toast-notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 15px 25px;
+    border-radius: 5px;
+    color: white;
+    z-index: 1000;
+    animation: slideIn 0.3s ease;
+}
+.toast-notification.success { background: #27ae60; }
+.toast-notification.error { background: #e74c3c; }

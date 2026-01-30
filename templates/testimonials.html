@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'styles/testimonials.css' %}">
 {% endblock %}
@@ -11,516 +12,129 @@
             <div class="hero-content">
                 <div class="hero-badge">
                     <i class="fas fa-star"></i>
-                    <span>4.9/5 Average Rating</span>
+                    <span>{% if avg_rating %}{{ avg_rating|floatformat:1 }}{% else %}5.0{% endif %}/5 Average Rating</span>
                 </div>
                 <h1>What Our <span class="gradient-text">Clients Say</span></h1>
-                <p class="hero-subtitle">Real stories from real schools. Discover why 1000+ institutions trust us for their ID card needs.</p>
+                <p class="hero-subtitle">Real stories from schools across the nation. Discover why {{ total_reviews|default:'500' }}+ institutions trust {{ site_name }}.</p>
             </div>
         </div>
     </section>
 
     <!-- Video Testimonials -->
+    {% if video_testimonials %}
     <section class="video-testimonials">
         <div class="container">
             <div class="section-header">
                 <span class="section-badge">Watch & Listen</span>
                 <h2>Video <span class="highlight">Testimonials</span></h2>
-                <p>Hear directly from our satisfied clients about their experience</p>
             </div>
             
             <div class="video-grid">
-                <div class="video-card main-video">
+                {% for video in video_testimonials %}
+                <div class="video-card" 
+                     data-video-url="{% if video.video_file %}{{ video.video_file.url }}{% else %}{{ video.video_url }}{% endif %}">
                     <div class="video-thumbnail">
-                        <img src="../static/images/Products/Product1.jpg" alt="Video Testimonial">
+                        {% if video.video_thumbnail %}
+                            <img src="{{ video.video_thumbnail.url }}" alt="{{ video.reviewer_school }}">
+                        {% else %}
+                            <div class="thumb-placeholder"><i class="fas fa-play-circle"></i></div>
+                        {% endif %}
                         <div class="play-overlay">
-                            <div class="play-btn">
-                                <i class="fas fa-play"></i>
-                            </div>
+                            <div class="play-btn"><i class="fas fa-play"></i></div>
                         </div>
-                        <div class="video-duration">3:45</div>
+                        {% if video.video_duration %}<div class="video-duration">{{ video.video_duration }}</div>{% endif %}
                     </div>
                     <div class="video-info">
-                        <h4>St. Mary's School Success Story</h4>
-                        <p>How we helped transform their ID card system</p>
+                        <h4>{{ video.reviewer_school|default:video.reviewer_name }}</h4>
+                        <p>{{ video.reviewer_title }}</p>
                         <div class="video-meta">
-                            <span><i class="fas fa-eye"></i> 12.5K views</span>
-                            <span><i class="fas fa-calendar"></i> 2 months ago</span>
+                            {% if video.video_views %}<span><i class="fas fa-eye"></i> {{ video.video_views }}</span>{% endif %}
+                            <span><i class="fas fa-calendar"></i> {{ video.review_date|date:"M Y" }}</span>
                         </div>
                     </div>
                 </div>
-                
-                <div class="video-card">
-                    <div class="video-thumbnail">
-                        <img src="../static/images/Products/Product2.jpg" alt="Video Testimonial">
-                        <div class="play-overlay">
-                            <div class="play-btn">
-                                <i class="fas fa-play"></i>
-                            </div>
-                        </div>
-                        <div class="video-duration">2:30</div>
-                    </div>
-                    <div class="video-info">
-                        <h4>Modern School Review</h4>
-                        <p>Principal shares their 10-year journey</p>
-                    </div>
-                </div>
-                
-                <div class="video-card">
-                    <div class="video-thumbnail">
-                        <img src="../static/images/Products/Product3.jpg" alt="Video Testimonial">
-                        <div class="play-overlay">
-                            <div class="play-btn">
-                                <i class="fas fa-play"></i>
-                            </div>
-                        </div>
-                        <div class="video-duration">4:15</div>
-                    </div>
-                    <div class="video-info">
-                        <h4>City International Academy</h4>
-                        <p>Bulk order experience & quality review</p>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </section>
+    {% endif %}
 
-    <!-- Testimonial Cards Grid -->
+    <!-- Text Testimonials Grid -->
     <section class="testimonials-grid-section">
         <div class="container">
             <div class="section-header">
                 <span class="section-badge">Client Stories</span>
                 <h2>Words of <span class="highlight">Appreciation</span></h2>
-                <p>Real feedback from schools across the country</p>
             </div>
             
             <!-- Filter Tabs -->
             <div class="filter-tabs">
                 <button class="filter-tab active" data-filter="all">All Reviews</button>
-                <button class="filter-tab" data-filter="5-star">5 Star</button>
                 <button class="filter-tab" data-filter="quality">Quality</button>
                 <button class="filter-tab" data-filter="delivery">Delivery</button>
                 <button class="filter-tab" data-filter="design">Design</button>
                 <button class="filter-tab" data-filter="support">Support</button>
             </div>
             
-            <!-- Masonry Grid -->
             <div class="testimonials-masonry" id="testimonialGrid">
-                <!-- Card 1 -->
-                <div class="testimonial-card" data-category="5-star quality">
+                {% for t in text_testimonials %}
+                <div class="testimonial-card" data-category="{{ t.tag|lower }}">
                     <div class="card-header">
                         <div class="reviewer-avatar">
-                            <img src="../static/images/Schools/School2.png" alt="Reviewer">
+                            {% if t.reviewer_avatar %}
+                                <img src="{{ t.reviewer_avatar.url }}" alt="Reviewer">
+                            {% else %}
+                                <div class="avatar-init">{{ t.reviewer_name|slice:":1" }}</div>
+                            {% endif %}
                         </div>
                         <div class="reviewer-info">
-                            <h4>Mrs. Sunita Sharma</h4>
-                            <span>Admin Head, Ryan International</span>
+                            <h4>{{ t.reviewer_name }}</h4>
+                            <span>{{ t.reviewer_title }}{% if t.reviewer_school %}, {{ t.reviewer_school }}{% endif %}</span>
                         </div>
                         <div class="card-rating">
                             <i class="fas fa-star"></i>
-                            <span>5.0</span>
+                            <span>{{ t.rating|floatformat:1 }}</span>
                         </div>
                     </div>
                     <div class="card-content">
-                        <p>"The quality of cards is exceptional. Our students love the vibrant colors and durability. Even after a full academic year, the cards look brand new!"</p>
+                        <p>{{ t.text|linebreaksbr }}</p>
                     </div>
                     <div class="card-footer">
-                        <span class="review-date"><i class="far fa-calendar-alt"></i> Jan 2024</span>
-                        <div class="helpful-btn">
+                        <span class="review-date"><i class="far fa-calendar-alt"></i> {{ t.review_date|date:'M Y' }}</span>
+                        <div class="helpful-btn" data-id="{{ t.id }}">
                             <i class="far fa-thumbs-up"></i>
-                            <span>Helpful (24)</span>
+                            <span>Helpful ({{ t.helpful_count }})</span>
                         </div>
                     </div>
-                    <div class="card-tag">Quality</div>
+                    {% if t.tag %}<div class="card-tag">{{ t.tag }}</div>{% endif %}
                 </div>
-                
-                <!-- Card 2 -->
-                <div class="testimonial-card tall" data-category="5-star delivery">
-                    <div class="card-header">
-                        <div class="reviewer-avatar">
-                            <img src="../static/images/Schools/School3.png" alt="Reviewer">
-                        </div>
-                        <div class="reviewer-info">
-                            <h4>Mr. Amit Patel</h4>
-                            <span>Principal, Vibgyor High</span>
-                        </div>
-                        <div class="card-rating">
-                            <i class="fas fa-star"></i>
-                            <span>5.0</span>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <p>"I was amazed by their express delivery service! We had an urgent requirement for 2000 cards before our annual day function. Adarsh team delivered in just 3 days without compromising on quality. Their coordination and communication throughout the process was remarkable."</p>
-                    </div>
-                    <div class="card-footer">
-                        <span class="review-date"><i class="far fa-calendar-alt"></i> Dec 2023</span>
-                        <div class="helpful-btn">
-                            <i class="far fa-thumbs-up"></i>
-                            <span>Helpful (45)</span>
-                        </div>
-                    </div>
-                    <div class="card-tag">Delivery</div>
-                </div>
-                
-                <!-- Card 3 -->
-                <div class="testimonial-card" data-category="5-star design">
-                    <div class="card-header">
-                        <div class="reviewer-avatar">
-                            <img src="../static/images/Schools/School4.png" alt="Reviewer">
-                        </div>
-                        <div class="reviewer-info">
-                            <h4>Sister Mary Francis</h4>
-                            <span>Director, St. Xavier's</span>
-                        </div>
-                        <div class="card-rating">
-                            <i class="fas fa-star"></i>
-                            <span>5.0</span>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <p>"Beautiful designs that perfectly matched our school's heritage and tradition. The team understood our requirements instantly."</p>
-                    </div>
-                    <div class="card-footer">
-                        <span class="review-date"><i class="far fa-calendar-alt"></i> Nov 2023</span>
-                        <div class="helpful-btn">
-                            <i class="far fa-thumbs-up"></i>
-                            <span>Helpful (18)</span>
-                        </div>
-                    </div>
-                    <div class="card-tag">Design</div>
-                </div>
-                
-                <!-- Card 4 -->
-                <div class="testimonial-card" data-category="5-star support">
-                    <div class="card-header">
-                        <div class="reviewer-avatar">
-                            <img src="../static/images/Schools/School5.png" alt="Reviewer">
-                        </div>
-                        <div class="reviewer-info">
-                            <h4>Mr. Deepak Verma</h4>
-                            <span>IT Head, Amity School</span>
-                        </div>
-                        <div class="card-rating">
-                            <i class="fas fa-star"></i>
-                            <span>5.0</span>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <p>"Their customer support is incredible! Any query is resolved within hours. They even helped us with data formatting at no extra charge."</p>
-                    </div>
-                    <div class="card-footer">
-                        <span class="review-date"><i class="far fa-calendar-alt"></i> Oct 2023</span>
-                        <div class="helpful-btn">
-                            <i class="far fa-thumbs-up"></i>
-                            <span>Helpful (32)</span>
-                        </div>
-                    </div>
-                    <div class="card-tag">Support</div>
-                </div>
-                
-                <!-- Card 5 -->
-                <div class="testimonial-card tall" data-category="5-star quality design">
-                    <div class="card-header">
-                        <div class="reviewer-avatar">
-                            <img src="../static/images/Schools/School6.png" alt="Reviewer">
-                        </div>
-                        <div class="reviewer-info">
-                            <h4>Dr. Priya Menon</h4>
-                            <span>Chairperson, Oakridge Int'l</span>
-                        </div>
-                        <div class="card-rating">
-                            <i class="fas fa-star"></i>
-                            <span>5.0</span>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <p>"We switched to Adarsh 8 years ago and haven't looked back since. The consistency in quality year after year is remarkable. Our parent community has also praised the professional look of the ID cards. The smart card integration they offered has streamlined our attendance system completely. Highly recommended!"</p>
-                    </div>
-                    <div class="card-footer">
-                        <span class="review-date"><i class="far fa-calendar-alt"></i> Sep 2023</span>
-                        <div class="helpful-btn">
-                            <i class="far fa-thumbs-up"></i>
-                            <span>Helpful (67)</span>
-                        </div>
-                    </div>
-                    <div class="card-tag">Quality</div>
-                </div>
-                
-                <!-- Card 6 -->
-                <div class="testimonial-card" data-category="delivery">
-                    <div class="card-header">
-                        <div class="reviewer-avatar">
-                            <img src="../static/images/Schools/School7.png" alt="Reviewer">
-                        </div>
-                        <div class="reviewer-info">
-                            <h4>Mr. Rahul Singh</h4>
-                            <span>Manager, KV School</span>
-                        </div>
-                        <div class="card-rating">
-                            <i class="fas fa-star"></i>
-                            <span>4.5</span>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <p>"On-time delivery every single year. We process 5000+ cards and they manage the volume effortlessly."</p>
-                    </div>
-                    <div class="card-footer">
-                        <span class="review-date"><i class="far fa-calendar-alt"></i> Aug 2023</span>
-                        <div class="helpful-btn">
-                            <i class="far fa-thumbs-up"></i>
-                            <span>Helpful (29)</span>
-                        </div>
-                    </div>
-                    <div class="card-tag">Delivery</div>
-                </div>
-                
-                <!-- Card 7 -->
-                <div class="testimonial-card" data-category="5-star quality">
-                    <div class="card-header">
-                        <div class="reviewer-avatar">
-                            <img src="../static/images/Schools/School8.png" alt="Reviewer">
-                        </div>
-                        <div class="reviewer-info">
-                            <h4>Mrs. Kavita Joshi</h4>
-                            <span>Principal, Cambridge School</span>
-                        </div>
-                        <div class="card-rating">
-                            <i class="fas fa-star"></i>
-                            <span>5.0</span>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <p>"Premium PVC cards that last the entire academic year. No fading, no peeling. Worth every penny!"</p>
-                    </div>
-                    <div class="card-footer">
-                        <span class="review-date"><i class="far fa-calendar-alt"></i> Jul 2023</span>
-                        <div class="helpful-btn">
-                            <i class="far fa-thumbs-up"></i>
-                            <span>Helpful (41)</span>
-                        </div>
-                    </div>
-                    <div class="card-tag">Quality</div>
-                </div>
-                
-                <!-- Card 8 -->
-                <div class="testimonial-card" data-category="design support">
-                    <div class="card-header">
-                        <div class="reviewer-avatar">
-                            <img src="../static/images/Schools/School1.png" alt="Reviewer">
-                        </div>
-                        <div class="reviewer-info">
-                            <h4>Mr. Sanjay Gupta</h4>
-                            <span>Owner, Sunshine Academy</span>
-                        </div>
-                        <div class="card-rating">
-                            <i class="fas fa-star"></i>
-                            <span>5.0</span>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <p>"They created a completely custom design for our new campus launch. The creativity and attention to detail exceeded our expectations."</p>
-                    </div>
-                    <div class="card-footer">
-                        <span class="review-date"><i class="far fa-calendar-alt"></i> Jun 2023</span>
-                        <div class="helpful-btn">
-                            <i class="far fa-thumbs-up"></i>
-                            <span>Helpful (36)</span>
-                        </div>
-                    </div>
-                    <div class="card-tag">Design</div>
-                </div>
-                
-                <!-- Card 9 -->
-                <div class="testimonial-card tall" data-category="5-star support delivery">
-                    <div class="card-header">
-                        <div class="reviewer-avatar">
-                            <img src="../static/images/Schools/School2.png" alt="Reviewer">
-                        </div>
-                        <div class="reviewer-info">
-                            <h4>Sister Catherine</h4>
-                            <span>Administrator, Loreto Convent</span>
-                        </div>
-                        <div class="card-rating">
-                            <i class="fas fa-star"></i>
-                            <span>5.0</span>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <p>"What I appreciate most is their patience and understanding. When we had last-minute changes to 500 cards, they accommodated without any fuss. Their dedication to customer satisfaction is unmatched. The team personally ensures everything is perfect before delivery. It's rare to find such commitment in today's business world."</p>
-                    </div>
-                    <div class="card-footer">
-                        <span class="review-date"><i class="far fa-calendar-alt"></i> May 2023</span>
-                        <div class="helpful-btn">
-                            <i class="far fa-thumbs-up"></i>
-                            <span>Helpful (53)</span>
-                        </div>
-                    </div>
-                    <div class="card-tag">Support</div>
-                </div>
+                {% endfor %}
             </div>
             
             <div class="load-more-wrapper">
-                <button class="load-more-btn" id="loadMoreBtn">
-                    <span>Load More Reviews</span>
-                    <i class="fas fa-chevron-down"></i>
+                <button class="load-more-btn" id="writeReviewBtn">
+                    <i class="fas fa-pen-fancy"></i> Write a Review
                 </button>
             </div>
         </div>
     </section>
 
-    <!-- Category Ratings -->
-    <section class="category-ratings">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-badge">Ratings</span>
-                <h2>Excellence in <span class="highlight">Every Aspect</span></h2>
-                <p>See how we perform across different categories</p>
-            </div>
-            
-            <div class="category-grid">
-                <div class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-gem"></i>
-                    </div>
-                    <h4>Quality</h4>
-                    <div class="category-rating">
-                        <div class="circular-progress" data-progress="98">
-                            <svg viewBox="0 0 100 100">
-                                <circle cx="50" cy="50" r="45"></circle>
-                                <circle cx="50" cy="50" r="45" class="progress-ring"></circle>
-                            </svg>
-                            <span class="progress-value">98%</span>
-                        </div>
-                    </div>
-                    <p>Premium materials & printing</p>
-                </div>
-                
-                <div class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-truck-fast"></i>
-                    </div>
-                    <h4>Delivery</h4>
-                    <div class="category-rating">
-                        <div class="circular-progress" data-progress="96">
-                            <svg viewBox="0 0 100 100">
-                                <circle cx="50" cy="50" r="45"></circle>
-                                <circle cx="50" cy="50" r="45" class="progress-ring"></circle>
-                            </svg>
-                            <span class="progress-value">96%</span>
-                        </div>
-                    </div>
-                    <p>On-time every time</p>
-                </div>
-                
-                <div class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-palette"></i>
-                    </div>
-                    <h4>Design</h4>
-                    <div class="category-rating">
-                        <div class="circular-progress" data-progress="97">
-                            <svg viewBox="0 0 100 100">
-                                <circle cx="50" cy="50" r="45"></circle>
-                                <circle cx="50" cy="50" r="45" class="progress-ring"></circle>
-                            </svg>
-                            <span class="progress-value">97%</span>
-                        </div>
-                    </div>
-                    <p>Creative & modern designs</p>
-                </div>
-                
-                <div class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-headset"></i>
-                    </div>
-                    <h4>Support</h4>
-                    <div class="category-rating">
-                        <div class="circular-progress" data-progress="99">
-                            <svg viewBox="0 0 100 100">
-                                <circle cx="50" cy="50" r="45"></circle>
-                                <circle cx="50" cy="50" r="45" class="progress-ring"></circle>
-                            </svg>
-                            <span class="progress-value">99%</span>
-                        </div>
-                    </div>
-                    <p>Always here to help</p>
-                </div>
-                
-                <div class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-tags"></i>
-                    </div>
-                    <h4>Value</h4>
-                    <div class="category-rating">
-                        <div class="circular-progress" data-progress="95">
-                            <svg viewBox="0 0 100 100">
-                                <circle cx="50" cy="50" r="45"></circle>
-                                <circle cx="50" cy="50" r="45" class="progress-ring"></circle>
-                            </svg>
-                            <span class="progress-value">95%</span>
-                        </div>
-                    </div>
-                    <p>Best price-quality ratio</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Write Review CTA -->
-    <section class="write-review-section">
-        <div class="container">
-            <div class="write-review-card">
-                <div class="review-cta-content">
-                    <div class="review-icon">
-                        <i class="fas fa-pen-fancy"></i>
-                    </div>
-                    <h3>Share Your Experience</h3>
-                    <p>Had a great experience with us? We'd love to hear from you! Your feedback helps us serve you better.</p>
-                    <button class="write-review-btn" id="writeReviewBtn">
-                        <i class="fas fa-star"></i>
-                        <span>Write a Review</span>
-                    </button>
-                </div>
-                <div class="review-cta-image">
-                    <div class="floating-reviews">
-                        <div class="mini-review r1">
-                            <i class="fas fa-star"></i>
-                            <span>Excellent!</span>
-                        </div>
-                        <div class="mini-review r2">
-                            <i class="fas fa-heart"></i>
-                            <span>Love it!</span>
-                        </div>
-                        <div class="mini-review r3">
-                            <i class="fas fa-thumbs-up"></i>
-                            <span>Amazing!</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Video Modal -->
+    <!-- Modals -->
     <div class="video-modal" id="videoModal">
         <div class="video-modal-content">
-            <button class="video-modal-close" id="videoModalClose">
-                <i class="fas fa-times"></i>
-            </button>
-            <video id="modalVideo" controls>
-                <source src="" type="video/mp4">
-            </video>
+            <button class="video-modal-close" id="videoModalClose"><i class="fas fa-times"></i></button>
+            <video id="modalVideo" controls src=""></video>
         </div>
     </div>
 
-    <!-- Review Modal -->
     <div class="review-modal" id="reviewModal">
         <div class="review-modal-content">
-            <button class="review-modal-close" id="reviewModalClose">
-                <i class="fas fa-times"></i>
-            </button>
-            <h3>Write Your Review</h3>
+            <button class="review-modal-close" id="reviewModalClose"><i class="fas fa-times"></i></button>
+            <h3>Submit Your Feedback</h3>
             <form id="reviewForm">
+                {% csrf_token %}
                 <div class="form-group">
-                    <label>Your Rating</label>
+                    <label>Rating</label>
                     <div class="star-rating">
                         <i class="far fa-star" data-rating="1"></i>
                         <i class="far fa-star" data-rating="2"></i>
@@ -528,27 +142,23 @@
                         <i class="far fa-star" data-rating="4"></i>
                         <i class="far fa-star" data-rating="5"></i>
                     </div>
+                    <input type="hidden" name="rating" id="selectedRating" value="5">
                 </div>
                 <div class="form-group">
-                    <label>Your Name</label>
-                    <input type="text" placeholder="Enter your name" required>
+                    <input type="text" name="name" placeholder="Your Name" required>
                 </div>
                 <div class="form-group">
-                    <label>School/Institution</label>
-                    <input type="text" placeholder="Enter school name" required>
+                    <input type="text" name="school" placeholder="School/Institution Name" required>
                 </div>
                 <div class="form-group">
-                    <label>Your Review</label>
-                    <textarea placeholder="Share your experience..." rows="4" required></textarea>
+                    <textarea name="text" placeholder="Tell us about our quality and service..." rows="4" required></textarea>
                 </div>
-                <button type="submit" class="submit-review-btn">
-                    <i class="fas fa-paper-plane"></i>
-                    Submit Review
-                </button>
+                <button type="submit" class="submit-review-btn">Submit for Approval</button>
             </form>
         </div>
     </div>
-    {% block extra_js %}
-        <script src="../static/scripts/testimonials.js"></script>
-    {% endblock %}
+{% endblock %}
+
+{% block extra_js %}
+    <script src="{% static 'scripts/testimonials.js' %}"></script>
 {% endblock %}

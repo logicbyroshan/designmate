@@ -27,6 +27,9 @@ htmlcov/
 local_settings.py
 db.sqlite3  # Default SQLite database
 
+# Environment variables
+.env
+
 # Media and static files (adjust as needed)
 # It's common to ignore uploaded media files in development
 media/

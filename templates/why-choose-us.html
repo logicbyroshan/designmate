@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
+
 {% block extra_css %}
-    <link rel="stylesheet" href="../static/styles/why-choose-us.css">
+    <link rel="stylesheet" href="{% static 'styles/why-choose-us.css' %}">
 {% endblock %}
+
 {% block content %}
     <!-- Hero Section -->
     <section class="page-hero">
@@ -12,13 +14,15 @@
                     <i class="fas fa-award"></i>
                     <span>Trusted Since 2004</span>
                 </div>
-                <h1>Why <span class="gradient-text">Choose Us</span>?</h1>
-                <p class="hero-subtitle">Two decades of excellence, innovation, and unwavering commitment to quality. We don't just make ID cards – we build trust.</p>
+                <h1>Why <span class="gradient-text">Choose {{ site_name }}</span>?</h1>
+                <p class="hero-subtitle">
+                    {{ business.tagline|default:"Two decades of excellence, innovation, and unwavering commitment to quality. We don't just make ID cards – we build trust." }}
+                </p>
             </div>
         </div>
     </section>
 
-    <!-- Key Features Section -->
+    <!-- Key Features Section (Dynamic from Database) -->
     <section class="key-features">
         <div class="container">
             <div class="section-header">
@@ -28,173 +32,49 @@
             </div>
             
             <div class="features-grid">
-                <div class="feature-card featured">
+                {% for feature in features %}
+                <div class="feature-card {% if feature.is_featured %}featured{% endif %}">
                     <div class="feature-icon">
-                        <i class="fas fa-medal"></i>
+                        <i class="{{ feature.icon }}"></i>
                     </div>
-                    <div class="feature-number">01</div>
-                    <h3>20+ Years Legacy</h3>
-                    <p>Two decades of trusted service in the ID card industry. Our experience speaks through every card we create.</p>
+                    <div class="feature-number">{{ forloop.counter|stringformat:"02d" }}</div>
+                    <h3>{{ feature.title }}</h3>
+                    <p>{{ feature.description }}</p>
+                    
+                    {% if feature.highlight %}
                     <div class="feature-highlight">
-                        <span>Since 2004</span>
+                        <span>{{ feature.highlight }}</span>
                     </div>
+                    {% endif %}
                 </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-bolt"></i>
-                    </div>
-                    <div class="feature-number">02</div>
-                    <h3>Lightning Fast Delivery</h3>
-                    <p>We understand urgency. Get your orders delivered within promised timeframes, every single time.</p>
-                    <div class="feature-tags">
-                        <span><i class="fas fa-check"></i> Express Options</span>
-                        <span><i class="fas fa-check"></i> On-Time Promise</span>
-                    </div>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-palette"></i>
-                    </div>
-                    <div class="feature-number">03</div>
-                    <h3>Modern Trendy Designs</h3>
-                    <p>Stay ahead with contemporary designs. We continuously update our portfolio with the latest trends.</p>
-                    <div class="feature-tags">
-                        <span><i class="fas fa-check"></i> 500+ Templates</span>
-                        <span><i class="fas fa-check"></i> Custom Designs</span>
-                    </div>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-heart"></i>
-                    </div>
-                    <div class="feature-number">04</div>
-                    <h3>100% Satisfaction</h3>
-                    <p>Your happiness is our priority. We work until you're completely satisfied with the result.</p>
-                    <div class="feature-tags">
-                        <span><i class="fas fa-check"></i> Free Revisions</span>
-                        <span><i class="fas fa-check"></i> Quality Assured</span>
-                    </div>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-tags"></i>
-                    </div>
-                    <div class="feature-number">05</div>
-                    <h3>Best Pricing</h3>
-                    <p>Premium quality at competitive prices. Bulk discounts and special packages for institutions.</p>
-                    <div class="feature-tags">
-                        <span><i class="fas fa-check"></i> No Hidden Costs</span>
-                        <span><i class="fas fa-check"></i> Bulk Discounts</span>
-                    </div>
-                </div>
-            
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-headset"></i>
-                    </div>
-                    <div class="feature-number">06</div>
-                    <h3>Dedicated Support</h3>
-                    <p>Our team is always ready to assist. From design consultation to after-sales support.</p>
-                    <div class="feature-tags">
-                        <span><i class="fas fa-check"></i> Quick Response</span>
-                        <span><i class="fas fa-check"></i> Expert Guidance</span>
-                    </div>
-                </div>
+                {% empty %}
+                <p class="text-center">Our features are being updated. Check back soon!</p>
+                {% endfor %}
             </div>
         </div>
     </section>
 
-    <!-- Promises Section -->
-    <section class="promises-section">
+    <!-- Stats Section -->
+    <section class="stats-section">
         <div class="container">
-            <div class="section-header">
-                <span class="section-badge">Our Commitment</span>
-                <h2>Promises We <span class="highlight">Keep</span></h2>
-                <p>Not just words, but actions that define our service</p>
-            </div>
-            
-            <div class="promises-grid">
-                <div class="promise-card">
-                    <div class="promise-icon">
-                        <i class="fas fa-truck-fast"></i>
-                    </div>
-                    <h3>On-Time Delivery</h3>
-                    <p>We guarantee delivery within the promised timeframe. Late delivery? We make it right.</p>
-                    <div class="promise-guarantee">
-                        <i class="fas fa-shield-alt"></i>
-                        <span>100% Delivery Guarantee</span>
-                    </div>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h2 class="stat-number" data-count="20">0</h2>
+                    <p>Years Experience</p>
                 </div>
-                
-                <div class="promise-card">
-                    <div class="promise-icon">
-                        <i class="fas fa-gem"></i>
-                    </div>
-                    <h3>Premium Quality</h3>
-                    <p>Only the finest materials and latest printing technology. Every card is a masterpiece.</p>
-                    <div class="promise-guarantee">
-                        <i class="fas fa-shield-alt"></i>
-                        <span>Quality Assured</span>
-                    </div>
+                <div class="stat-item">
+                    <h2 class="stat-number" data-count="{{ client_count|default:'500' }}">0</h2>
+                    <p>Happy Clients</p>
                 </div>
-                
-                <div class="promise-card">
-                    <div class="promise-icon">
-                        <i class="fas fa-redo"></i>
-                    </div>
-                    <h3>Free Revisions</h3>
-                    <p>Not happy with the design? We'll revise it until it's perfect, at no extra cost.</p>
-                    <div class="promise-guarantee">
-                        <i class="fas fa-shield-alt"></i>
-                        <span>Unlimited Changes</span>
-                    </div>
-                </div>
-                
-                <div class="promise-card">
-                    <div class="promise-icon">
-                        <i class="fas fa-lock"></i>
-                    </div>
-                    <h3>Data Security</h3>
-                    <p>Your data is safe with us. We follow strict privacy protocols for all student information.</p>
-                    <div class="promise-guarantee">
-                        <i class="fas fa-shield-alt"></i>
-                        <span>100% Secure</span>
-                    </div>
-                </div>
-                
-                <div class="promise-card">
-                    <div class="promise-icon">
-                        <i class="fas fa-hand-holding-heart"></i>
-                    </div>
-                    <h3>After-Sales Support</h3>
-                    <p>Our relationship doesn't end at delivery. We're here for replacements and queries.</p>
-                    <div class="promise-guarantee">
-                        <i class="fas fa-shield-alt"></i>
-                        <span>Always Available</span>
-                    </div>
-                </div>
-                
-                <div class="promise-card">
-                    <div class="promise-icon">
-                        <i class="fas fa-rupee-sign"></i>
-                    </div>
-                    <h3>Transparent Pricing</h3>
-                    <p>What you see is what you pay. No surprise charges, no hidden fees, ever.</p>
-                    <div class="promise-guarantee">
-                        <i class="fas fa-shield-alt"></i>
-                        <span>No Hidden Costs</span>
-                    </div>
+                <div class="stat-item">
+                    <h2 class="stat-number" data-count="100">0</h2>
+                    <p>Satisfaction %</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Modern Designs Showcase -->
+    <!-- Designs Showcase -->
     <section class="designs-section">
         <div class="container">
             <div class="designs-content">
@@ -204,100 +84,27 @@
                     <p>We keep up with the latest design trends to ensure your ID cards look contemporary and professional.</p>
                     
                     <ul class="design-features">
-                        <li>
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <strong>500+ Design Templates</strong>
-                                <span>Pre-made designs for quick turnaround</span>
-                            </div>
-                        </li>
-                        <li>
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <strong>Custom Design Service</strong>
-                                <span>Unique designs tailored to your brand</span>
-                            </div>
-                        </li>
-                        <li>
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <strong>Annual Trend Updates</strong>
-                                <span>New designs added every year</span>
-                            </div>
-                        </li>
-                        <li>
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <strong>Multiple Finish Options</strong>
-                                <span>Matte, glossy, textured & more</span>
-                            </div>
-                        </li>
+                        <li><i class="fas fa-check-circle"></i> 500+ Design Templates</li>
+                        <li><i class="fas fa-check-circle"></i> Custom Branding Service</li>
+                        <li><i class="fas fa-check-circle"></i> High-Resolution PVC Printing</li>
                     </ul>
                     
-                    <a href="our-works.html" class="btn-explore">
-                        <span>Explore Our Designs</span>
+                    <a href="{% url 'main:our_work' %}" class="btn-explore">
+                        <span>Explore Our Gallery</span>
                         <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
                 
                 <div class="designs-showcase">
+                    <!-- Static images or pull from Featured Portfolio -->
                     <div class="showcase-card card-1">
-                        <img src="../static/images/Products/Product1.jpg" alt="Modern ID Design 1">
+                        <img src="{% static 'images/Products/id1.jpg' %}" alt="ID Design">
                         <div class="card-badge">Trending</div>
                     </div>
                     <div class="showcase-card card-2">
-                        <img src="../static/images/Products/Product2.jpg" alt="Modern ID Design 2">
-                        <div class="card-badge new">New 2024</div>
+                        <img src="{% static 'images/Products/id2.jpg' %}" alt="ID Design">
+                        <div class="card-badge new">New</div>
                     </div>
-                    <div class="showcase-card card-3">
-                        <img src="../static/images/Products/Product3.jpg" alt="Modern ID Design 3">
-                        <div class="card-badge popular">Popular</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Why Schools Trust Us -->
-    <section class="trust-section">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-badge">Trusted Partner</span>
-                <h2>Why Schools <span class="highlight">Trust Us</span></h2>
-                <p>Join 1000+ institutions that rely on us for their ID solutions</p>
-            </div>
-            
-            <div class="trust-reasons">
-                <div class="trust-card">
-                    <div class="trust-icon">
-                        <i class="fas fa-user-graduate"></i>
-                    </div>
-                    <h3>We Understand Schools</h3>
-                    <p>Years of working with educational institutions means we know your unique requirements and challenges.</p>
-                </div>
-                
-                <div class="trust-card">
-                    <div class="trust-icon">
-                        <i class="fas fa-calendar-alt"></i>
-                    </div>
-                    <h3>Academic Calendar Aligned</h3>
-                    <p>We work around your academic schedule, ensuring cards are ready before the session begins.</p>
-                </div>
-                
-                <div class="trust-card">
-                    <div class="trust-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>Bulk Order Experts</h3>
-                    <p>From 100 to 10,000+ cards, we handle orders of all sizes with equal dedication and quality.</p>
-                </div>
-                
-                <div class="trust-card">
-                    <div class="trust-icon">
-                        <i class="fas fa-handshake"></i>
-                    </div>
-                    <h3>Long-term Partnerships</h3>
-                    <p>Many schools have been with us for 10+ years. We value relationships over transactions.</p>
                 </div>
             </div>
         </div>
@@ -307,9 +114,7 @@
     <section class="faq-section">
         <div class="container">
             <div class="section-header">
-                <span class="section-badge">Got Questions?</span>
                 <h2>Frequently Asked <span class="highlight">Questions</span></h2>
-                <p>Find answers to common queries about our services</p>
             </div>
             
             <div class="faq-container">
@@ -319,7 +124,7 @@
                         <i class="fas fa-plus"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>We accept orders starting from as low as 50 cards. However, bulk orders of 500+ cards get special discounts and priority processing.</p>
+                        <p>We accept orders starting from as low as 50 cards. However, bulk orders of 500+ cards get special discounts.</p>
                     </div>
                 </div>
                 
@@ -329,47 +134,17 @@
                         <i class="fas fa-plus"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Standard delivery takes 7-10 working days. Express delivery is available in 3-5 days at an additional cost. For urgent orders, we offer 48-hour rush service.</p>
+                        <p>Standard delivery takes 7-10 working days. Express service is available for urgent requirements.</p>
                     </div>
                 </div>
-                
+
                 <div class="faq-item">
                     <div class="faq-question">
-                        <span>Can I get custom designs for my school?</span>
+                        <span>Is my data secure?</span>
                         <i class="fas fa-plus"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Absolutely! We offer completely custom design services. Our design team will work with you to create unique ID cards that match your school's branding and requirements.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>What materials do you use for cards?</span>
-                        <i class="fas fa-plus"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>We offer multiple material options including PVC cards, eco-friendly materials, paper laminated cards, and smart cards with RFID chips. All materials are high-quality and durable.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Do you provide samples before bulk orders?</span>
-                        <i class="fas fa-plus"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Yes, we provide digital proofs for approval before printing. For new clients, we can also send physical samples of our previous work to demonstrate quality.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>What if there are errors in the printed cards?</span>
-                        <i class="fas fa-plus"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>We have a strict quality control process. If any errors occur on our end, we reprint the affected cards at no additional cost. For data errors from the client side, we offer discounted reprints.</p>
+                        <p>Yes, we follow strict data privacy protocols. All student and staff information is handled with 100% confidentiality.</p>
                     </div>
                 </div>
             </div>
@@ -377,6 +152,6 @@
     </section>
 
     {% block extra_js %}
-        <script src="../static/scripts/why-choose-us.js"></script>
+        <script src="{% static 'scripts/why-choose-us.js' %}"></script>
     {% endblock %}
 {% endblock %}
