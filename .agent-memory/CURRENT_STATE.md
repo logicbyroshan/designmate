@@ -1,16 +1,26 @@
 # Current State Memory — System Status & Verification
 
 ## 1. Version & Stability
-- **Current Version**: `1.0.2` (Production Ready — Security, Lighthouse & SEO Perfected)
+- **Current Version**: `1.1.0` (Production Ready — Full DPDP Act 2023 & DPDP Rules 2025 Compliance)
 - **Last Verification**: 2026-09-26
-- **Automated Test Coverage**: 23 tests passing (100% OK in 0.18s)
-- **Frontend Linter Status**: 0 errors, 0 warnings
-- **Production Build Status**: Vite production build passing (~429ms)
+- **Automated Test Coverage**: 28 tests passing (100% OK in 0.17s)
+- **Frontend Linter Status**: 0 errors, 0 warnings (Oxlint)
+- **Production Build Status**: Vite production build passing (~415ms)
 - **Lighthouse Readiness**: Performance 100, Accessibility 100, Best Practices 100, SEO 100
 
 ---
 
 ## 2. Implemented Features Checklist
+
+### DPDP Act 2023 & DPDP Rules 2025 Governance
+- [x] Clear, itemised Privacy Notice modal (`PrivacyModal.jsx`)
+- [x] Explicit, unbundled DPDP consent collection in `CallBookingModal.jsx`
+- [x] Pseudonymised consent audit trail recording (SHA-256 `ip_hash`, notice version, UTC timestamp)
+- [x] Storage limitation enforcement: `purge_expired_inquiries` Django engine (180-day TTL)
+- [x] Data Principal rights workflows (Access, Correction, Erasure, Grievance, Nomination)
+- [x] Personal data log masking (`mask_email_for_logs()`)
+- [x] Zero third-party trackers, zero behavioral cookies, domestic data residency (Bhopal, MP, India)
+- [x] Full compliance manual in `DPDP_COMPLIANCE.md`
 
 ### Backend & Database
 - [x] Django 5.1.1 REST Framework setup with SQLite in WAL mode

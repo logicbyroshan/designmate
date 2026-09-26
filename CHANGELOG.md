@@ -7,6 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.1.0] - 2026-09-26
+
+### Added
+- **DPDP Act 2023 & DPDP Rules 2025 Technical Compliance**:
+  - `PrivacyModal.jsx`: Added accessible DPDP Privacy Notice presenting Data Fiduciary identity, itemised personal data list, purpose specification, 180-day retention terms, 5 Data Principal rights, and Grievance Officer details (`mail@logicbyroshan.in`).
+  - `CallBookingModal.jsx`: Integrated explicit, unbundled DPDP consent checkbox requiring user agreement before consultation inquiry submission.
+  - `FooterSection.jsx`: Integrated persistent Privacy Notice trigger link for transparent visitor access.
+  - `CallBooking` Data Model: Added fields `consent_given`, `consent_timestamp`, `consent_notice_version`, `consent_purpose`, and `ip_hash`.
+  - Migration `0005_callbooking_consent_given_and_more.py`: Applied clean database schema update.
+  - Data Retention Engine: Built `purge_expired_inquiries.py` Django management command enforcing Section 8(7) storage limitation by deleting records older than 180 days (supports `--days` and `--dry-run`).
+  - Personal Data Log Masking: Implemented `mask_email_for_logs()` in backend views to prevent plaintext email leakage in production logging systems.
+  - Pseudonymised Consent Audit Trail: Implemented SHA-256 IP hashing (`ip_hash`) for consent auditability without storing raw network identifiers.
+  - Comprehensive DPDP Manual: Authored `DPDP_COMPLIANCE.md` detailing data inventory, data flows, Data Principal rights, retention rules, security safeguards, and breach response protocols.
+  - Backend Test Suite Expansion: Added `DPDPComplianceAPITestCase` expanding total automated tests to 28 (100% pass rate).
+
+---
+
 ## [1.0.2] - 2026-09-26
 
 ### Added

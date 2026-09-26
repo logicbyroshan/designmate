@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function FooterSection({ profile, isConnected }) {
+export default function FooterSection({ profile, isConnected, onOpenPrivacy }) {
   const instagramUrl = profile?.instagram_url || "https://instagram.com/logicbyroshan";
   const figmaUrl = profile?.figma_url || "https://figma.com/@logicbyroshan";
   const behanceUrl = profile?.behance_url || "https://behance.net/logicbyroshan";
@@ -37,7 +37,7 @@ export default function FooterSection({ profile, isConnected }) {
         </a>
       </div>
 
-      {/* API Status only — no admin button visible to public */}
+      {/* API Status & Privacy Notice bar */}
       <div className="footer-backend-bar">
         <div className="status-indicator">
           <span
@@ -49,10 +49,30 @@ export default function FooterSection({ profile, isConnected }) {
           </span>
         </div>
 
-        {/* Copyright */}
-        <span style={{ fontSize: '0.76rem', color: '#94A3B8' }}>
-          © 2026 Roshan Damor · All rights reserved
-        </span>
+        {/* DPDP Privacy Notice Link & Copyright */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 14, fontSize: '0.76rem', color: '#94A3B8' }}>
+          <button
+            type="button"
+            onClick={onOpenPrivacy}
+            style={{
+              background: 'none',
+              border: 'none',
+              color: '#94A3B8',
+              cursor: 'pointer',
+              fontSize: 'inherit',
+              padding: 0,
+              textDecoration: 'underline',
+              transition: 'color 0.2s',
+            }}
+            onMouseEnter={(e) => { e.target.style.color = '#FFFFFF'; }}
+            onMouseLeave={(e) => { e.target.style.color = '#94A3B8'; }}
+            aria-label="Open Digital Personal Data Protection Privacy Notice"
+          >
+            Privacy Notice (DPDP)
+          </button>
+          <span>•</span>
+          <span>© 2026 Roshan Damor · All rights reserved</span>
+        </div>
       </div>
     </footer>
   );

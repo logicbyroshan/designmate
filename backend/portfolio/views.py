@@ -192,6 +192,17 @@ class ProjectViewSet(viewsets.ModelViewSet):
         return qs
 
 
+import hashlib
+
+def mask_email_for_logs(email: str) -> str:
+    """Mask email to prevent logging plaintext personal data in accordance with DPDP security safeguards."""
+    if not email or '@' not in email:
+        return '***'
+    user, domain = email.split('@', 1)
+    masked_user = user[0] + '***' if len(user) > 1 else '***'
+    return f"{masked_user}@{domain}"
+
+
 class CallBookingViewSet(viewsets.ModelViewSet):
     queryset = CallBooking.objects.all().order_by('-created_at')
     serializer_class = CallBookingSerializer
@@ -201,8 +212,18 @@ class CallBookingViewSet(viewsets.ModelViewSet):
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        self.perform_create(serializer)
-        logger.info(f"New client booking inquiry received from {serializer.validated_data.get('email')}")
+        
+        # Compute pseudonymised IP hash for DPDP consent audit trail
+        x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+        if x_forwarded_for:
+            ip = x_forwarded_for.split(',')[0].strip()
+        else:
+            ip = request.META.get('REMOTE_ADDR', '')
+        
+        ip_hash = hashlib.sha256(ip.encode('utf-8')).hexdigest() if ip else ''
+        instance = serializer.save(ip_hash=ip_hash)
+        
+        logger.info(f"New client booking inquiry received (id={instance.id}, contact={mask_email_for_logs(instance.email)})")
         return Response({
             'message': 'Message sent successfully! Roshan Damor will get back to you shortly.',
             'booking': serializer.data

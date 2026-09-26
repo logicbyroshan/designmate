@@ -3,7 +3,7 @@ import { X, Mail, CheckCircle, Send } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { API_ENDPOINTS } from '../config/api';
 
-export default function CallBookingModal({ isOpen, onClose }) {
+export default function CallBookingModal({ isOpen, onClose, onOpenPrivacy }) {
   const [formData, setFormData] = useState({
     full_name: '',
     email: '',
@@ -12,6 +12,7 @@ export default function CallBookingModal({ isOpen, onClose }) {
     budget: 'Flexible',
     preferred_date: '',
     message: '',
+    consent_given: false,
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -33,24 +34,37 @@ export default function CallBookingModal({ isOpen, onClose }) {
   if (!isOpen) return null;
 
   const handleChange = (e) => {
+    const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
     setFormData(prev => ({
       ...prev,
-      [e.target.name]: e.target.value
+      [e.target.name]: value
     }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!formData.consent_given) {
+      setErrorMessage('Please consent to the processing of your contact details under the DPDP Act, 2023 to submit this inquiry.');
+      return;
+    }
+
     setIsSubmitting(true);
     setErrorMessage('');
 
     try {
+      const payload = {
+        ...formData,
+        consent_given: true,
+        consent_notice_version: '1.0',
+        consent_purpose: 'Consultation & Project Inquiry Communication',
+      };
+
       const response = await fetch(API_ENDPOINTS.bookings, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(payload),
       });
 
       if (!response.ok) {
@@ -251,6 +265,67 @@ export default function CallBookingModal({ isOpen, onClose }) {
                     onChange={handleChange}
                     placeholder="Tell Roshan about your project timeline, requirements, or vision..."
                   />
+                </div>
+
+                {/* DPDP Act 2023 Explicit Consent Checkbox */}
+                <div
+                  style={{
+                    background: 'var(--bg-subtle)',
+                    border: '1px solid var(--border-subtle)',
+                    borderRadius: 'var(--radius-sm)',
+                    padding: '12px 14px',
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    gap: 10,
+                  }}
+                >
+                  <input
+                    type="checkbox"
+                    id="consent_given_checkbox"
+                    name="consent_given"
+                    required
+                    checked={formData.consent_given}
+                    onChange={handleChange}
+                    style={{
+                      marginTop: 3,
+                      cursor: 'pointer',
+                      accentColor: 'var(--color-primary)',
+                      width: 16,
+                      height: 16,
+                    }}
+                  />
+                  <label
+                    htmlFor="consent_given_checkbox"
+                    style={{
+                      fontSize: '0.82rem',
+                      color: 'var(--text-secondary)',
+                      lineHeight: 1.45,
+                      cursor: 'pointer',
+                    }}
+                  >
+                    I consent to the processing of my contact information strictly to respond to this consultation inquiry in accordance with the{' '}
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        if (onOpenPrivacy) onOpenPrivacy();
+                      }}
+                      style={{
+                        background: 'none',
+                        border: 'none',
+                        color: 'var(--color-primary)',
+                        padding: 0,
+                        fontWeight: 700,
+                        textDecoration: 'underline',
+                        cursor: 'pointer',
+                        fontSize: '0.82rem',
+                        display: 'inline',
+                      }}
+                    >
+                      DPDP Privacy Notice
+                    </button>
+                    . (Retained for 180 days · Zero third-party sharing).
+                  </label>
                 </div>
 
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 10, flexWrap: 'wrap', gap: 12 }}>

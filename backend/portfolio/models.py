@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 class Category(models.Model):
     name = models.CharField(max_length=150)
@@ -152,6 +153,21 @@ class CallBooking(models.Model):
     message = models.TextField(blank=True)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending', db_index=True)
     created_at = models.DateTimeField(auto_now_add=True, db_index=True)
+
+    # DPDP Act 2023 & DPDP Rules 2025 Consent Governance Fields
+    consent_given = models.BooleanField(default=True, help_text="Explicit DPDP consent granted by Data Principal")
+    consent_timestamp = models.DateTimeField(default=timezone.now, help_text="Timestamp when DPDP consent was recorded")
+    consent_notice_version = models.CharField(max_length=20, default='1.0', help_text="Version of Privacy Notice presented")
+    consent_purpose = models.CharField(
+        max_length=200,
+        default='Consultation & Project Inquiry Communication',
+        help_text="Specified purpose for personal data processing"
+    )
+    ip_hash = models.CharField(
+        max_length=64,
+        blank=True,
+        help_text="Pseudonymised SHA-256 hash of client IP for consent audit trail"
+    )
 
     class Meta:
         ordering = ['-created_at']
