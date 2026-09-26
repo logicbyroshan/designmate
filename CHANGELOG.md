@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.0.2] - 2026-09-26
+
+### Added
+- Technical SEO: Implemented JSON-LD Structured Data (`Person`, `WebSite`, `ProfessionalService`), Canonical URL links, complete Open Graph tags, and Twitter Cards in `index.html`.
+- Crawlability & Indexing Assets: Created `robots.txt`, XML `sitemap.xml` with image schema, and PWA `site.webmanifest`.
+- Accessibility (A11y): Added descriptive `aria-label` tags to interactive work cards, external social links, and explicit image dimensions (`width` & `height`) to prevent Cumulative Layout Shift (CLS).
+
+---
+
 ## [1.0.1] - 2026-09-26
 
 ### Added

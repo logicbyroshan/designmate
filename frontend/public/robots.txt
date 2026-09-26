@@ -1,0 +1,15 @@
+# Robots.txt for Roshan Damor Creative Portfolio (DesignMate)
+# https://grafix.logicbyroshan.in/
+
+User-agent: *
+Allow: /
+Allow: /assets/
+Allow: /favicon.svg
+Allow: /MePhoto.webp
+Allow: /icons.svg
+
+# Disallow private administrative CMS routes and backend API endpoints from crawling
+Disallow: /manage
+Disallow: /api/
+
+Sitemap: https://grafix.logicbyroshan.in/sitemap.xml

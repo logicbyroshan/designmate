@@ -12,27 +12,27 @@ export default function FooterSection({ profile, isConnected }) {
       {/* Centered Socials Line */}
       <div className="footer-socials">
         <span>Checkout my socials at</span>
-        <a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="footer-social-link">
+        <a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="footer-social-link" aria-label="Visit Roshan Damor's Instagram profile">
           Instagram
         </a>
         <span style={{ color: '#CBD5E1' }}>|</span>
-        <a href={figmaUrl} target="_blank" rel="noopener noreferrer" className="footer-social-link">
+        <a href={figmaUrl} target="_blank" rel="noopener noreferrer" className="footer-social-link" aria-label="Visit Roshan Damor's Figma community profile">
           Figma
         </a>
         <span style={{ color: '#CBD5E1' }}>|</span>
-        <a href={behanceUrl} target="_blank" rel="noopener noreferrer" className="footer-social-link">
+        <a href={behanceUrl} target="_blank" rel="noopener noreferrer" className="footer-social-link" aria-label="Visit Roshan Damor's Behance portfolio">
           Behance
         </a>
         <span style={{ color: '#CBD5E1' }}>|</span>
-        <a href={linkedinUrl} target="_blank" rel="noopener noreferrer" className="footer-social-link">
+        <a href={linkedinUrl} target="_blank" rel="noopener noreferrer" className="footer-social-link" aria-label="Connect with Roshan Damor on LinkedIn">
           LinkedIn
         </a>
         <span style={{ color: '#CBD5E1' }}>|</span>
-        <a href={dribbbleUrl} target="_blank" rel="noopener noreferrer" className="footer-social-link">
+        <a href={dribbbleUrl} target="_blank" rel="noopener noreferrer" className="footer-social-link" aria-label="View Roshan Damor's Dribbble shots">
           Dribbble
         </a>
         <span style={{ color: '#CBD5E1' }}>|</span>
-        <a href="mailto:mail@logicbyroshan.in" className="footer-social-link" style={{ color: '#0066FF' }}>
+        <a href="mailto:mail@logicbyroshan.in" className="footer-social-link" style={{ color: '#0066FF' }} aria-label="Send direct email to Roshan Damor">
           mail@logicbyroshan.in
         </a>
       </div>

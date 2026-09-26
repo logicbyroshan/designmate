@@ -18,8 +18,10 @@ export default function AboutSection({ profile, industries = [], onOpenExperienc
         <div className="about-avatar-container">
           <img
             src={avatarUrl}
-            alt={profile?.name || "Roshan Damor Portrait"}
+            alt={profile?.name ? `${profile.name} — Graphic Designer & Creative Director` : "Roshan Damor — Graphic Designer Portrait"}
             className="about-avatar-img"
+            width="160"
+            height="160"
             loading="lazy"
             onError={(e) => {
               e.target.src = "/MePhoto.webp";
