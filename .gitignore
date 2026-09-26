@@ -1,43 +1,46 @@
-# Byte-compiled / optimized files
+# Environments
+.env
+.env.local
+.env.*.local
+venv/
+env/
+.venv/
+backend/venv/
+
+# Python / Django
 __pycache__/
 *.py[cod]
-
-# Virtual environment
-.venv/
-env/
-venv/
-ENV/
-
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
-
-# Unit test and coverage reports
-.tox/
-.coverage
-.cache
-nosetests.xml
-coverage.xml
-htmlcov/
-.pytest_cache/
-
-# Django-specific stuff
+*$py.class
+*.sqlite3
+db.sqlite3
 *.log
-*.pot
 local_settings.py
-db.sqlite3  # Default SQLite database
+.pytest_cache/
+.coverage
+htmlcov/
 
-# Environment variables
-.env
+# Media uploads (test artifacts)
+backend/media/projects/test_*
 
-# Media and static files (adjust as needed)
-# It's common to ignore uploaded media files in development
-media/
+# Node / Frontend
+node_modules/
+frontend/node_modules/
+dist/
+frontend/dist/
+dist-ssr/
+frontend/dist-ssr/
+.vite/
+frontend/.vite/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 
-# Operating System files
-.DS_Store  # macOS
-Thumbs.db  # Windows
-
-# IDE specific files
-.idea/  # PyCharm
-.vscode/ # VSCode
+# IDE / System
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.gemini/
