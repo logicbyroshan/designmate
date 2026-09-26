@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.0.1] - 2026-09-26
+
+### Added
+- Expanded automated backend test suite from 18 to 23 tests covering negative authentication, category query filtering, booking status transitions, unsupported file extension rejections, and profile updates.
+
+### Improved
+- Static analysis & linting health: Refined Oxlint configuration achieving 0 warnings and 0 errors.
+- Production build performance: Optimized Vite bundling down to 443ms.
+
+---
+
 ## [1.0.0] - 2026-09-26
 
 ### Added

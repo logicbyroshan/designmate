@@ -295,3 +295,63 @@ class ValidationAndImageSecurityAPITestCase(TestCase):
         response = self.client.post(url, data=data, format='multipart', HTTP_X_ADMIN_PASSCODE='superadmin')
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
+    def test_admin_with_invalid_passcode_rejected(self):
+        """Negative security test: Incorrect passcode must return 403 Forbidden."""
+        url = reverse('booking-list')
+        response = self.client.get(url, HTTP_X_ADMIN_PASSCODE='wrong_passcode_123')
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+
+    def test_project_filtering_by_category(self):
+        """Verify project queryset category filtering."""
+        Category.objects.create(name="UI/UX Design", key="UIUX", order=2)
+        Project.objects.create(title="App Design", category="UIUX", description="Mobile App", order=2)
+        
+        url = reverse('project-list') + '?category=UIUX'
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        for item in response.json():
+            self.assertEqual(item['category'], 'UIUX')
+
+    def test_call_booking_status_update_by_admin(self):
+        """Verify authenticated admin can update call booking status."""
+        booking = CallBooking.objects.create(
+            full_name="Lead Client",
+            email="lead@company.com",
+            phone="+91 9123456780",
+            project_type="Branding",
+            message="Let's talk about our rebrand."
+        )
+        url = reverse('booking-detail', args=[booking.id])
+        payload = {'status': 'contacted'}
+        response = self.client.patch(url, data=payload, format='json', HTTP_X_ADMIN_PASSCODE='superadmin')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        booking.refresh_from_db()
+        self.assertEqual(booking.status, 'contacted')
+
+    def test_unsupported_image_extension_rejected(self):
+        """Verify non-whitelisted image extensions (.exe, .pdf, .php) are rejected."""
+        fake_executable = SimpleUploadedFile(
+            "malware.exe",
+            b"MZ\x90\x00\x03\x00\x00\x00",
+            content_type="application/x-msdownload"
+        )
+        url = reverse('project-list')
+        data = {
+            'title': 'Executable Attack Test',
+            'category': 'Packaging',
+            'description': 'Attack test',
+            'image': fake_executable,
+        }
+        response = self.client.post(url, data=data, format='multipart', HTTP_X_ADMIN_PASSCODE='superadmin')
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+
+    def test_profile_update_by_admin(self):
+        """Verify admin can update profile information."""
+        profile = Profile.objects.first() or Profile.objects.create(name="Roshan Damor")
+        url = reverse('profile-detail', args=[profile.id])
+        payload = {'tagline': 'Lead Creative Director & Brand Strategist'}
+        response = self.client.patch(url, data=payload, format='json', HTTP_X_ADMIN_PASSCODE='superadmin')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        profile.refresh_from_db()
+        self.assertEqual(profile.tagline, 'Lead Creative Director & Brand Strategist')
+
