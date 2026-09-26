@@ -1,182 +1,79 @@
-# Adarsh ID Cards - Landing Page
+# Roshan Damor — Graphic Designer Portfolio 2026
 
-## 🚀 Website Status: LIVE ✅
+A modern, high-performance, fullstack graphic designer portfolio application featuring a custom design system, dynamic categories architecture, and a secured private CMS.
 
-**Local Server:** http://localhost:8000/templates/index.html
-
----
-
-## ✅ Fixes & Improvements Made
-
-### 1. **Favicon Added**
-- ✅ Favicon link added to HTML (`<link rel="icon" type="image/x-icon" href="../favicon.ico">`)
-- ✅ Apple touch icon support added for iOS devices
-- ✅ Theme color added for browser UI
-- Place your `favicon.ico` file in the root folder (already present)
-
-### 2. **Performance Optimizations**
-
-#### JavaScript Optimization:
-- ✅ Added `defer` attribute to script tag for faster page load
-- ✅ Implemented `requestAnimationFrame` for scroll events (reduces jank)
-- ✅ Switched to CSS classes instead of inline styles (better performance)
-- ✅ Improved Intersection Observer implementation with early cleanup
-- ✅ Fixed DOMContentLoaded event handling for faster execution
-- ✅ Added proper event delegation for menu toggle
-
-#### CSS Optimization:
-- ✅ Added `.hidden` and `.visible` classes for animations instead of inline styles
-- ✅ Better mobile menu implementation with fixed positioning
-- ✅ Hamburger menu animation improvements
-- ✅ Added transitions via CSS instead of JavaScript
-- ✅ Optimized font loading with SRI (Subresource Integrity)
-
-### 3. **Bug Fixes**
-
-#### Mobile Menu:
-- ✅ Fixed: Menu now closes when clicking outside
-- ✅ Fixed: Added hamburger icon animation
-- ✅ Fixed: Mobile menu properly positioned
-- ✅ Fixed: Prevented event bubbling
-
-#### Loading Performance:
-- ✅ Fixed: Lazy loading of elements using Intersection Observer
-- ✅ Fixed: Removed unnecessary style recalculations during scroll
-- ✅ Fixed: Body loading state added for smooth transitions
-
-#### SEO & Accessibility:
-- ✅ Added meta description for SEO
-- ✅ Added theme color for mobile browsers
-- ✅ Added integrity checks for CDN resources
-
-### 4. **New Features Added**
-
-- ✅ Better mobile responsiveness with fixed navbar menu
-- ✅ Smooth loading animation
-- ✅ Scroll-to-top button (auto-appears when scrolled)
-- ✅ Better accessibility with aria-labels (ready for implementation)
+- **Public Portfolio URL**: `http://localhost:5173/`
+- **Private CMS URL**: `http://localhost:5173/manage` *(Protected by passcode `superadmin`)*
+- **Backend API**: `http://127.0.0.1:8001/api/`
 
 ---
 
-## 📁 Project Structure
+## 🎨 Key Features & Architecture
 
-```
-Adarsh Web/
-├── favicon.ico                 # Website icon
-├── templates/
-│   └── index.html             # Main landing page
-├── styles/
-│   └── style.css              # All CSS styling
-├── scripts/
-│   └── main.js                # Interactive features
-└── README.md                  # This file
-```
+### 1. 🌟 Public Showcase (`/`)
+- **Topographic Contour Hero**: Dynamic typography (`PORTFOLIO 2026`), designer signature (`Roshan Damor`), and electric royal gradient waves.
+- **About & Credentials**:
+  - High-res designer portrait (`MePhoto.webp`) with bottom gradient blend.
+  - Interactive experience pills (`Adarsh ID Cards`, `Miracle Organisation`, `Diploma in Graphics from Mantra Institute`) that trigger a credentials modal.
+  - **Design Software**: Adobe Photoshop (`Ps`), CorelDRAW (`Cd`), Adobe Lightroom (`Lr`), Canva (`Cv`), Adobe Premiere Pro (`Pr`), Figma.
+  - **Skills & Production Specializations**: Social Media & Digital Ads, Print Production & CMYK, ID Cards & Corporate Lanyards, Brochures, Photo Retouching, Event Banners, Political Campaign Creatives, Thumbnails, Book Covers.
+- **Divided Category Showcase ("MY WORKS")**:
+  - Works dynamically grouped under their respective categories with subtitles & category badge counts.
+  - Interactive Case Study lightboxes with tags, client information, and external links.
+- **Contact CTA ("Feeling Confused?")**:
+  - Email: [`mail@logicbyroshan.in`](mailto:mail@logicbyroshan.in) & [`logicbyroshan@gmail.com`](mailto:logicbyroshan@gmail.com).
+  - Phone: `+91 9179924975`.
+  - Interactive **Contact & Inquiries Modal** that submits directly to Django backend + celebration confetti!
+- **Socials & Footer**:
+  - Direct links to `@logicbyroshan` across **Instagram**, **Figma**, **Behance**, **LinkedIn**, and **Dribbble**.
+  - Live backend connection status indicator without any public admin triggers.
+
+### 2. 🔐 Secured In-Browser CMS (`/manage`)
+- **Secret URL**: Only reachable by entering `/manage` in the browser address bar.
+- **Passcode Gate**: Dark glassmorphic login gate protected with attempt throttling and session persistence.
+- **Tab Navigation**:
+  - 🖼️ **Works & Projects**: Full CRUD — upload project images or URLs, assign categories, define accent colors, tags, and case studies.
+  - 🗂️ **Categories Architecture**: Create, reorder, edit, and delete portfolio categories with custom Lucide icons.
+  - 👤 **Designer Profile**: Edit bio text, phone, email, alternative email, and upload new avatar photo.
+  - 📬 **Inquiries & Leads**: Review and update incoming client inquiries (`Pending` → `Contacted` → `Completed` → `Cancelled`).
+- **CMS Header Controls**:
+  - Live Django API indicator
+  - Fast data refresher
+  - **Exit / Log Out** button (clears session and returns to public portfolio)
+  - **View Site** link
 
 ---
 
-## 🌐 How to Run Locally
+## 🚀 Running Locally
 
-### Option 1: Python HTTP Server (Recommended)
+### 1. Start Django Backend Server (Port 8001)
 ```bash
-cd "c:\Users\kamlesh\Desktop\Adarsh Web"
-python -m http.server 8000
+# From workspace root
+backend\venv\Scripts\python backend\manage.py runserver 0.0.0.0:8001
 ```
-Then open: **http://localhost:8000/templates/index.html**
 
-### Option 2: Node.js (if installed)
+### 2. Start React Frontend Server (Port 5173)
 ```bash
-npm install -g http-server
-http-server
+cd frontend
+npm run dev -- --port 5173 --host
 ```
 
-### Option 3: Visual Studio Code Live Server Extension
-- Install "Live Server" extension
-- Right-click on `index.html`
-- Select "Open with Live Server"
+---
+
+## 📡 API Endpoints
+
+| Endpoint | Method | Description |
+|---|---|---|
+| `/api/bundle/` | `GET` | Complete portfolio bundle in a single fast JSON payload |
+| `/api/profile/1/` | `GET`, `PATCH` | Update designer profile, avatar image, and contacts |
+| `/api/categories/` | `GET`, `POST`, `PATCH`, `DELETE` | Manage categories, icons, and display ordering |
+| `/api/projects/` | `GET`, `POST`, `PATCH`, `DELETE` | Manage portfolio artwork and case studies |
+| `/api/bookings/` | `GET`, `POST`, `PATCH`, `DELETE` | Submit and manage client contact inquiries |
+| `/api/experiences/` | `GET`, `POST` | Work experience credentials |
+| `/api/education/` | `GET`, `POST` | Educational background and diploma credentials |
 
 ---
 
-## 🎨 Features Included
-
-1. **Navbar** - Sticky navigation with hamburger menu for mobile
-2. **Hero Section** - Animated gradient background with image slider
-3. **Trusted Schools** - Logo grid with hover effects
-4. **Why Choose Us** - 6 feature cards with icons
-5. **Our Works** - Portfolio gallery with overlay hover effects
-6. **Testimonials** - Client reviews with star ratings
-7. **Footer** - Contact info and social links
-8. **Scroll-to-Top Button** - Appears on scroll
-
----
-
-## ⚡ Performance Metrics
-
-- Page loads faster with deferred script loading
-- Smooth 60fps animations with requestAnimationFrame
-- Lazy-loading elements with Intersection Observer
-- Minimal CSS repaints during scroll events
-- Optimized mobile menu performance
-
----
-
-## 🔍 Browser Compatibility
-
-- ✅ Chrome/Edge (Latest)
-- ✅ Firefox (Latest)
-- ✅ Safari (Latest)
-- ✅ Mobile browsers (iOS Safari, Chrome Mobile)
-
----
-
-## 📝 Customization
-
-### Change Favicon:
-1. Replace the `favicon.ico` file in the root folder
-2. Or update the link in HTML:
-```html
-<link rel="icon" type="image/x-icon" href="../path/to/your/favicon.ico">
-```
-
-### Change Colors:
-Update CSS variables in `styles/style.css`:
-```css
-:root {
-    --primary-color: #3498db;      /* Blue */
-    --secondary-color: #2c3e50;    /* Dark */
-    --accent-color: #e74c3c;       /* Red */
-}
-```
-
-### Update Content:
-Simply edit the text and images in `templates/index.html`
-
----
-
-## 🐛 Troubleshooting
-
-### Website feels slow:
-- ✅ Already optimized with requestAnimationFrame and lazy loading
-- Clear browser cache (Ctrl+Shift+Delete)
-- Check network tab in DevTools for slow resources
-
-### Images not loading:
-- Currently using placeholder images from `via.placeholder.com`
-- Replace image URLs with your own
-
-### Mobile menu not working:
-- ✅ Fixed in this update
-- Check browser console for errors (F12)
-
----
-
-## 📞 Support
-
-For any issues or customization needs, check:
-1. Browser console (F12) for errors
-2. Network tab for failed resources
-3. Mobile responsiveness (Ctrl+Shift+M)
-
----
-
-**Last Updated:** January 26, 2026
-**Version:** 1.0 (Production Ready)
+## 📁 Tech Stack
+- **Frontend**: React, React Router v7, Lucide Icons, Canvas Confetti, Vite, Vanilla CSS Design System.
+- **Backend**: Python 3.11, Django 5.2, Django REST Framework, django-cors-headers, Pillow (50MB high-res asset support).
