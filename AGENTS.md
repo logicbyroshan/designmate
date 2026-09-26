@@ -90,7 +90,7 @@ npm run dev
 
 ### Testing & Validation
 ```bash
-# Backend test suite (18 automated tests)
+# Backend test suite (23 automated tests)
 python backend/manage.py test portfolio
 
 # Frontend linting
