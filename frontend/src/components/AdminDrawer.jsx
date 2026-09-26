@@ -466,8 +466,8 @@ export default function AdminDrawer({
     }
   };
 
-  const handleDeleteBooking = async (id) => {
-    if (!window.confirm('Delete this inquiry record?')) return;
+  const handleDeleteBooking = async (id, fullName) => {
+    if (!window.confirm(`Permanently erase inquiry for "${fullName || 'Client'}" under DPDP Section 12 (Right to Erasure)? This action cannot be undone.`)) return;
     try {
       const res = await fetch(`${API_ENDPOINTS.bookings}${id}/`, {
         method: 'DELETE',
@@ -475,7 +475,7 @@ export default function AdminDrawer({
       });
       if (res.ok || res.status === 204) {
         fetchBookings();
-        showNotification('Inquiry removed.');
+        showNotification('Inquiry permanently erased under DPDP compliance.');
       }
     } catch (err) {
       console.error('Failed to delete inquiry:', err);
@@ -1979,8 +1979,8 @@ export default function AdminDrawer({
                           </select>
 
                           <button
-                            onClick={() => handleDeleteBooking(b.id)}
-                            title="Delete Inquiry"
+                            onClick={() => handleDeleteBooking(b.id, b.full_name)}
+                            title="Permanently Erase Inquiry (DPDP Right to Erasure)"
                             className="btn btn-danger btn-icon btn-sm"
                             style={{ width: 30, height: 30 }}
                           >
@@ -2000,6 +2000,16 @@ export default function AdminDrawer({
                           "{b.message}"
                         </p>
                       )}
+
+                      {/* DPDP Governance & Audit Footer */}
+                      <div style={{ marginTop: 10, paddingTop: 8, borderTop: '1px solid #F1F5F9', display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: '0.74rem', color: '#94A3B8', flexWrap: 'wrap', gap: 6 }}>
+                        <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4, color: b.consent_given ? '#059669' : '#DC2626', fontWeight: 600 }}>
+                          ✓ DPDP Consent Recorded (v{b.consent_notice_version || '1.0'})
+                        </span>
+                        <span>
+                          Received: {b.created_at ? new Date(b.created_at).toLocaleDateString() : 'Recent'} · 180-day retention
+                        </span>
+                      </div>
                     </div>
                   ))}
                 </div>

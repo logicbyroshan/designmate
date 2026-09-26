@@ -1,13 +1,17 @@
 import os
 import json
 import io
+from datetime import timedelta
 from PIL import Image
 from django.core.files.uploadedfile import SimpleUploadedFile
+from django.core.management import call_command
 from django.test import TestCase
 from django.urls import reverse
+from django.utils import timezone
 from rest_framework.test import APIClient
 from rest_framework import status
 from portfolio.models import Profile, Category, Project, Tool, Industry, Experience, Education, CallBooking
+from portfolio.views import mask_email_for_logs
 
 class PortfolioModelsTestCase(TestCase):
     def setUp(self):
@@ -354,4 +358,99 @@ class ValidationAndImageSecurityAPITestCase(TestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         profile.refresh_from_db()
         self.assertEqual(profile.tagline, 'Lead Creative Director & Brand Strategist')
+
+
+class DPDPComplianceAPITestCase(TestCase):
+    def setUp(self):
+        self.client = APIClient()
+
+    def test_inquiry_without_consent_rejected(self):
+        """DPDP Sec 6: Explicit consent is mandatory. Submission with consent_given=False must fail."""
+        url = reverse('booking-list')
+        payload = {
+            "full_name": "Test Client",
+            "email": "client@example.com",
+            "phone": "+91 9988776655",
+            "message": "Looking for brochure design",
+            "consent_given": False,
+        }
+        response = self.client.post(url, data=payload, format='json')
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+        self.assertIn('consent_given', response.json())
+
+    def test_inquiry_with_consent_creates_audit_trail_and_ip_hash(self):
+        """DPDP Sec 6 & Security Safeguards: Valid consent records notice version, timestamp & sha256 IP hash."""
+        url = reverse('booking-list')
+        payload = {
+            "full_name": "Priya Sharma",
+            "email": "priya@domain.com",
+            "phone": "+91 9876543210",
+            "project_type": "Social Media Creatives & Ads",
+            "message": "Need campaign creatives for festival launch.",
+            "consent_given": True,
+            "consent_notice_version": "1.0",
+        }
+        response = self.client.post(url, data=payload, format='json', REMOTE_ADDR='203.0.113.195')
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        
+        booking = CallBooking.objects.get(email="priya@domain.com")
+        self.assertTrue(booking.consent_given)
+        self.assertEqual(booking.consent_notice_version, "1.0")
+        self.assertIsNotNone(booking.consent_timestamp)
+        self.assertTrue(len(booking.ip_hash) == 64)  # SHA-256 hash length
+
+    def test_data_principal_right_to_erasure(self):
+        """DPDP Sec 12: Data Principal can request permanent erasure of personal data."""
+        booking = CallBooking.objects.create(
+            full_name="Erasure Subject",
+            email="erasure@test.com",
+            phone="+91 9123456789",
+            message="Please erase my message afterwards",
+        )
+        url = reverse('booking-detail', args=[booking.id])
+        
+        # Public cannot delete
+        public_res = self.client.delete(url)
+        self.assertEqual(public_res.status_code, status.HTTP_403_FORBIDDEN)
+        
+        # Authorized Data Fiduciary administrator can fulfill erasure request
+        admin_res = self.client.delete(url, HTTP_X_ADMIN_PASSCODE='superadmin')
+        self.assertEqual(admin_res.status_code, status.HTTP_204_NO_CONTENT)
+        self.assertFalse(CallBooking.objects.filter(id=booking.id).exists())
+
+    def test_mask_email_for_logs_security_safeguard(self):
+        """DPDP Security Safeguards: Sensitive personal identifiers in log outputs must be masked."""
+        self.assertEqual(mask_email_for_logs('roshan@example.com'), 'r***@example.com')
+        self.assertEqual(mask_email_for_logs('a@b.com'), '***@b.com')
+        self.assertEqual(mask_email_for_logs('invalid-email'), '***')
+        self.assertEqual(mask_email_for_logs(''), '***')
+
+    def test_purge_expired_inquiries_management_command(self):
+        """DPDP Sec 8(7): Automated purge command removes records exceeding 180-day retention cutoff."""
+        # Create fresh booking (today)
+        fresh_booking = CallBooking.objects.create(
+            full_name="Fresh Client",
+            email="fresh@company.com",
+            message="Recent inquiry",
+        )
+        # Create expired booking (older than 180 days)
+        expired_booking = CallBooking.objects.create(
+            full_name="Old Client",
+            email="old@company.com",
+            message="Old inquiry from 7 months ago",
+        )
+        # Manually backdate created_at for expired_booking
+        past_date = timezone.now() - timedelta(days=200)
+        CallBooking.objects.filter(id=expired_booking.id).update(created_at=past_date)
+
+        # Run with dry-run first
+        call_command('purge_expired_inquiries', days=180, dry_run=True)
+        self.assertTrue(CallBooking.objects.filter(id=expired_booking.id).exists())
+        self.assertTrue(CallBooking.objects.filter(id=fresh_booking.id).exists())
+
+        # Run actual purge
+        call_command('purge_expired_inquiries', days=180)
+        self.assertFalse(CallBooking.objects.filter(id=expired_booking.id).exists())
+        self.assertTrue(CallBooking.objects.filter(id=fresh_booking.id).exists())
+
 

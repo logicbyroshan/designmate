@@ -1,5 +1,27 @@
 # Task History — Chronological Record of Agent Operations
 
+## [2026-09-26] Task 06: DPDP Act 2023 & DPDP Rules 2025 Full Compliance & Governance Implementation
+- **Objective**: Deep code-level audit, data mapping, consent architecture, storage limitation engine, Data Principal rights, personal data log masking, and comprehensive documentation for the Digital Personal Data Protection Act, 2023 & Rules 2025.
+- **Files Affected**:
+  - `backend/portfolio/models.py` (Added consent & pseudonymised IP hash fields to `CallBooking`)
+  - `backend/portfolio/migrations/0005_callbooking_consent_given_and_more.py` (Applied schema migration)
+  - `backend/portfolio/serializers.py` (Added `validate_consent_given` enforcement)
+  - `backend/portfolio/views.py` (Added `mask_email_for_logs()` and SHA-256 `ip_hash` generation)
+  - `backend/portfolio/management/commands/purge_expired_inquiries.py` (Created 180-day automated retention purge engine)
+  - `frontend/src/components/PrivacyModal.jsx` (Created accessible DPDP notice modal)
+  - `frontend/src/components/CallBookingModal.jsx` (Added explicit unbundled consent checkbox & notice trigger)
+  - `frontend/src/components/FooterSection.jsx` (Added persistent Privacy Notice link)
+  - `frontend/src/App.jsx` (Managed `isPrivacyOpen` state)
+  - `frontend/src/components/AdminDrawer.jsx` (Added DPDP consent metadata badges and DPDP Section 12 erasure actions)
+  - `backend/portfolio/tests.py` (Added `DPDPComplianceAPITestCase` expanding test suite to 28 passing tests)
+  - `DPDP_COMPLIANCE.md` (Comprehensive 10-section compliance and governance manual)
+  - `CHANGELOG.md` (Updated v1.1.0)
+  - `.agent-memory/CURRENT_STATE.md` (Updated)
+- **Key Deliverables**: Full DPDP Act 2023 & DPDP Rules 2025 technical compliance, zero third-party tracking, 180-day automated purge engine, masked logging, pseudonymised consent audit trail.
+- **Testing Performed**: `python backend/manage.py test portfolio` (28/28 PASS in 0.17s), `npm run lint` (0 errors, 0 warnings), `npm run build` (415ms PASS).
+
+---
+
 ## [2026-09-26] Task 05: Ultimate Security, Lighthouse, SEO & Accessibility Perfection Pass
 - **Objective**: Execute deep technical SEO, structured data implementation, crawlability assets, accessibility refinement, and Lighthouse 100/100 readiness.
 - **Files Affected**:

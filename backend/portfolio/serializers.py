@@ -210,3 +210,8 @@ class CallBookingSerializer(serializers.ModelSerializer):
         if not cleaned:
             raise serializers.ValidationError("A valid email address is required.")
         return cleaned
+
+    def validate_consent_given(self, value):
+        if value is False:
+            raise serializers.ValidationError("Explicit consent is required under the DPDP Act 2023 to submit an inquiry.")
+        return value

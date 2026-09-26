@@ -9,6 +9,7 @@ import FooterSection from './components/FooterSection';
 import ProjectModal from './components/ProjectModal';
 import CallBookingModal from './components/CallBookingModal';
 import ExperienceModal from './components/ExperienceModal';
+import PrivacyModal from './components/PrivacyModal';
 import CmsLoginGate from './components/CmsLoginGate';
 
 const FALLBACK_PROFILE = {
@@ -58,6 +59,7 @@ function PortfolioPage({
   const [selectedProject, setSelectedProject] = useState(null);
   const [isBookingOpen, setIsBookingOpen] = useState(false);
   const [isExperienceOpen, setIsExperienceOpen] = useState(false);
+  const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
 
   return (
     <div className="portfolio-container">
@@ -84,6 +86,7 @@ function PortfolioPage({
       <FooterSection
         profile={profile}
         isConnected={isConnected}
+        onOpenPrivacy={() => setIsPrivacyOpen(true)}
       />
 
       {/* Modals */}
@@ -96,6 +99,7 @@ function PortfolioPage({
       <CallBookingModal
         isOpen={isBookingOpen}
         onClose={() => setIsBookingOpen(false)}
+        onOpenPrivacy={() => setIsPrivacyOpen(true)}
       />
 
       <ExperienceModal
@@ -103,6 +107,11 @@ function PortfolioPage({
         onClose={() => setIsExperienceOpen(false)}
         experiences={experiences}
         education={education}
+      />
+
+      <PrivacyModal
+        isOpen={isPrivacyOpen}
+        onClose={() => setIsPrivacyOpen(false)}
       />
     </div>
   );
