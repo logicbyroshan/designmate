@@ -1,0 +1,17 @@
+{
+  "name": "Roshan Damor — Graphic Designer & Creative Director",
+  "short_name": "Roshan Damor",
+  "description": "Graphic Designer & Creative Director portfolio showcasing brand identity, packaging prepress, advertising, and digital design.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0B0F17",
+  "theme_color": "#0066FF",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -153,13 +153,16 @@ export default function WorksSection({ categories = [], projects = [], onSelectP
                           onClick={() => onSelectProject(project)}
                           role="button"
                           tabIndex={0}
+                          aria-label={`View project details for ${project.title}`}
                           onKeyDown={(e) => e.key === 'Enter' && onSelectProject(project)}
                         >
                           {imgSrc && !hasError ? (
                             <img
                               src={imgSrc}
-                              alt={project.title}
+                              alt={`Graphic design showcase: ${project.title}`}
                               className="work-card-img"
+                              width="400"
+                              height="260"
                               loading="lazy"
                               onError={() => handleImageError(project.id || index)}
                             />
